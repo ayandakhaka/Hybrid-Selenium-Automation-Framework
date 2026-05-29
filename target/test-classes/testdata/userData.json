@@ -1,0 +1,19 @@
+{
+  "name" : "Donna Ankunding",
+  "email" : "user1779970869460@test.com",
+  "password" : "Test@123",
+  "title" : "Mr",
+  "birth_date" : "10",
+  "birth_month" : "May",
+  "birth_year" : "1995",
+  "firstname" : "Dan",
+  "lastname" : "Schmeler",
+  "company" : "Torp-Price",
+  "address1" : "90086 Koelpin Path",
+  "address2" : "Suite 187",
+  "country" : "South Africa",
+  "zipcode" : "30777-2192",
+  "state" : "Colorado",
+  "city" : "Belialand",
+  "mobile_number" : "991-613-0403"
+}

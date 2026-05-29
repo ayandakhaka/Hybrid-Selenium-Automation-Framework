@@ -1,0 +1,19 @@
+{
+  "name" : "Donald Funk",
+  "email" : "user1780041372372@test.com",
+  "password" : "Test@123",
+  "title" : "Mr",
+  "birth_date" : "10",
+  "birth_month" : "May",
+  "birth_year" : "1995",
+  "firstname" : "Glynda",
+  "lastname" : "Kling",
+  "company" : "Abbott LLC",
+  "address1" : "03400 Schuppe Unions",
+  "address2" : "Suite 837",
+  "country" : "South Africa",
+  "zipcode" : "95098",
+  "state" : "Kentucky",
+  "city" : "Kasimouth",
+  "mobile_number" : "1-163-957-1444"
+}

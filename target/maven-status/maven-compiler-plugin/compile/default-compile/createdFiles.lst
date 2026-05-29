@@ -1,0 +1,6 @@
+api\model\UserModel.class
+pages\AutomationExerciseHomePage.class
+api\helpers\UserDataHelper.class
+api\payload\UserPayload.class
+pages\LoginPage.class
+utility\FakerDataGenerator.class
