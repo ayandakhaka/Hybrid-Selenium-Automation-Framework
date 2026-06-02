@@ -5,11 +5,15 @@
     <classes>
       <class name="api.AutomationExerciseAPITests">
         <methods>
-          <include name="verifyLoginWithValidLoginDetails"/>
+          <include name="verifyUserAccountUpdate"/>
           <include name="verifyRegisterUserAccount"/>
+          <include name="verifyLoginWithValidLoginDetails"/>
+          <include name="verifyDeleteUserAccount"/>
           <include name="verifyWithoutEmail"/>
           <include name="verifySearchProductItem"/>
+          <include name="verifyLoginWithInvalidDetails"/>
           <include name="setupData"/>
+          <include name="verifyReturnUserDetailsByEmail"/>
         </methods>
       </class> <!-- api.AutomationExerciseAPITests -->
     </classes>

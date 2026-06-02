@@ -1,162 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="0" failed="1" skipped="3">
+<testng-results ignored="0" total="9" passed="9" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-05-29T09:56:08 SAST" name="Default suite" finished-at="2026-05-29T09:59:23 SAST" duration-ms="194711">
+  <suite started-at="2026-06-02T12:32:03 SAST" name="Default suite" finished-at="2026-06-02T12:34:11 SAST" duration-ms="127715">
     <groups>
       <group name="Register user account">
-        <method signature="AutomationExerciseAPITests.verifyRegisterUserAccount()[pri:1, instance:api.AutomationExerciseAPITests@6743e411]" name="verifyRegisterUserAccount" class="api.AutomationExerciseAPITests"/>
+        <method signature="AutomationExerciseAPITests.verifyRegisterUserAccount()[pri:1, instance:api.AutomationExerciseAPITests@3eb738bb]" name="verifyRegisterUserAccount" class="api.AutomationExerciseAPITests"/>
       </group> <!-- Register user account -->
     </groups>
-    <test started-at="2026-05-29T09:56:08 SAST" name="Default test" finished-at="2026-05-29T09:59:23 SAST" duration-ms="194711">
+    <test started-at="2026-06-02T12:32:03 SAST" name="Default test" finished-at="2026-06-02T12:34:11 SAST" duration-ms="127715">
       <class name="api.AutomationExerciseAPITests">
-        <test-method is-config="true" signature="setupData()[pri:0, instance:api.AutomationExerciseAPITests@6743e411]" started-at="2026-05-29T09:56:09 SAST" name="setupData" finished-at="2026-05-29T09:56:16 SAST" duration-ms="6386" status="PASS">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:32:03 SAST" name="setupData" finished-at="2026-06-02T12:32:06 SAST" duration-ms="3267" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupData -->
-        <test-method signature="verifyRegisterUserAccount()[pri:1, instance:api.AutomationExerciseAPITests@6743e411]" started-at="2026-05-29T09:56:16 SAST" name="verifyRegisterUserAccount" finished-at="2026-05-29T09:59:22 SAST" duration-ms="186562" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [201] but found [201]]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [201] but found [201]
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1590)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:644)
-at api.AutomationExerciseAPITests.verifyRegisterUserAccount(AutomationExerciseAPITests.java:63)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        <test-method signature="verifyRegisterUserAccount()[pri:1, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:32:06 SAST" name="verifyRegisterUserAccount" finished-at="2026-06-02T12:32:34 SAST" duration-ms="27994" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyRegisterUserAccount -->
-        <test-method signature="verifyLoginWithValidLoginDetails()[pri:2, instance:api.AutomationExerciseAPITests@6743e411]" started-at="2026-05-29T09:59:23 SAST" name="verifyLoginWithValidLoginDetails" depends-on-groups="Register user account" finished-at="2026-05-29T09:59:23 SAST" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method AutomationExerciseAPITests.verifyLoginWithValidLoginDetails()[pri:2, instance:api.AutomationExerciseAPITests@6743e411] depends on not successfully finished methods in group "Register user account"]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method AutomationExerciseAPITests.verifyLoginWithValidLoginDetails()[pri:2, instance:api.AutomationExerciseAPITests@6743e411] depends on not successfully finished methods in group "Register user account"
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
+        <test-method signature="verifyLoginWithValidLoginDetails()[pri:2, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:32:34 SAST" name="verifyLoginWithValidLoginDetails" depends-on-groups="Register user account" finished-at="2026-06-02T12:32:40 SAST" duration-ms="5584" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithValidLoginDetails -->
-        <test-method signature="verifyWithoutEmail()[pri:3, instance:api.AutomationExerciseAPITests@6743e411]" started-at="2026-05-29T09:59:23 SAST" name="verifyWithoutEmail" depends-on-groups="Register user account" finished-at="2026-05-29T09:59:23 SAST" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method AutomationExerciseAPITests.verifyWithoutEmail()[pri:3, instance:api.AutomationExerciseAPITests@6743e411] depends on not successfully finished methods in group "Register user account"]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method AutomationExerciseAPITests.verifyWithoutEmail()[pri:3, instance:api.AutomationExerciseAPITests@6743e411] depends on not successfully finished methods in group "Register user account"
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
+        <test-method signature="verifyWithoutEmail()[pri:3, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:32:40 SAST" name="verifyWithoutEmail" depends-on-groups="Register user account" finished-at="2026-06-02T12:32:45 SAST" duration-ms="4667" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyWithoutEmail -->
-        <test-method signature="verifySearchProductItem()[pri:4, instance:api.AutomationExerciseAPITests@6743e411]" started-at="2026-05-29T09:59:23 SAST" name="verifySearchProductItem" depends-on-groups="Register user account" finished-at="2026-05-29T09:59:23 SAST" duration-ms="0" status="SKIP">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method AutomationExerciseAPITests.verifySearchProductItem()[pri:4, instance:api.AutomationExerciseAPITests@6743e411] depends on not successfully finished methods in group "Register user account"]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method AutomationExerciseAPITests.verifySearchProductItem()[pri:4, instance:api.AutomationExerciseAPITests@6743e411] depends on not successfully finished methods in group "Register user account"
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:159)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
-at org.testng.SuiteRunner.run(SuiteRunner.java:312)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-at org.testng.TestNG.runSuites(TestNG.java:1112)
-at org.testng.TestNG.run(TestNG.java:1079)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
+        <test-method signature="verifySearchProductItem()[pri:4, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:32:45 SAST" name="verifySearchProductItem" depends-on-groups="Register user account" finished-at="2026-06-02T12:33:22 SAST" duration-ms="37216" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySearchProductItem -->
+        <test-method signature="verifyReturnUserDetailsByEmail()[pri:5, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:33:22 SAST" name="verifyReturnUserDetailsByEmail" depends-on-groups="Register user account" finished-at="2026-06-02T12:33:44 SAST" duration-ms="21988" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyReturnUserDetailsByEmail -->
+        <test-method signature="verifyUserAccountUpdate()[pri:6, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:33:45 SAST" name="verifyUserAccountUpdate" depends-on-groups="Register user account" finished-at="2026-06-02T12:33:53 SAST" duration-ms="8222" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserAccountUpdate -->
+        <test-method signature="verifyDeleteUserAccount()[pri:7, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:33:53 SAST" name="verifyDeleteUserAccount" depends-on-groups="Register user account" finished-at="2026-06-02T12:34:02 SAST" duration-ms="8533" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDeleteUserAccount -->
+        <test-method signature="verifyLoginWithInvalidDetails()[pri:8, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:34:02 SAST" name="verifyLoginWithInvalidDetails" depends-on-groups="Register user account" finished-at="2026-06-02T12:34:09 SAST" duration-ms="6996" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginWithInvalidDetails -->
+        <test-method signature="verifyDeleteLogin()[pri:9, instance:api.AutomationExerciseAPITests@3eb738bb]" started-at="2026-06-02T12:34:09 SAST" name="verifyDeleteLogin" depends-on-groups="Register user account" finished-at="2026-06-02T12:34:10 SAST" duration-ms="1233" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDeleteLogin -->
       </class> <!-- api.AutomationExerciseAPITests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
