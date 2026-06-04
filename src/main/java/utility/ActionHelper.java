@@ -176,16 +176,16 @@ public class ActionHelper {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
-	
+
 	// Wait for a page to load
 	public void waitForPageLoad() {
-	    WebDriverWait wait = new WebDriverWait(driver,
-	            Duration.ofSeconds(30));
+		wait = new WebDriverWait(driver,
+				Duration.ofSeconds(30));
 
-	    wait.until(webDriver ->
-	            ((JavascriptExecutor) webDriver)
-	                    .executeScript("return document.readyState")
-	                    .equals("complete"));
+		wait.until(webDriver ->
+		((JavascriptExecutor) webDriver)
+		.executeScript("return document.readyState")
+		.equals("complete"));
 	}
 
 	// Get Current URL
