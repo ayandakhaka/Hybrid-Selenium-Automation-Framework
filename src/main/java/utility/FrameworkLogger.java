@@ -23,5 +23,13 @@ public class FrameworkLogger {
     public static void apiResponse(int statusCode) {
         logger.info("API Response Status Code: {}", statusCode);
     }
+    
+    public static void error(String message) {
+        logger.error(message);
+    }
+
+    public static void error(String message, Throwable throwable) {
+        logger.error(message, throwable);
+    }
 
 }

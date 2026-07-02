@@ -6,8 +6,6 @@ import api.helpers.UserDataHelper;
 import api.model.UserModel;
 import api.payload.UserPayload;
 import static io.restassured.RestAssured.given;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 import io.restassured.response.Response;
 
 import org.testng.Assert;

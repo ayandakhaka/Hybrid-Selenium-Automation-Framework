@@ -13,9 +13,10 @@ public class FakerDataGenerator {
 
     public static UserModel generateUserData() {
 
+    	FrameworkLogger.info("Generating a new user data");
         Faker faker = new Faker();
         UserModel user = new UserModel();
-
+        FrameworkLogger.info("Setting a new user to model");
         user.setName(faker.name().fullName());
         user.setEmail("user" + System.currentTimeMillis() + "@test.com");
         user.setPassword("Test@123");
@@ -33,7 +34,7 @@ public class FakerDataGenerator {
         user.setState(faker.address().state());
         user.setCity(faker.address().city());
         user.setMobile_number(faker.phoneNumber().cellPhone());
-
+        FrameworkLogger.info("Saving a new created user to a json file");
         saveToJson(user);
 
         return user;
@@ -44,11 +45,12 @@ public class FakerDataGenerator {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
+        	FrameworkLogger.info("Saving a newly created user object to a json file");
             mapper.writerWithDefaultPrettyPrinter()
                     .writeValue(new File(FILE_PATH), user);
 
         } catch (IOException e) {
-            throw new RuntimeException("Unable to save JSON");
+        	FrameworkLogger.error("Unable to save user to : " + FILE_PATH, new RuntimeException("Unable to save JSON"));
         }
     }
 
@@ -57,13 +59,14 @@ public class FakerDataGenerator {
         ObjectMapper mapper = new ObjectMapper();
 
         try {
+        	FrameworkLogger.info("Reading a newly created user.");
             return mapper.readValue(
                     new File(FILE_PATH),
                     UserModel.class
             );
 
         } catch (IOException e) {
-            throw new RuntimeException("Unable to read JSON");
+            throw new RuntimeException("Unable to read JSON");   
         }
     }
 

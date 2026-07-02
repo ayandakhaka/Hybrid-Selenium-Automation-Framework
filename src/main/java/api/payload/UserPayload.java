@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class UserPayload {
 	
+	public static Map<String, String> payload;
+	
 	public static Map<String, String> createUserPayload(
 			String nameText, 
 			String emailText, 
@@ -25,7 +27,7 @@ public class UserPayload {
 			String mobileNumberText
 			) {
 		
-		Map<String, String> payload = new HashMap<>();
+		payload = new HashMap<>();
 		
 		payload.put("name", nameText);
 		payload.put("email", emailText);
@@ -68,7 +70,7 @@ public class UserPayload {
 			String mobileNumberText
 			) {
 		
-		Map<String, String> payload = new HashMap<>();
+		payload = new HashMap<>();
 		
 		payload.put("name", nameText);
 		payload.put("email", emailText);
@@ -93,50 +95,50 @@ public class UserPayload {
 	
 	public static Map<String, String> createValidLoginPayload(String email, String password) {
 		
-		Map<String, String> loginPayload = new HashMap<>();
+		payload = new HashMap<>();
 		
-		loginPayload.put("email", email);
-		loginPayload.put("password", password);
+		payload.put("email", email);
+		payload.put("password", password);
 		
-		return loginPayload;
+		return payload;
 	}
 	
 	public static Map<String, String> createInvalidLoginPayload(String email, String password) {
 		
-		Map<String, String> createInvalidLoginPayload = new HashMap<>();
+		payload = new HashMap<>();
 		
-		createInvalidLoginPayload.put("email", email);
-		createInvalidLoginPayload.put("password", password);
+		payload.put("email", email);
+		payload.put("password", password);
 		
-		return createInvalidLoginPayload;
+		return payload;
 	}
 	
 	public static Map<String, String> createLoginPayloadWithoutEmailPayload(String password) {
 		
-		Map<String, String> createLoginPayloadWithoutEmail = new HashMap<>();
+		payload = new HashMap<>();
 		
-		createLoginPayloadWithoutEmail.put("password", password);
+		payload.put("password", password);
 		
-		return createLoginPayloadWithoutEmail;
+		return payload;
 	}
 	
 	public static Map<String, String> createSearchProductPayload(String searchItem) {
 		
-		Map<String, String> createSearchProduct = new HashMap<>();
+		payload = new HashMap<>();
 		
-		createSearchProduct.put("search_product", searchItem);
+		payload.put("search_product", searchItem);
 		
-		return createSearchProduct;
+		return payload;
 	}
 	
 	public static Map<String, String> createDeleteUserAccountPayload(String email, String password) {
 		
-		Map<String, String> createDeleteUserAccountPayload = new HashMap<>();
+		payload = new HashMap<>();
 		
-		createDeleteUserAccountPayload.put("email", email);
-		createDeleteUserAccountPayload.put("password", password);
+		payload.put("email", email);
+		payload.put("password", password);
 		
-		return createDeleteUserAccountPayload;
+		return payload;
 	}
 	
 	
