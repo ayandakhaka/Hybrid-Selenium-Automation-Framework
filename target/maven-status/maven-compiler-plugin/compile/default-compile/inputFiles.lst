@@ -1,0 +1,16 @@
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\api\helpers\UserDataHelper.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\api\model\UserModel.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\api\payload\UserPayload.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\api\services\UserApiService.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\pages\HomePage.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\pages\LoginPage.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\pages\LogoutPage.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\pages\ProductsPage.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\pages\ViewCartPage.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\utility\ActionHelper.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\utility\AllureEnvironment.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\utility\BasePage.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\utility\ConfigReader.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\utility\DriverFactory.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\utility\FakerDataGenerator.java
+C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\src\main\java\utility\FrameworkLogger.java

@@ -26,7 +26,7 @@ public class ActionHelper {
 	public ActionHelper(WebDriver driver) {
 
 		this.driver = driver;
-		wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(ConfigReader.getProperty("explicitWaitTimeout"))));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(ConfigReader.getProperty("explicitWait"))));
 	}
 
 	// Click element
@@ -234,8 +234,6 @@ public class ActionHelper {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(element));
 
 			String actualText = this.getText(element).trim();
-			FrameworkLogger.info(actualText.trim() + " = " + expectedText.trim());
-
 			if (actualText.equals(expectedText.trim())) {
 				FrameworkLogger.info("Text validation passed for " + description + ": " + actualText);
 				return true;
@@ -243,22 +241,14 @@ public class ActionHelper {
 				FrameworkLogger.error("Text validation failed for " + description + 
 						". Expected: '" + expectedText + "', but found: '" + actualText + "'");
 				
-				FrameworkLogger.error("Text validation failed for " + description + 
-						". Expected: '" + expectedText + "', but found: '" + actualText + "'");
 				return false;
 			}
 
 		} catch (TimeoutException e) {
-			FrameworkLogger.error(
-					"Timeout waiting for element to be visible: " + description,
-					e
-					);
+			FrameworkLogger.error("Timeout waiting for element to be visible: " + description, e);
 			return false;
 		} catch (Exception e) {
-			FrameworkLogger.error(
-					"Error validating text for " + description,
-					e
-					);
+			FrameworkLogger.error("Error validating text for " + description, e);
 			return false;
 		}
 	}

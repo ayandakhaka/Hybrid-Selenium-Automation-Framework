@@ -3,10 +3,13 @@ package api.payload;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.qameta.allure.Step;
+
 public class UserPayload {
 	
 	public static Map<String, String> payload;
 	
+	@Step("Create a user payload")
 	public static Map<String, String> createUserPayload(
 			String nameText, 
 			String emailText, 
@@ -50,6 +53,7 @@ public class UserPayload {
 		return payload;	
 	}
 	
+	@Step("Create an update user payload.")
 	public static Map<String, String> updateUserPayload(
 			String nameText, 
 			String emailText, 
@@ -93,6 +97,7 @@ public class UserPayload {
 		return payload;	
 	}
 	
+	@Step("Create a valid login payload")
 	public static Map<String, String> createValidLoginPayload(String email, String password) {
 		
 		payload = new HashMap<>();
@@ -103,6 +108,7 @@ public class UserPayload {
 		return payload;
 	}
 	
+	@Step("Create an invalid login payload")
 	public static Map<String, String> createInvalidLoginPayload(String email, String password) {
 		
 		payload = new HashMap<>();
@@ -113,6 +119,7 @@ public class UserPayload {
 		return payload;
 	}
 	
+	@Step("Create a login payload without email parameter")
 	public static Map<String, String> createLoginPayloadWithoutEmailPayload(String password) {
 		
 		payload = new HashMap<>();
@@ -122,6 +129,7 @@ public class UserPayload {
 		return payload;
 	}
 	
+	@Step("Create a search product payload with search item '{0}'")
 	public static Map<String, String> createSearchProductPayload(String searchItem) {
 		
 		payload = new HashMap<>();
@@ -131,6 +139,7 @@ public class UserPayload {
 		return payload;
 	}
 	
+	@Step("Create delete user account payload")
 	public static Map<String, String> createDeleteUserAccountPayload(String email, String password) {
 		
 		payload = new HashMap<>();

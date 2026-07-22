@@ -5,12 +5,14 @@ import com.github.javafaker.Faker;
 import java.io.File;
 import java.io.IOException;
 import api.model.UserModel;
+import io.qameta.allure.Step;
 
 public class UserDataHelper {
 	
 	private static final String FILE_PATH =
             "src/test/resources/testdata/userData.json";
 
+	@Step("Generate a random user data")
     public static UserModel generateUserData() {
 
         Faker faker = new Faker();
@@ -39,6 +41,7 @@ public class UserDataHelper {
         return user;
     }
 
+	@Step("Save a random generated user to a json file")
     public static void saveToJson(UserModel user) {
 
         ObjectMapper mapper = new ObjectMapper();
@@ -52,6 +55,7 @@ public class UserDataHelper {
         }
     }
 
+	@Step("Read a random generated user from a json file")
     public static UserModel readUserData() {
 
         ObjectMapper mapper = new ObjectMapper();

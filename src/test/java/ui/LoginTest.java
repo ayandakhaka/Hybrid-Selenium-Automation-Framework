@@ -3,29 +3,40 @@ package ui;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import api.helpers.UserDataHelper;
-import api.model.UserModel;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.LogoutPage;
 import utility.BaseTest;
 import utility.ConfigReader;
 import utility.FrameworkLogger;
 
-public class LoginTest extends BaseTest{
+
+@Epic("Automation exercise")
+@Feature("User authentication")
+public class LoginTest extends BaseTest {
 
 	private HomePage homePage;
-	private LoginPage loginPage;	
+	private LoginPage loginPage;
+	private LogoutPage logoutPage;
 
 	@BeforeMethod
 	public void setUpPages() {
 
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
-		//user = UserDataHelper.readUserData();
+		logoutPage = new LogoutPage(driver);
 	}
 
 	@Test(priority = 1)
+	@Story("Registered user login to the application")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Verify that registered user login successfully.")
 	public void verifyUserCanLoginSuccessfully() {
 
 		FrameworkLogger.testStart("verifyUserCanLoginSuccessfully");
@@ -46,6 +57,9 @@ public class LoginTest extends BaseTest{
 	}
 	
 	@Test(priority = 2)
+	@Story("User login with invalid email")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Verify that user is unable to login with invalid email.")
 	public void verifyLoginWithInvalidEmailFormat() {
 
 		FrameworkLogger.testStart("verifyLoginWithInvalidEmail");
@@ -65,6 +79,9 @@ public class LoginTest extends BaseTest{
 
 	}
 	@Test(priority = 3)
+	@Story("User login with invalid password")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Verify that user is unable to login with invalid password.")
 	public void verifyLoginWithInvalidPassword() {
 		
 		FrameworkLogger.testStart("verifyLoginWithInvalidPassword");
@@ -81,6 +98,35 @@ public class LoginTest extends BaseTest{
 		
 		FrameworkLogger.testEnd("verifyLoginWithInvalidPassword");
 		
+	}
+	
+	@Test(priority = 4)
+	@Story("Loggedin user logout from the application")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Verify that loggedin user logout successfully from the application.")
+	public void verifyLogout() {
+		
+		FrameworkLogger.testStart("verifyLogout");
+		
+		homePage.clickSignLoginButton();
+
+		FrameworkLogger.info("User enters valid email address, valid password and click login button");
+
+		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
+		
+		FrameworkLogger.info("Validating success user logged in");
+
+		Assert.assertTrue(loginPage.verifySuccessLoginUser(user.getName()), "Failed to validate user logged in.");
+		
+		FrameworkLogger.info("Clicking logout link");
+		
+		logoutPage.clickLogout();
+		
+		FrameworkLogger.info("Validating if user logged out successfully");
+		
+		Assert.assertTrue(loginPage.validateLoginFormHeaderText(), "Failed to validate user logged out.");
+		
+		FrameworkLogger.testEnd("verifyLogout");
 	}
 
 }

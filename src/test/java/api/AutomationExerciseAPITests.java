@@ -10,9 +10,18 @@ import io.restassured.response.Response;
 
 import org.testng.Assert;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import utility.ConfigReader;
 import utility.FrameworkLogger;
+
+@Epic("Automation exercise")
+@Feature("API Automation")
 public class AutomationExerciseAPITests {
 
 	private UserModel user;
@@ -25,6 +34,9 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(groups = "Register user account", priority = 1)
+	@Story("Register user account")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate register user account")
 	public void verifyRegisterUserAccount() {
 
 		// Start test
@@ -104,6 +116,9 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 2)
+	@Story("Login with valid credentials")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate login with valid login credentials")
 	public void verifyLoginWithValidLoginDetails() {
 		FrameworkLogger.testStart("verifyLoginWithValidLoginDetails");
 
@@ -160,9 +175,12 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 3)
-	public void verifyLoginWithoutEmailParamedter() {
+	@Story("Login without email parameter")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate login without email parameter")
+	public void verifyLoginWithoutEmailParameter() {
 
-		FrameworkLogger.testStart("verifyLoginWithoutEmailParamedter");
+		FrameworkLogger.testStart("verifyLoginWithoutEmailParameter");
 
 		FrameworkLogger.info("Sending login post requestion without email parameter : " 
 				+ ConfigReader.getProperty("loginEndpoint"));
@@ -208,10 +226,13 @@ public class AutomationExerciseAPITests {
 		// Verify message body
 		Assert.assertEquals(response.jsonPath().getString("message"), ConfigReader.getProperty("loginWithoutEmailMessage"), "Failed to verify message body.");
 		// End test case
-		FrameworkLogger.testEnd("verifyLoginWithoutEmailParamedter");
+		FrameworkLogger.testEnd("verifyLoginWithoutEmailParameter");
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 4)
+	@Story("Search product item")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate searched product item")
 	public void verifySearchProductItem() {
 
 		// Start test
@@ -270,6 +291,9 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 5)
+	@Story("Return user details by email")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate return user details by email")
 	public void verifyReturnUserDetailsByEmail() {
 
 		FrameworkLogger.testStart("verifyReturnUserDetailsByEmail");
@@ -308,6 +332,9 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 6)
+	@Story("Account update")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate user account update")
 	public void verifyUserAccountUpdate() {
 
 		FrameworkLogger.testStart("verifyUserAccountUpdate");
@@ -354,6 +381,9 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 7)
+	@Story("Delete user account")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate delete user account")
 	public void verifyDeleteUserAccount() {
 		
 		FrameworkLogger.testStart("verifyDeleteUserAccount");
@@ -382,6 +412,9 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 8)
+	@Story("Invalid login")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate login with invalid login credentials")
 	public void verifyLoginWithInvalidDetails() {
 		
 		FrameworkLogger.testStart("verifyLoginWithInvalidDetails");
@@ -412,6 +445,9 @@ public class AutomationExerciseAPITests {
 	}
 
 	@Test(dependsOnGroups = "Register user account", priority = 9)
+	@Story("Delete login")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Validate delete login")
 	public void verifyDeleteLogin() {
 		
 		FrameworkLogger.testStart("verifyDeleteLogin");

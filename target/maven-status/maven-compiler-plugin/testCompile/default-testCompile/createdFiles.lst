@@ -1,0 +1,6 @@
+utility\BaseTest.class
+ui\CartTest.class
+api\AutomationExerciseAPITests.class
+listeners\AllureListener.class
+ui\LoginTest.class
+ui\SearchProductTest.class

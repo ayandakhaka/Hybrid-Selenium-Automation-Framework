@@ -1,0 +1,7 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"7","","0","","6","0","","0"
+"1","Automation exercise","0","User authentication","0","0","","0"
+"0","Automation exercise","0","User authentication","1","0","Registered user login","0"
+"0","Automation exercise","0","User authentication","1","0","User login with invalid password","0"
+"0","Automation exercise","0","User authentication","1","0","User login with invalid email","0"
+"0","Automation exercise","0","User authentication","1","0","Loggedin user logout from the application","0"

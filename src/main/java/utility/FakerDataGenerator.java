@@ -29,7 +29,7 @@ public class FakerDataGenerator {
         user.setCompany(faker.company().name());
         user.setAddress1(faker.address().streetAddress());
         user.setAddress2(faker.address().secondaryAddress());
-        user.setCountry("South Africa");
+        user.setCountry(faker.country().countryCode2());
         user.setZipcode(faker.address().zipCode());
         user.setState(faker.address().state());
         user.setCity(faker.address().city());

@@ -13,6 +13,8 @@ public class DriverFactory {
 	
 	public static WebDriver createDriver() {
 		
+		WebDriver driver;
+		
 		String browser = System.getProperty("browser", 
 				ConfigReader.getProperty("browser"));
 		
@@ -31,7 +33,8 @@ public class DriverFactory {
                 chromeOptions.addArguments("--window-size=1920,1080");
             }
 
-            return new ChromeDriver(chromeOptions);
+            driver = new ChromeDriver(chromeOptions);
+            break;
 
         case "firefox":
 
@@ -39,10 +42,12 @@ public class DriverFactory {
             firefoxOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
 
             if (headless) {
-                firefoxOptions.addArguments("-headless");
+            	firefoxOptions.addArguments("--headless=new");
+            	firefoxOptions.addArguments("--window-size=1920,1080");
             }
 
-            return new FirefoxDriver(firefoxOptions);
+            driver = new FirefoxDriver(firefoxOptions);
+            break;
 
         case "edge":
 
@@ -54,13 +59,17 @@ public class DriverFactory {
                 edgeOptions.addArguments("--window-size=1920,1080");
             }
 
-            return new EdgeDriver(edgeOptions);
+            driver = new EdgeDriver(edgeOptions);
+            break;
 
         default:
             throw new IllegalArgumentException(
                     "Unsupported browser: " + browser);
         }
 		
+		driver.manage().window().maximize();
+		
+		return driver;
 	}
 
 }
