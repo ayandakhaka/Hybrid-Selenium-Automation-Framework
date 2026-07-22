@@ -7,9 +7,7 @@ import api.model.UserModel;
 import api.payload.UserPayload;
 import static io.restassured.RestAssured.given;
 import io.restassured.response.Response;
-
 import org.testng.Assert;
-
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -28,13 +26,19 @@ public class AutomationExerciseAPITests {
 
 	@BeforeClass
 	public void setupData() {
-		System.setProperty("https.protocols", "TLSv1.2");
+		// This sets the system property
+		System.setProperty(ConfigReader.getProperty("systemPropertyName"), 
+				ConfigReader.getProperty("systemPropertyValue"));
+		
+		// This generate a user data and save to a json file
 		UserDataHelper.generateUserData();
+		
+		// This reads a user data from json file and store it in user model object
 		user = UserDataHelper.readUserData();
 	}
 
 	@Test(groups = "Register user account", priority = 1)
-	@Story("Register user account")
+	@Story("Register new user account")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate register user account")
 	public void verifyRegisterUserAccount() {
@@ -42,7 +46,8 @@ public class AutomationExerciseAPITests {
 		// Start test
 		FrameworkLogger.testStart("verifyRegisterUserAccount");
 
-		FrameworkLogger.info("Register user account by sending a post request to: " + ConfigReader.getProperty("createAccountEndpoint"));
+		FrameworkLogger.info("Register user account by sending a post request to: " +
+		ConfigReader.getProperty("createAccountEndpoint"));
 
 		Response response =
 				given()
@@ -68,46 +73,48 @@ public class AutomationExerciseAPITests {
 						user.getCity(),
 						user.getMobile_number()
 						))
-				// Act to the endpoint
 				.when()
+				// Act to the endpoint
 				.post(ConfigReader.getProperty("createAccountEndpoint"));
-		// Logger out console for status code
+		// Logger output console for status code
 		FrameworkLogger.apiResponse(response.getStatusCode());
 		// Logger response body output console
 		FrameworkLogger.info(
 				"Response Body:\n" +
 						response.asPrettyString());
-
-		// Verify status code
+		
+		// Output logger to the console
 		FrameworkLogger.info(
 				"Verifying Status Code. Expected: "
 						+ ConfigReader.getProperty("successStatusCode")
 						+ ", Actual: "
 						+ response.getStatusCode());
 
-
+		// Verify status code
 		Assert.assertEquals(response.getStatusCode(), 
 				Integer.parseInt(
 						ConfigReader.getProperty("successStatusCode")),
 				"Failed to verify status code");
 
-		// Verify response code
+		// Output logger to the console
 		FrameworkLogger.info(
 				"Verifying Response Code. Expected: "
 						+ ConfigReader.getProperty("methodNotSupportedStatusCode")
 						+ ", Actual: "
 						+ response.jsonPath().getInt("responseCode"));
-
+		
+		// Verify response code
 		Assert.assertEquals(response.jsonPath().getInt("responseCode"),
 				Integer.parseInt(ConfigReader.getProperty("createdStatusCode")),
 				"Failed to verify success response code");
-		// Verify success message
+		
+		// Output logger to the console
 		FrameworkLogger.info(
 				"Verifying Message body. Expected: "
 						+ ConfigReader.getProperty("userCreatedMessage")
 						+ ", Actual: "
 						+ response.jsonPath().getString("message"));
-
+		// Verify success message
 		Assert.assertEquals(response.jsonPath().getString("message"), 
 				ConfigReader.getProperty("userCreatedMessage"), 
 				"Failed to verify success message body.");
@@ -121,7 +128,8 @@ public class AutomationExerciseAPITests {
 	@Description("Validate login with valid login credentials")
 	public void verifyLoginWithValidLoginDetails() {
 		FrameworkLogger.testStart("verifyLoginWithValidLoginDetails");
-
+		
+		// Output logger to the console
 		FrameworkLogger.info("Sending a login post request : " + ConfigReader.getProperty("loginEndpoint"));
 		Response response = 
 				given()
@@ -132,7 +140,8 @@ public class AutomationExerciseAPITests {
 
 				.when()
 				.post(ConfigReader.getProperty("loginEndpoint"));
-
+		
+		// Output logger to the console
 		FrameworkLogger.apiResponse(Integer.parseInt(ConfigReader.getProperty("successStatusCode")));
 
 		// Logger response body
@@ -170,7 +179,8 @@ public class AutomationExerciseAPITests {
 		Assert.assertEquals(response.jsonPath().getString("message"), 
 				ConfigReader.getProperty("userExistMessage"), 
 				"Failed to verify success message body.");
-
+		
+		// Output logger to the console
 		FrameworkLogger.testEnd("verifyLoginWithValidLoginDetails");
 	}
 
@@ -371,11 +381,14 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.info("Response body : \n" + response.asPrettyString());
 
 		// Verify status code
-		Assert.assertEquals(response.getStatusCode(), Integer.parseInt(ConfigReader.getProperty("successStatusCode")), "Failed to validate status code.");
+		Assert.assertEquals(response.getStatusCode(), Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+				"Failed to validate status code.");
 		// Verify response status code
-		Assert.assertEquals(response.jsonPath().getInt("responseCode"), Integer.parseInt(ConfigReader.getProperty("successStatusCode")), "Failed to verify response status code");
+		Assert.assertEquals(response.jsonPath().getInt("responseCode"), Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+				"Failed to verify response status code");
 		// Verify success update message
-		Assert.assertEquals(response.jsonPath().getString("message"), ConfigReader.getProperty("userUpdatedMessage"), "Failed to validate update message");	
+		Assert.assertEquals(response.jsonPath().getString("message"), ConfigReader.getProperty("userUpdatedMessage"),
+				"Failed to validate update message");	
 		
 		FrameworkLogger.testEnd("verifyUserAccountUpdate");
 	}
@@ -402,11 +415,14 @@ public class AutomationExerciseAPITests {
 
 		FrameworkLogger.info("Response body : \n" + response.asPrettyString());
 		// Verify status code
-		Assert.assertEquals(response.getStatusCode(), Integer.parseInt(ConfigReader.getProperty("successStatusCode")), "Failed to verify success status code.");
+		Assert.assertEquals(response.getStatusCode(), Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+				"Failed to verify success status code.");
 		// Verify response status code
-		Assert.assertEquals(response.jsonPath().getInt("responseCode"), Integer.parseInt(ConfigReader.getProperty("successStatusCode")), "Failed to verify response status code.");
+		Assert.assertEquals(response.jsonPath().getInt("responseCode"), Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+				"Failed to verify response status code.");
 		// Verify success delete message
-		Assert.assertEquals(response.jsonPath().getString("message"), ConfigReader.getProperty("userDeletedMessage"), "Failed to verify delete success message.");
+		Assert.assertEquals(response.jsonPath().getString("message"), ConfigReader.getProperty("userDeletedMessage"),
+				"Failed to verify delete success message.");
 		
 		FrameworkLogger.testEnd("verifyDeleteUserAccount");
 	}

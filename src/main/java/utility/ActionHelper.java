@@ -228,6 +228,12 @@ public class ActionHelper {
 		FrameworkLogger.info("Navigating to a " + url);
 		driver.get(url);
 	}
+	
+	// Getting a page source
+	public String getPageSource() {
+		FrameworkLogger.info("Return the current page source.");
+		return driver.getPageSource();
+	}
 
 	public boolean validateText(By element, String expectedText, String description) {
 		try {
