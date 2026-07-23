@@ -6,6 +6,12 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -13,6 +19,8 @@ import utility.BaseTest;
 import utility.ConfigReader;
 import utility.FrameworkLogger;
 
+@Epic("Automation exercise")
+@Feature("Search Products")
 public class SearchProductTest extends BaseTest {
 
 	private HomePage homePage;
@@ -30,7 +38,10 @@ public class SearchProductTest extends BaseTest {
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());	
 
 	}
-	@Test(priority = 1)
+	@Test(priority = 1, groups = "Product page")
+	@Story("Registered user navigate to product page")
+	@Severity(SeverityLevel.CRITICAL)
+	@Description("Verify that registered user navigated to product page successfully.")
 	public void verifyUserNavigatedToProductsPage() {
 
 		FrameworkLogger.testStart("verifyUserNavigatedToProductsPage");
@@ -46,7 +57,10 @@ public class SearchProductTest extends BaseTest {
 		FrameworkLogger.testEnd("verifyUserNavigatedToProductsPage");	
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, dependsOnGroups = "Product page")
+	@Story("Search an existing product.")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Validating that all product items related to search are displayed.")
 	public void verifyAllItemsRelatedToSearchAreDisplayed() {
 
 		FrameworkLogger.testStart("verifyAllItemsRelatedToSearchAreDisplayed");
@@ -78,7 +92,10 @@ public class SearchProductTest extends BaseTest {
 		FrameworkLogger.testEnd("verifyAllItemsRelatedToSearchAreDisplayed");
 	}
 	
-	@Test(priority = 3)
+	@Test(priority = 3, dependsOnGroups = "Product page")
+	@Story("Search a non existing product.")
+	@Severity(SeverityLevel.MINOR)
+	@Description("User searches a non existing product.")
 	public void verifyUserSearchNonExistingItem() {
 		
 		FrameworkLogger.testStart("verifyUserSearchNonExistingItem");

@@ -2,11 +2,9 @@ package pages;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import io.qameta.allure.Step;
 import utility.BasePage;
 import utility.FrameworkLogger;
@@ -107,8 +105,4 @@ public class ProductsPage extends BasePage {
 		actions.click(viewCart);
 		return this;
 	}
-	
-	
-	
-
 }

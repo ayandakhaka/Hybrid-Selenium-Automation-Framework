@@ -59,7 +59,7 @@ public class LoginTest extends BaseTest {
 	@Test(priority = 2)
 	@Story("User login with invalid email")
 	@Severity(SeverityLevel.CRITICAL)
-	@Description("Verify that user is unable to login with invalid email.")
+	@Description("Verify that user is unable to login with invalid format email.")
 	public void verifyLoginWithInvalidEmailFormat() {
 
 		FrameworkLogger.testStart("verifyLoginWithInvalidEmail");

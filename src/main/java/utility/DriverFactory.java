@@ -11,15 +11,18 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
 	
-	public static WebDriver createDriver() {
-		
-		WebDriver driver;
+	private static ThreadLocal<WebDriver> driver =
+            new ThreadLocal<>();
+	
+	public static void createDriver() {
 		
 		String browser = System.getProperty("browser", 
 				ConfigReader.getProperty("browser"));
 		
 		Boolean headless = Boolean.parseBoolean(System.getProperty("headless", 
 				ConfigReader.getProperty("headless")));
+		
+		WebDriver webDriver;
 		
 		switch (browser.toLowerCase()) {
 
@@ -33,7 +36,7 @@ public class DriverFactory {
                 chromeOptions.addArguments("--window-size=1920,1080");
             }
 
-            driver = new ChromeDriver(chromeOptions);
+            webDriver = new ChromeDriver(chromeOptions);
             break;
 
         case "firefox":
@@ -46,7 +49,7 @@ public class DriverFactory {
             	firefoxOptions.addArguments("--window-size=1920,1080");
             }
 
-            driver = new FirefoxDriver(firefoxOptions);
+            webDriver = new FirefoxDriver(firefoxOptions);
             break;
 
         case "edge":
@@ -59,7 +62,7 @@ public class DriverFactory {
                 edgeOptions.addArguments("--window-size=1920,1080");
             }
 
-            driver = new EdgeDriver(edgeOptions);
+            webDriver = new EdgeDriver(edgeOptions);
             break;
 
         default:
@@ -67,9 +70,24 @@ public class DriverFactory {
                     "Unsupported browser: " + browser);
         }
 		
-		driver.manage().window().maximize();
+		webDriver.manage().window().maximize();
 		
-		return driver;
+		driver.set(webDriver);
 	}
+	
+	public static WebDriver getDriver() {
+
+        return driver.get();
+    }
+
+    public static void quitDriver() {
+
+        if (driver.get() != null) {
+
+            driver.get().quit();
+
+            driver.remove();
+        }
+    }
 
 }

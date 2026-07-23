@@ -12,7 +12,6 @@ public class LoginPage extends BasePage {
 	
 	public LoginPage(WebDriver driver) {
 		super(driver);
-		
 	}
 	
 	private By emailInput = By.xpath("//input[@name='email' and @placeholder='Email Address']");
@@ -32,7 +31,7 @@ public class LoginPage extends BasePage {
 	}
 	
 	// Login validation method
-	@Step("Verify user '{0}' is logged in.")
+	@Step("Verify user is logged in.")
 	public boolean verifySuccessLoginUser(String username) {
 		return actions.validateText(loggedInUser, " Logged in as "+ username , "Logged In user");
 	}
@@ -46,11 +45,13 @@ public class LoginPage extends BasePage {
 	
 	@Step("Verify login error message displayed")
 	public boolean validateLoginErrorMessage() {
-		return actions.validateText(loginError, ConfigReader.getProperty("loginErrorText"), "Validating login error message");
+		return actions.validateText(loginError, ConfigReader.getProperty("loginErrorText"),
+				"Validating login error message");
 	}
 	
 	@Step("Verify login header text")
 	public boolean validateLoginFormHeaderText() {
-		return actions.validateText(loginFormHeaderText, ConfigReader.getProperty("loginFormHeaderText"), "Validating login form header text");
+		return actions.validateText(loginFormHeaderText, ConfigReader.getProperty("loginFormHeaderText"), 
+				"Validating login form header text");
 	}
 }

@@ -1,15 +1,9 @@
 package utility;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.Set;
-
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -95,26 +89,6 @@ public class ActionHelper {
 		actions.contextClick(wait.until(
 				ExpectedConditions.visibilityOfElementLocated(locator)))
 		.perform();
-	}
-
-	// This take a screen
-	public void takeScreenshot(String screenshotName) {
-
-		try {
-			FrameworkLogger.info("screenshot taken");
-			File source = ((TakesScreenshot) driver)
-					.getScreenshotAs(OutputType.FILE);
-
-			File destination = new File(
-					"test-output/screenshots/" + screenshotName + ".png");
-			FrameworkLogger.info("File destination is : " + destination);
-
-			FileUtils.copyFile(source, destination);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
 	}
 
 	// This switch to iFrame

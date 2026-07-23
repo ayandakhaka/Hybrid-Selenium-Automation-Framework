@@ -4,11 +4,13 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import api.model.UserModel;
 import api.services.UserApiService;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+
 import java.io.ByteArrayInputStream;
 
 public class BaseTest {
@@ -16,74 +18,75 @@ public class BaseTest {
 	protected WebDriver driver;
 	protected UserModel user;
 	protected ActionHelper action;
-	
-	public BaseTest() {
-		action = new ActionHelper(getDriver());
-	}
-	
-	@BeforeSuite
-	@Step("Create an allure enviroment")
-    public void createAllureEnvironment() {
-
-        AllureEnvironment.createEnvironmentFile();
-    }
 
 	@BeforeMethod
-	@Step("Create a random user, driver and launches the url")
+	@Step("Create a random user, driver and launch the URL")
 	public void setup() {
 
-		// This create a new random user.
-		user = UserApiService.registerRandomUser();
+	    // Create random user
+	    user = UserApiService.registerRandomUser();
 
-		// This is logging to the console.
-		FrameworkLogger.info("Created user: " + user.getEmail());
+	    FrameworkLogger.info(
+	            "Created user: " + user.getEmail()
+	    );
 
-		// This is creating webdriver
-		driver = DriverFactory.createDriver();
+	    // Create thread-safe WebDriver
+	    DriverFactory.createDriver();
 
-//		driver.manage().timeouts().pageLoadTimeout(
-//				Duration.ofSeconds(
-//						Integer.parseInt(ConfigReader.getProperty("waitForPageToLoad"))
-//						));
-		// This ensures that the page is loaded.
-		action.waitForPageLoad();
+	    // Get driver for current thread
+	    driver = DriverFactory.getDriver();
 
-//		driver.manage().timeouts().implicitlyWait(
-//				Duration.ofSeconds(
-//						Integer.parseInt(ConfigReader.getProperty("implicitWait"))
-//						));
-		// This navigate to the automation exercise home page
-		action.navigateTo(ConfigReader.getProperty("url"));
+	    // Create ActionHelper using current thread driver
+	    action = new ActionHelper(driver);
 
+	    // Create Allure environment
+	    AllureEnvironment.createEnvironmentFile(
+	            driver
+	    );
+
+	    // Wait for page load
+	    action.waitForPageLoad();
+
+	    // Navigate to application
+	    action.navigateTo(
+	            ConfigReader.getProperty("url")
+	    );
 	}
-
-	// This returns the current driver.
+	
+	// Returns the current driver
 	public WebDriver getDriver() {
 		return driver;
 	}
 
 	@AfterMethod(alwaysRun = true)
-	@Step("Take a screenshot and quit the browser")
+	@Step("Take screenshot and quit the browser")
 	public void tearDown(ITestResult result) {
 
-	    if (result.getStatus() == ITestResult.FAILURE && driver != null) {
+	    WebDriver currentDriver =
+	            DriverFactory.getDriver();
+
+	    if (result.getStatus() == ITestResult.FAILURE
+	            && currentDriver != null) {
 
 	        try {
 
-	            // 1. Capture Screenshot
-	            byte[] screenshot = ((TakesScreenshot) driver)
-	                    .getScreenshotAs(OutputType.BYTES);
+	            byte[] screenshot =
+	                    ((TakesScreenshot) currentDriver)
+	                            .getScreenshotAs(
+	                                    OutputType.BYTES
+	                            );
 
 	            Allure.addAttachment(
 	                    "Failure Screenshot",
 	                    "image/png",
-	                    new ByteArrayInputStream(screenshot),
+	                    new ByteArrayInputStream(
+	                            screenshot
+	                    ),
 	                    ".png"
 	            );
 
-	            // 2. Capture Page Source
-	            //String pageSource = driver.getPageSource();
-	            String pageSource = action.getPageSource();
+	            String pageSource =
+	                    currentDriver.getPageSource();
 
 	            Allure.addAttachment(
 	                    "Page Source",
@@ -91,27 +94,14 @@ public class BaseTest {
 	                    pageSource
 	            );
 
-	            // 3. Capture Current URL
-	            String currentUrl = action.getCurrentUrl();
+	            String currentUrl =
+	                    currentDriver.getCurrentUrl();
 
 	            Allure.addAttachment(
 	                    "Current URL",
 	                    "text/plain",
 	                    currentUrl
 	            );
-
-	            // 4. Capture Exception
-	            if (result.getThrowable() != null) {
-
-	                String exceptionMessage =
-	                        result.getThrowable().toString();
-
-	                Allure.addAttachment(
-	                        "Exception Details",
-	                        "text/plain",
-	                        exceptionMessage
-	                );
-	            }
 
 	        } catch (Exception e) {
 
@@ -122,9 +112,7 @@ public class BaseTest {
 	        }
 	    }
 
-	    // Always close browser
-	    if (driver != null) {
-	        driver.quit();
-	    }
+	    // Quit current thread's driver
+	    DriverFactory.quitDriver();
 	}
 }
