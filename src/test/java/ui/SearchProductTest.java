@@ -38,6 +38,7 @@ public class SearchProductTest extends BaseTest {
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());	
 
 	}
+	
 	@Test(priority = 1, groups = "Product page")
 	@Story("Registered user navigate to product page")
 	@Severity(SeverityLevel.CRITICAL)
