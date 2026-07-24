@@ -1,36 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="9" passed="8" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-07-22T14:00:37 SAST" name="Surefire suite" finished-at="2026-07-22T14:03:15 SAST" duration-ms="157802">
+  <suite started-at="2026-07-23T15:06:25 SAST" name="Surefire suite" finished-at="2026-07-23T15:07:52 SAST" duration-ms="86903">
     <groups>
     </groups>
-    <test started-at="2026-07-22T14:00:37 SAST" name="Surefire test" finished-at="2026-07-22T14:03:15 SAST" duration-ms="157802">
-      <class name="ui.LoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:ui.LoginTest@74667e6a]" started-at="2026-07-22T14:00:38 SAST" name="setup" finished-at="2026-07-22T14:02:03 SAST" duration-ms="85246" status="PASS">
+    <test started-at="2026-07-23T15:06:25 SAST" name="Surefire test" finished-at="2026-07-23T15:07:52 SAST" duration-ms="86903">
+      <class name="api.AutomationExerciseAPITests">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:06:25 SAST" name="setupData" finished-at="2026-07-23T15:06:33 SAST" duration-ms="7559" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="setUpPages()[pri:0, instance:ui.LoginTest@74667e6a]" started-at="2026-07-22T14:02:09 SAST" name="setUpPages" finished-at="2026-07-22T14:02:10 SAST" duration-ms="596" status="PASS">
+        </test-method> <!-- setupData -->
+        <test-method signature="verifyRegisterUserAccount()[pri:1, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:06:33 SAST" name="verifyRegisterUserAccount" finished-at="2026-07-23T15:07:19 SAST" duration-ms="46181" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Failed to verify success message body. expected [User created] but found [User created!]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Failed to verify success message body. expected [User created] but found [User created!]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at api.AutomationExerciseAPITests.verifyRegisterUserAccount(AutomationExerciseAPITests.java:121)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:155)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeSingleClass(TestNGDirectoryTestSuite.java:102)
+at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:91)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:137)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setUpPages -->
-        <test-method signature="verifyUserCanLoginSuccessfully()[pri:1, instance:ui.LoginTest@74667e6a]" started-at="2026-07-22T14:02:10 SAST" name="verifyUserCanLoginSuccessfully" finished-at="2026-07-22T14:02:44 SAST" duration-ms="33435" status="PASS">
+        </test-method> <!-- verifyRegisterUserAccount -->
+        <test-method signature="verifyLoginWithValidLoginDetails()[pri:2, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:20 SAST" name="verifyLoginWithValidLoginDetails" finished-at="2026-07-23T15:07:24 SAST" duration-ms="4513" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserCanLoginSuccessfully -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.LoginTest@74667e6a]" started-at="2026-07-22T14:02:44 SAST" name="tearDown" finished-at="2026-07-22T14:03:15 SAST" duration-ms="31246" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=verifyUserCanLoginSuccessfully status=SUCCESS method=LoginTest.verifyUserCanLoginSuccessfully()[pri:1, instance:ui.LoginTest@74667e6a] output={null}]]]>
-              </value>
-            </param>
-          </params>
+        </test-method> <!-- verifyLoginWithValidLoginDetails -->
+        <test-method signature="verifyLoginWithoutEmailParameter()[pri:3, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:24 SAST" name="verifyLoginWithoutEmailParameter" finished-at="2026-07-23T15:07:29 SAST" duration-ms="4128" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- ui.LoginTest -->
+        </test-method> <!-- verifyLoginWithoutEmailParameter -->
+        <test-method signature="verifySearchProductItem()[pri:4, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:29 SAST" name="verifySearchProductItem" finished-at="2026-07-23T15:07:32 SAST" duration-ms="3818" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySearchProductItem -->
+        <test-method signature="verifyReturnUserDetailsByEmail()[pri:5, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:32 SAST" name="verifyReturnUserDetailsByEmail" finished-at="2026-07-23T15:07:36 SAST" duration-ms="3270" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyReturnUserDetailsByEmail -->
+        <test-method signature="verifyUserAccountUpdate()[pri:6, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:36 SAST" name="verifyUserAccountUpdate" finished-at="2026-07-23T15:07:40 SAST" duration-ms="4379" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserAccountUpdate -->
+        <test-method signature="verifyDeleteUserAccount()[pri:7, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:40 SAST" name="verifyDeleteUserAccount" finished-at="2026-07-23T15:07:44 SAST" duration-ms="3554" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDeleteUserAccount -->
+        <test-method signature="verifyLoginWithInvalidDetails()[pri:8, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:44 SAST" name="verifyLoginWithInvalidDetails" finished-at="2026-07-23T15:07:48 SAST" duration-ms="3879" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLoginWithInvalidDetails -->
+        <test-method signature="verifyDeleteLogin()[pri:9, instance:api.AutomationExerciseAPITests@364b1061]" started-at="2026-07-23T15:07:48 SAST" name="verifyDeleteLogin" finished-at="2026-07-23T15:07:52 SAST" duration-ms="4208" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyDeleteLogin -->
+      </class> <!-- api.AutomationExerciseAPITests -->
     </test> <!-- Surefire test -->
   </suite> <!-- Surefire suite -->
 </testng-results>

@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Surefire_suite" class="navigator-link">
-              <span class="suite-name border-passed">Surefire suite</span>
+              <span class="suite-name border-failed">Surefire suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,7 +92,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">9 methods, 1 failed,   8 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Surefire_suite" class="hide-methods failed suite-Surefire_suite"> (hide)</a> <!-- hide-methods failed suite-Surefire_suite -->
+                      <a href="#" panel-name="suite-Surefire_suite" class="show-methods failed suite-Surefire_suite"> (show)</a> <!-- show-methods failed suite-Surefire_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Surefire_suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyRegisterUserAccount">verifyRegisterUserAccount</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Surefire_suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -103,7 +117,42 @@
                     <div class="method-list-content passed suite-Surefire_suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Surefire_suite" title="ui.LoginTest" class="method navigator-link" hash-for-method="verifyUserCanLoginSuccessfully">verifyUserCanLoginSuccessfully</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyDeleteLogin">verifyDeleteLogin</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyDeleteUserAccount">verifyDeleteUserAccount</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyLoginWithInvalidDetails">verifyLoginWithInvalidDetails</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyLoginWithValidLoginDetails">verifyLoginWithValidLoginDetails</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyLoginWithoutEmailParameter">verifyLoginWithoutEmailParameter</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyReturnUserDetailsByEmail">verifyReturnUserDetailsByEmail</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifySearchProductItem">verifySearchProductItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Surefire_suite" title="api.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyUserAccountUpdate">verifyUserAccountUpdate</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Surefire_suite -->
@@ -118,17 +167,86 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Surefire_suite" class="panel Surefire_suite">
-          <div class="suite-Surefire_suite-class-passed">
+          <div class="suite-Surefire_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">ui.LoginTest</span>
+              <img src="failed.png"/>
+              <span class="class-name">api.AutomationExerciseAPITests</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyUserCanLoginSuccessfully">
-                  </a> <!-- verifyUserCanLoginSuccessfully -->
-                  <span class="method-name">verifyUserCanLoginSuccessfully</span>
+                  <a name="verifyRegisterUserAccount">
+                  </a> <!-- verifyRegisterUserAccount -->
+                  <span class="method-name">verifyRegisterUserAccount</span>
+                  <div class="stack-trace">java.lang.AssertionError: Failed to verify success message body. expected [User created] but found [User created!]
+	at api.AutomationExerciseAPITests.verifyRegisterUserAccount(AutomationExerciseAPITests.java:121)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 35 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Surefire_suite-class-failed -->
+          <div class="suite-Surefire_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">api.AutomationExerciseAPITests</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyDeleteLogin">
+                  </a> <!-- verifyDeleteLogin -->
+                  <span class="method-name">verifyDeleteLogin</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyDeleteUserAccount">
+                  </a> <!-- verifyDeleteUserAccount -->
+                  <span class="method-name">verifyDeleteUserAccount</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLoginWithInvalidDetails">
+                  </a> <!-- verifyLoginWithInvalidDetails -->
+                  <span class="method-name">verifyLoginWithInvalidDetails</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLoginWithValidLoginDetails">
+                  </a> <!-- verifyLoginWithValidLoginDetails -->
+                  <span class="method-name">verifyLoginWithValidLoginDetails</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLoginWithoutEmailParameter">
+                  </a> <!-- verifyLoginWithoutEmailParameter -->
+                  <span class="method-name">verifyLoginWithoutEmailParameter</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyReturnUserDetailsByEmail">
+                  </a> <!-- verifyReturnUserDetailsByEmail -->
+                  <span class="method-name">verifyReturnUserDetailsByEmail</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifySearchProductItem">
+                  </a> <!-- verifySearchProductItem -->
+                  <span class="method-name">verifySearchProductItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyUserAccountUpdate">
+                  </a> <!-- verifyUserAccountUpdate -->
+                  <span class="method-name">verifyUserAccountUpdate</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -143,13 +261,8 @@
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;Surefire suite&quot; verbose=&quot;0&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Surefire test&quot; verbose=&quot;0&quot;&gt;
-    &lt;method-selectors&gt;
-      &lt;method-selector&gt;
-        &lt;selector-class name=&quot;org.apache.maven.surefire.testng.utils.MethodSelector&quot; priority=&quot;10000&quot;/&gt;
-      &lt;/method-selector&gt;
-    &lt;/method-selectors&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;ui.LoginTest&quot;/&gt;
+      &lt;class name=&quot;api.AutomationExerciseAPITests&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Surefire test --&gt;
 &lt;/suite&gt; &lt;!-- Surefire suite --&gt;
@@ -189,16 +302,48 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(9);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyUserCanLoginSuccessfully')
-data.setCell(0, 2, 'ui.LoginTest')
-data.setCell(0, 3, 33435);
+data.setCell(0, 1, 'verifyRegisterUserAccount')
+data.setCell(0, 2, 'api.AutomationExerciseAPITests')
+data.setCell(0, 3, 46181);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verifyLoginWithValidLoginDetails')
+data.setCell(1, 2, 'api.AutomationExerciseAPITests')
+data.setCell(1, 3, 4513);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'verifyUserAccountUpdate')
+data.setCell(2, 2, 'api.AutomationExerciseAPITests')
+data.setCell(2, 3, 4379);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'verifyDeleteLogin')
+data.setCell(3, 2, 'api.AutomationExerciseAPITests')
+data.setCell(3, 3, 4208);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'verifyLoginWithoutEmailParameter')
+data.setCell(4, 2, 'api.AutomationExerciseAPITests')
+data.setCell(4, 3, 4128);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'verifyLoginWithInvalidDetails')
+data.setCell(5, 2, 'api.AutomationExerciseAPITests')
+data.setCell(5, 3, 3879);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'verifySearchProductItem')
+data.setCell(6, 2, 'api.AutomationExerciseAPITests')
+data.setCell(6, 3, 3818);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'verifyDeleteUserAccount')
+data.setCell(7, 2, 'api.AutomationExerciseAPITests')
+data.setCell(7, 3, 3554);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'verifyReturnUserDetailsByEmail')
+data.setCell(8, 2, 'api.AutomationExerciseAPITests')
+data.setCell(8, 3, 3270);
 window.suiteTableData['Surefire_suite']= { tableData: data, tableDiv: 'times-div-Surefire_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 33 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Surefire_suite">
               </div> <!-- times-div-Surefire_suite -->
             </div> <!-- times-div -->
@@ -213,20 +358,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Surefire_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">3 ignored methods</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">ui.LoginTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyLoginWithInvalidEmailFormat</span>
-                <br/>
-                <span class="ignored-method-name">verifyLoginWithInvalidPassword</span>
-                <br/>
-                <span class="ignored-method-name">verifyLogout</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Surefire_suite" class="panel">
@@ -235,23 +369,49 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">ui.LoginTest</div> <!-- chronological-class-name -->
-              <div class="configuration-method before">
-                <span class="method-name">setup</span>
+              <div class="chronological-class-name">api.AutomationExerciseAPITests</div> <!-- chronological-class-name -->
+              <div class="configuration-class before">
+                <span class="method-name">setupData</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-method before -->
-              <div class="configuration-method before">
-                <span class="method-name">setUpPages</span>
-                <span class="method-start">91649 ms</span>
-              </div> <!-- configuration-method before -->
+              </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">verifyUserCanLoginSuccessfully</span>
-                <span class="method-start">92312 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifyRegisterUserAccount</span>
+                <span class="method-start">7780 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">tearDown([TestResult name=verifyUserCanLoginSuccessfully status=SUCCESS method=LoginTest.verifyUserCanLoginSu...)</span>
-                <span class="method-start">126057 ms</span>
-              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">verifyLoginWithValidLoginDetails</span>
+                <span class="method-start">54495 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyLoginWithoutEmailParameter</span>
+                <span class="method-start">59100 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifySearchProductItem</span>
+                <span class="method-start">63281 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyReturnUserDetailsByEmail</span>
+                <span class="method-start">67161 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyUserAccountUpdate</span>
+                <span class="method-start">70464 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyDeleteUserAccount</span>
+                <span class="method-start">74860 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyLoginWithInvalidDetails</span>
+                <span class="method-start">78429 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">verifyDeleteLogin</span>
+                <span class="method-start">82333 ms</span>
+              </div> <!-- test-method -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

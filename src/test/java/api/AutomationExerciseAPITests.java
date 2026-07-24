@@ -11,8 +11,10 @@ import org.testng.Assert;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import io.restassured.http.ContentType;
 import utility.ConfigReader;
@@ -37,7 +39,8 @@ public class AutomationExerciseAPITests {
 		user = UserDataHelper.readUserData();
 	}
 
-	@Test(groups = "Register user account", priority = 1)
+	@Test(priority = 1)
+	@Owner("Ayanda Khaka")
 	@Story("Register new user account")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate register user account")
@@ -122,10 +125,12 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyRegisterUserAccount");
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 2)
+	@Test(priority = 2)
+	@Owner("Ayanda Khaka")
 	@Story("Login with valid credentials")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate login with valid login credentials")
+	@Step("Login with valid credentials")
 	public void verifyLoginWithValidLoginDetails() {
 		FrameworkLogger.testStart("verifyLoginWithValidLoginDetails");
 		
@@ -184,7 +189,8 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyLoginWithValidLoginDetails");
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 3)
+	@Test(priority = 3)
+	@Owner("Ayanda Khaka")
 	@Story("Login without email parameter")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate login without email parameter")
@@ -239,7 +245,8 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyLoginWithoutEmailParameter");
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 4)
+	@Test(priority = 4)
+	@Owner("Ayanda Khaka")
 	@Story("Search product item")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate searched product item")
@@ -300,7 +307,8 @@ public class AutomationExerciseAPITests {
 
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 5)
+	@Test(priority = 5)
+	@Owner("Ayanda Khaka")
 	@Story("Return user details by email")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate return user details by email")
@@ -341,7 +349,8 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyReturnUserDetailsByEmail");
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 6)
+	@Test(priority = 6)
+	@Owner("Ayanda Khaka")
 	@Story("Account update")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate user account update")
@@ -393,7 +402,8 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyUserAccountUpdate");
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 7)
+	@Test(priority = 7)
+	@Owner("Ayanda Khaka")
 	@Story("Delete user account")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate delete user account")
@@ -427,7 +437,8 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyDeleteUserAccount");
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 8)
+	@Test(priority = 8)
+	@Owner("Ayanda Khaka")
 	@Story("Invalid login")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate login with invalid login credentials")
@@ -460,7 +471,8 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyLoginWithInvalidDetails");
 	}
 
-	@Test(dependsOnGroups = "Register user account", priority = 9)
+	@Test(priority = 9)
+	@Owner("Ayanda Khaka")
 	@Story("Delete login")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate delete login")
@@ -491,4 +503,6 @@ public class AutomationExerciseAPITests {
 		
 		FrameworkLogger.testEnd("verifyDeleteLogin");
 	}
+	
+	
 }

@@ -14,3 +14,4 @@ utility\FrameworkLogger.class
 pages\LogoutPage.class
 api\helpers\UserDataHelper.class
 pages\ViewCartPage.class
+utility\AllureApiHelper.class
