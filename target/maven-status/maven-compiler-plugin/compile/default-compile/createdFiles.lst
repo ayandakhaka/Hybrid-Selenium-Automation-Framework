@@ -1,5 +1,6 @@
 utility\DriverFactory.class
 pages\ProductsPage.class
+utility\AllureApiAttachment.class
 utility\BasePage.class
 pages\LoginPage.class
 utility\ConfigReader.class
@@ -11,6 +12,7 @@ utility\ActionHelper.class
 api\model\UserModel.class
 utility\AllureEnvironment.class
 utility\FrameworkLogger.class
+utility\AllureAttachment.class
 pages\LogoutPage.class
 api\helpers\UserDataHelper.class
 pages\ViewCartPage.class

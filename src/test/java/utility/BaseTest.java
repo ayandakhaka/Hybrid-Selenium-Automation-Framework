@@ -23,36 +23,39 @@ public class BaseTest {
 	@Step("Create a random user, driver and launch the URL")
 	public void setup() {
 
-	    // Create random user
-	    user = UserApiService.registerRandomUser();
+		// Clear the logs
+		FrameworkLogger.clearTestLogs();
 
-	    FrameworkLogger.info(
-	            "Created user: " + user.getEmail()
-	    );
+		// Create random user
+		user = UserApiService.registerRandomUser();
 
-	    // Create thread-safe WebDriver
-	    DriverFactory.createDriver();
+		FrameworkLogger.info(
+				"Created user: " + user.getEmail()
+				);
 
-	    // Get driver for current thread
-	    driver = DriverFactory.getDriver();
+		// Create thread-safe WebDriver
+		DriverFactory.createDriver();
 
-	    // Create ActionHelper using current thread driver
-	    action = new ActionHelper(driver);
+		// Get driver for current thread
+		driver = DriverFactory.getDriver();
 
-	    // Create Allure environment
-	    AllureEnvironment.createEnvironmentFile(
-	            driver
-	    );
+		// Create ActionHelper using current thread driver
+		action = new ActionHelper(driver);
 
-	    // Wait for page load
-	    action.waitForPageLoad();
+		// Create Allure environment
+		AllureEnvironment.createEnvironmentFile(
+				driver
+				);
 
-	    // Navigate to application
-	    action.navigateTo(
-	            ConfigReader.getProperty("url")
-	    );
+		// Wait for page load
+		action.waitForPageLoad();
+
+		// Navigate to application
+		action.navigateTo(
+				ConfigReader.getProperty("url")
+				);
 	}
-	
+
 	// Returns the current driver
 	public WebDriver getDriver() {
 		return driver;
@@ -62,57 +65,62 @@ public class BaseTest {
 	@Step("Take screenshot and quit the browser")
 	public void tearDown(ITestResult result) {
 
-	    WebDriver currentDriver =
-	            DriverFactory.getDriver();
 
-	    if (result.getStatus() == ITestResult.FAILURE
-	            && currentDriver != null) {
 
-	        try {
+		WebDriver currentDriver =
+				DriverFactory.getDriver();
 
-	            byte[] screenshot =
-	                    ((TakesScreenshot) currentDriver)
-	                            .getScreenshotAs(
-	                                    OutputType.BYTES
-	                            );
+		if (result.getStatus() == ITestResult.FAILURE
+				&& currentDriver != null) {
 
-	            Allure.addAttachment(
-	                    "Failure Screenshot",
-	                    "image/png",
-	                    new ByteArrayInputStream(
-	                            screenshot
-	                    ),
-	                    ".png"
-	            );
+			try {
 
-	            String pageSource =
-	                    currentDriver.getPageSource();
+				byte[] screenshot =
+						((TakesScreenshot) currentDriver)
+						.getScreenshotAs(
+								OutputType.BYTES
+								);
 
-	            Allure.addAttachment(
-	                    "Page Source",
-	                    "text/html",
-	                    pageSource
-	            );
+				Allure.addAttachment(
+						"Failure Screenshot",
+						"image/png",
+						new ByteArrayInputStream(
+								screenshot
+								),
+						".png"
+						);
 
-	            String currentUrl =
-	                    currentDriver.getCurrentUrl();
+				String pageSource =
+						currentDriver.getPageSource();
 
-	            Allure.addAttachment(
-	                    "Current URL",
-	                    "text/plain",
-	                    currentUrl
-	            );
+				Allure.addAttachment(
+						"Page Source",
+						"text/html",
+						pageSource
+						);
 
-	        } catch (Exception e) {
+				String currentUrl =
+						currentDriver.getCurrentUrl();
 
-	            FrameworkLogger.error(
-	                    "Failed to capture failure diagnostics: "
-	                            + e.getMessage()
-	            );
-	        }
-	    }
+				Allure.addAttachment(
+						"Current URL",
+						"text/plain",
+						currentUrl
+						);
 
-	    // Quit current thread's driver
-	    DriverFactory.quitDriver();
+			} catch (Exception e) {
+
+				FrameworkLogger.error(
+						"Failed to capture failure diagnostics: "
+								+ e.getMessage()
+						);
+			}
+		}
+
+		// Quit current thread's driver
+		DriverFactory.quitDriver();
+
+		// Attach execution log to Allure
+		AllureAttachment.attachExecutionLog();
 	}
 }

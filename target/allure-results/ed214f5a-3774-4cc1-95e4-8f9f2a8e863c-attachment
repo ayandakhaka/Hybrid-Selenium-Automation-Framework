@@ -1,0 +1,6 @@
+Method: POST
+Base URL: https://automationexercise.com
+Endpoint: /api/searchProduct
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{search_product=T shirt}

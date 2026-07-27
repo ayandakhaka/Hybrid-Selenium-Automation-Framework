@@ -70,7 +70,9 @@ public class FrameworkLogger {
                 .append(System.lineSeparator());
     }
 
-    public static void error(String message, Throwable throwable) {
+    public static void error(
+            String message,
+            Throwable throwable) {
 
         logger.error(message, throwable);
 

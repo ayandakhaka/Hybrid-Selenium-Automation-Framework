@@ -3,16 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ui.LoginTest">
+      <class name="api.AutomationExerciseAPITests">
         <methods>
-          <include name="setup"/>
-          <include name="verifyUserCanLoginSuccessfully"/>
-          <include name="verifyLogout"/>
-          <include name="setUpPages"/>
-          <include name="tearDown"/>
-          <include name="verifyLoginWithInvalidPassword"/>
+          <include name="verifyLoginWithValidLoginDetails"/>
+          <include name="setupData"/>
         </methods>
-      </class> <!-- ui.LoginTest -->
+      </class> <!-- api.AutomationExerciseAPITests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

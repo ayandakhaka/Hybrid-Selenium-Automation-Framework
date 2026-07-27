@@ -22,7 +22,6 @@ public class LoginPage extends BasePage {
 	private By loginFormHeaderText = By.xpath("//h2[text()='Login to your account']");
 	
 	// Login Method
-	@Step("Login with valid credentials")
 	public void loginToAutomationExercisePage(String email, String password) {
 		actions
 			.typeText(emailInput, email)
