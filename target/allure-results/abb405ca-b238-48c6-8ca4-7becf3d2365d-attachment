@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Maurice, address2=Apt. 935, city=Eltontown, birth_month=May, address1=22856 Cartwright Dale, birth_date=10, title=Mr, birth_year=1995, lastname=Koepp, zipcode=11138, password=********, name=Shemeka Haag, company=Berge, Breitenberg and Pacocha, state=Louisiana, mobile_number=(720) 876-6009, email=user1785149130276@test.com}

@@ -125,7 +125,6 @@ public class UserPayload {
 		return payload;
 	}
 	
-	@Step("Create a search product payload with search item '{0}'")
 	public static Map<String, String> createSearchProductPayload(String searchItem) {
 		
 		payload = new HashMap<>();

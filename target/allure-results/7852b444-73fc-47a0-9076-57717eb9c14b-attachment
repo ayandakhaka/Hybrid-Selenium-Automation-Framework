@@ -1,4 +1,0 @@
-Method: GET
-Base URL: https://automationexercise.com
-Endpoint: /api/getUserDetailByEmail
-Content-Type: application/x-www-form-urlencoded

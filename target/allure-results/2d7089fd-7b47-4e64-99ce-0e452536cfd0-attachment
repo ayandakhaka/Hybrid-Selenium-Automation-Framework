@@ -1,6 +1,0 @@
-Method: PUT
-Base URL: https://automationexercise.com
-Endpoint: /api/verifyLogin
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Jonas, address2=Suite 054, city=East Chadwickborough, birth_month=May, address1=4888 Tswelopele ext8 Thembisa, birth_date=10, title=Mr, birth_year=1995, lastname=Runolfsdottir, zipcode=98810, password=********, name=Ayanda Khaka, company=Treutel Group, state=Delaware, mobile_number=0634943658, email=user1785152654348@test.com}

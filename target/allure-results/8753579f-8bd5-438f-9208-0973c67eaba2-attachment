@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/verifyLogin
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{password=********, email=user1785152654348@test.com}

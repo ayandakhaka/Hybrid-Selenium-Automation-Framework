@@ -1,0 +1,16 @@
+[
+  {
+    "name": "API Failures",
+    "matchedStatuses": [
+      "failed"
+    ],
+    "messageRegex": ".*(status code|responseCode|API|HTTP|RestAssured).*"
+  },
+  {
+    "name": "Assertion Failures",
+    "matchedStatuses": [
+      "failed"
+    ],
+    "messageRegex": ".*(expected.*but found|Failed to verify success message body).*"
+  }
+]

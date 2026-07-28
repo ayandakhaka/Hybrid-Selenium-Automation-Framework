@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <copy file="C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework/src/test/resources/categories.json" tofile="C:\Users\USER\eclipse-workspace\Hybrid-Selenium-Automation-Framework\target/allure-results/categories.json" overwrite="true" />
+  </target>
+</project>

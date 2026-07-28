@@ -38,7 +38,7 @@ public class AutomationExerciseAPITests {
 		user = UserDataHelper.readUserData();
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 1)
 	@Owner("Ayanda Khaka")
 	@Story("Login with valid credentials")
 	@Severity(SeverityLevel.CRITICAL)
@@ -62,7 +62,7 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyLoginWithValidLoginDetails");
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 2)
 	@Owner("Ayanda Khaka")
 	@Story("Login without email parameter")
 	@Severity(SeverityLevel.CRITICAL)
@@ -84,7 +84,7 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyLoginWithoutEmailParameter");
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 3)
 	@Owner("Ayanda Khaka")
 	@Story("Search product item")
 	@Severity(SeverityLevel.CRITICAL)
@@ -111,7 +111,7 @@ public class AutomationExerciseAPITests {
 
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 4)
 	@Owner("Ayanda Khaka")
 	@Story("Return user details by email")
 	@Severity(SeverityLevel.CRITICAL)
@@ -137,12 +137,34 @@ public class AutomationExerciseAPITests {
 		// Verify Birth day
 		Assert.assertEquals(response.jsonPath().getString("user.birth_day"), user.getBirth_date(), "Failed to verify birth_day");
 		// Verify Birth month
-		Assert.assertEquals(response.jsonPath().getString("user.birth_month"), user.getBirth_month(), "Failed to verify birth_day");	
+		Assert.assertEquals(response.jsonPath().getString("user.birth_month"), user.getBirth_month(), "Failed to verify birth_day");
+		// Verify Birth year
+		Assert.assertEquals(response.jsonPath().getString("user.birth_year"), user.getBirth_year(), "Failed to verify birth_year");
+		// Verify first name
+		Assert.assertEquals(response.jsonPath().getString("user.first_name"), user.getFirstname(), "Failed to verify firstname");
+		// Verify last name
+		Assert.assertEquals(response.jsonPath().getString("user.last_name"), user.getLastname(), "Failed to verify lastname");
+		// Verify company
+		Assert.assertEquals(response.jsonPath().getString("user.company"), user.getCompany(), "Failed to verify company");
+		// Verify address 1
+		Assert.assertEquals(response.jsonPath().getString("user.address1"), user.getAddress1(), "Failed to verify address 1");
+		// Verify address 2
+		Assert.assertEquals(response.jsonPath().getString("user.address2"), user.getAddress2(), "Failed to verify address 2");
+		// Verify country
+		Assert.assertEquals(response.jsonPath().getString("user.country"), user.getCountry(), "Failed to verify country");
+		// Verify state
+		Assert.assertEquals(response.jsonPath().getString("user.state"), user.getState(), "Failed to verify state");
+		// Verify city
+		Assert.assertEquals(response.jsonPath().getString("user.city"), user.getCity(), "Failed to verify city");
+		// Verify zipcode
+		Assert.assertEquals(response.jsonPath().getString("user.zipcode"), user.getZipcode(), "Failed to verify zipcode");
+
+
 
 		FrameworkLogger.testEnd("verifyReturnUserDetailsByEmail");
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 5)
 	@Owner("Ayanda Khaka")
 	@Story("Account update")
 	@Severity(SeverityLevel.CRITICAL)
@@ -153,7 +175,7 @@ public class AutomationExerciseAPITests {
 
 		// Act
 		Response response = UserApiService.userAccountUpdate(user);
-		
+
 		// Assert
 		// Verify status code
 		Assert.assertEquals(response.getStatusCode(), Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
@@ -168,7 +190,7 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyUserAccountUpdate");
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 6)
 	@Owner("Ayanda Khaka")
 	@Story("Delete user account")
 	@Severity(SeverityLevel.CRITICAL)
@@ -192,7 +214,7 @@ public class AutomationExerciseAPITests {
 		FrameworkLogger.testEnd("verifyDeleteUserAccount");
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 7)
 	@Owner("Ayanda Khaka")
 	@Story("Invalid login")
 	@Severity(SeverityLevel.CRITICAL)
@@ -201,7 +223,7 @@ public class AutomationExerciseAPITests {
 
 		FrameworkLogger.testStart("verifyLoginWithInvalidDetails");
 		// Act
-		
+
 		Response response = UserApiService.loginWithInvalidCredentials(ConfigReader.getProperty("invalidEmail"), ConfigReader.getProperty("invalidPassword"));
 		// Assert
 		Assert.assertEquals(response.getStatusCode(), Integer.parseInt(ConfigReader.getProperty("successStatusCode")), "Failed to verify status code.");
@@ -209,11 +231,11 @@ public class AutomationExerciseAPITests {
 		Assert.assertEquals(response.jsonPath().getInt("responseCode"), Integer.parseInt(ConfigReader.getProperty("notFoundStatusCode")), "Failed to verify response code.");
 		// Verify success response message
 		Assert.assertEquals(response.jsonPath().getString("message"), ConfigReader.getProperty("deleteNonExistingUserMessage"), "Failed to verify delete non existing user message body");
-		
+
 		FrameworkLogger.testEnd("verifyLoginWithInvalidDetails");
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 8)
 	@Owner("Ayanda Khaka")
 	@Story("Delete login")
 	@Severity(SeverityLevel.CRITICAL)
@@ -224,7 +246,7 @@ public class AutomationExerciseAPITests {
 
 		// Act 
 		Response response = UserApiService.deleteLogin();
-		
+
 		// Assert
 		Assert.assertEquals(response.getStatusCode(), Integer.parseInt(ConfigReader.getProperty("successStatusCode")), "Failed to verify status code.");
 		// Verify response status code

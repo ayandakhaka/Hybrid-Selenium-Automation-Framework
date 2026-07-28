@@ -14,10 +14,14 @@ import java.util.Map;
 
 import utility.AllureApiAttachment;
 import utility.ConfigReader;
+import utility.FrameworkLogger;
 public class UserApiService {
 
 	private static UserModel user;
 	private static Map<String, String> requestPayload;
+	private static Map<String, String> allureRequestPayload;
+	private static String requestDetails;
+	private static Response response;
 
 	@Step("Register a random user.")
 	public static UserModel registerRandomUser() {
@@ -48,7 +52,7 @@ public class UserApiService {
 						user.getMobile_number()
 						);
 
-		Map<String, Object> allureRequestPayload =
+		allureRequestPayload =
 				new HashMap<>(requestPayload);
 
 		allureRequestPayload.put(
@@ -56,7 +60,7 @@ public class UserApiService {
 				"********"
 				);
 
-		String requestDetails =
+		requestDetails =
 				"Method: POST\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -74,7 +78,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response = 
+		response = 
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(ConfigReader.getProperty("apiBaseUrl"))
@@ -120,7 +124,7 @@ public class UserApiService {
 				user.getState(), 
 				user.getCity(), 
 				ConfigReader.getProperty("updatedMobileNumber"));
-		Map<String, String> allureRequestPayload =
+		allureRequestPayload =
 				new HashMap<>(requestPayload);
 
 		allureRequestPayload.put(
@@ -128,7 +132,7 @@ public class UserApiService {
 				"********"
 				);
 
-		String requestDetails =
+		requestDetails =
 				"Method: PUT\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -146,7 +150,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -175,7 +179,7 @@ public class UserApiService {
 				user.getEmail(),
 				user.getPassword()
 				);
-		Map<String, String> allureRequestPayload =
+		allureRequestPayload =
 				new HashMap<>(requestPayload);
 
 		allureRequestPayload.put(
@@ -183,7 +187,7 @@ public class UserApiService {
 				"********"
 				);
 
-		String requestDetails =
+		requestDetails =
 				"Method: POST\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -201,7 +205,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -222,15 +226,14 @@ public class UserApiService {
 
 		return response;
 	}
-	
-	@Step("Login with invlid login credentials")
+
 	public static Response loginWithInvalidCredentials(String email, String password) {
-		
+
 		requestPayload = UserPayload.createInvalidLoginPayload(
 				email,
 				password
 				);
-		Map<String, String> allureRequestPayload =
+		allureRequestPayload =
 				new HashMap<>(requestPayload);
 
 		allureRequestPayload.put(
@@ -238,7 +241,7 @@ public class UserApiService {
 				"********"
 				);
 
-		String requestDetails =
+		requestDetails =
 				"Method: POST\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -256,7 +259,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -283,7 +286,7 @@ public class UserApiService {
 
 		requestPayload = UserPayload.createLoginPayloadWithoutEmailPayload(user.getPassword());
 
-		Map<String, String> allureRequestPayload =
+		allureRequestPayload =
 				new HashMap<>(requestPayload);
 
 		allureRequestPayload.put(
@@ -291,7 +294,7 @@ public class UserApiService {
 				"********"
 				);
 
-		String requestDetails =
+		requestDetails =
 				"Method: POST\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -309,7 +312,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -336,7 +339,7 @@ public class UserApiService {
 
 		requestPayload = UserPayload.createSearchProductPayload(product);
 
-		String requestDetails =
+		requestDetails =
 				"Method: POST\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -354,7 +357,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -380,7 +383,7 @@ public class UserApiService {
 	@Step("Get user details by email.")
 	public static Response getUserDetailsByEmail(String email) {
 
-		String requestDetails =
+		requestDetails =
 				"Method: GET\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -395,7 +398,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -413,8 +416,9 @@ public class UserApiService {
 		AllureApiAttachment.attachResponse(
 				response.asPrettyString()
 				);
-
+		
 		return response;
+
 	}
 
 	@Step("Delete existing user")
@@ -422,7 +426,7 @@ public class UserApiService {
 
 		requestPayload = UserPayload.createDeleteUserAccountPayload(user.getEmail(), user.getPassword());
 
-		Map<String, String> allureRequestPayload =
+		allureRequestPayload =
 				new HashMap<>(requestPayload);
 
 		allureRequestPayload.put(
@@ -430,7 +434,7 @@ public class UserApiService {
 				"********"
 				);
 
-		String requestDetails =
+		requestDetails =
 				"Method: DELETE\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -448,7 +452,7 @@ public class UserApiService {
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -469,10 +473,10 @@ public class UserApiService {
 
 		return response;
 	}
-	
+
 	public static Response deleteLogin() {
-		
-		String requestDetails =
+
+		requestDetails =
 				"Method: DELETE\n"
 						+ "Base URL: "
 						+ ConfigReader.getProperty("apiBaseUrl")
@@ -483,13 +487,13 @@ public class UserApiService {
 						+ "Content-Type: "
 						+ ContentType.URLENC
 						+ "\n";
-					
+
 
 		AllureApiAttachment.attachRequest(
 				requestDetails
 				);
 
-		Response response =
+		response =
 				given()
 				.relaxedHTTPSValidation()
 				.baseUri(
@@ -509,5 +513,5 @@ public class UserApiService {
 
 		return response;
 	}
-	
+
 }
