@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: api.AutomationExerciseAPITests
 -------------------------------------------------------------------------------
-Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 175.0 s <<< FAILURE! -- in api.AutomationExerciseAPITests
-api.AutomationExerciseAPITests.verifyLoginWithValidLoginDetails -- Time elapsed: 21.78 s <<< FAILURE!
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 210.1 s <<< FAILURE! -- in api.AutomationExerciseAPITests
+api.AutomationExerciseAPITests.verifyLoginWithValidLoginDetails -- Time elapsed: 11.48 s <<< FAILURE!
 java.lang.AssertionError: Failed to verify success message body. expected [User exists] but found [User exists!]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1590)

@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Palmer, address2=Apt. 482, city=Carlhaven, birth_month=May, address1=4621 Tomasa Rapid, birth_date=10, title=Mr, birth_year=1995, lastname=Little, zipcode=64808-0725, password=********, name=Miss Albert Hickle, company=Kunze Inc, state=Nebraska, mobile_number=(279) 205-2825, email=user1785238588574@test.com}

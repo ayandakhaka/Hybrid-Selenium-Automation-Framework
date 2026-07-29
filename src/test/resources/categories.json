@@ -4,7 +4,7 @@
     "matchedStatuses": [
       "failed"
     ],
-    "messageRegex": ".*(status code|responseCode|API|HTTP|RestAssured).*"
+    "messageRegex": ".*(success status code|responseCode|API|HTTP|RestAssured).*"
   },
   {
     "name": "Assertion Failures",
@@ -12,5 +12,26 @@
       "failed"
     ],
     "messageRegex": ".*(expected.*but found|Failed to verify success message body).*"
+  },
+  {
+    "name": "UI Element Failures",
+    "matchedStatuses": [
+      "broken"
+    ],
+    "messageRegex": ".*(NoSuchElementException|ElementNotInteractableException|ElementClickInterceptedException).*"
+  },
+  {
+    "name": "Timeout Failures",
+    "matchedStatuses": [
+      "broken"
+    ],
+    "messageRegex": ".*(TimeoutException|Expected condition failed).*"
+  },
+  {
+    "name": "WebDriver Failures",
+    "matchedStatuses": [
+      "broken"
+    ],
+    "messageRegex": ".*(WebDriverException|SessionNotCreatedException|Driver).*"
   }
 ]
