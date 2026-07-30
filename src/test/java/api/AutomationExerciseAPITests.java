@@ -43,7 +43,6 @@ public class AutomationExerciseAPITests {
 	@Story("Login with valid credentials")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate login with valid login credentials")
-	@Step("Login with valid credentials")
 	public void verifyLoginWithValidLoginDetails() {
 
 		FrameworkLogger.testStart("verifyLoginWithValidLoginDetails");
@@ -158,8 +157,6 @@ public class AutomationExerciseAPITests {
 		Assert.assertEquals(response.jsonPath().getString("user.city"), user.getCity(), "Failed to verify city");
 		// Verify zipcode
 		Assert.assertEquals(response.jsonPath().getString("user.zipcode"), user.getZipcode(), "Failed to verify zipcode");
-
-
 
 		FrameworkLogger.testEnd("verifyReturnUserDetailsByEmail");
 	}
