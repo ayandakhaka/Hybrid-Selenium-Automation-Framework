@@ -1,6 +1,0 @@
-Method: PUT
-Base URL: https://automationexercise.com
-Endpoint: /api/verifyLogin
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Hubert, address2=Apt. 854, city=Farrellland, birth_month=May, address1=4888 Tswelopele ext8 Thembisa, birth_date=10, title=Mr, birth_year=1995, lastname=Koepp, zipcode=97210, password=********, name=Ayanda Khaka, company=Bahringer-Hauck, state=Arkansas, mobile_number=0634943658, email=user1785488796729@test.com}

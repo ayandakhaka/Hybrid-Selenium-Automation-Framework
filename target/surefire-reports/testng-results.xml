@@ -2,44 +2,44 @@
 <testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-07-31T11:06:28 SAST" name="API Test Suite" finished-at="2026-07-31T11:08:40 SAST" duration-ms="131576">
+  <suite started-at="2026-07-31T13:25:22 SAST" name="API Test Suite" finished-at="2026-07-31T13:27:33 SAST" duration-ms="131003">
     <groups>
     </groups>
-    <test started-at="2026-07-31T11:06:28 SAST" name="API Tests" finished-at="2026-07-31T11:08:40 SAST" duration-ms="131576">
+    <test started-at="2026-07-31T13:25:22 SAST" name="API Tests" finished-at="2026-07-31T13:27:33 SAST" duration-ms="131003">
       <class name="api.tests.AutomationExerciseAPITests">
-        <test-method is-config="true" signature="setupData()[pri:0, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:06:29 SAST" name="setupData" finished-at="2026-07-31T11:07:30 SAST" duration-ms="61897" status="PASS">
+        <test-method is-config="true" signature="setupData()[pri:0, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:25:22 SAST" name="setupData" finished-at="2026-07-31T13:26:14 SAST" duration-ms="51424" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupData -->
-        <test-method signature="verifyLoginWithValidLoginDetails()[pri:1, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:07:31 SAST" name="verifyLoginWithValidLoginDetails" finished-at="2026-07-31T11:07:41 SAST" duration-ms="10660" status="PASS">
+        <test-method signature="verifyLoginWithValidLoginDetails()[pri:1, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:26:14 SAST" name="verifyLoginWithValidLoginDetails" finished-at="2026-07-31T13:26:22 SAST" duration-ms="8505" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithValidLoginDetails -->
-        <test-method signature="verifyLoginWithoutEmailParameter()[pri:2, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:07:42 SAST" name="verifyLoginWithoutEmailParameter" finished-at="2026-07-31T11:07:48 SAST" duration-ms="5889" status="PASS">
+        <test-method signature="verifyLoginWithoutEmailParameter()[pri:2, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:26:23 SAST" name="verifyLoginWithoutEmailParameter" finished-at="2026-07-31T13:26:29 SAST" duration-ms="5229" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithoutEmailParameter -->
-        <test-method signature="verifySearchProductItem()[pri:3, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:07:48 SAST" name="verifySearchProductItem" finished-at="2026-07-31T11:07:56 SAST" duration-ms="7147" status="PASS">
+        <test-method signature="verifySearchProductItem()[pri:3, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:26:29 SAST" name="verifySearchProductItem" finished-at="2026-07-31T13:26:34 SAST" duration-ms="4790" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySearchProductItem -->
-        <test-method signature="verifyReturnUserDetailsByEmail()[pri:4, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:07:56 SAST" name="verifyReturnUserDetailsByEmail" finished-at="2026-07-31T11:08:07 SAST" duration-ms="11302" status="PASS">
+        <test-method signature="verifyReturnUserDetailsByEmail()[pri:4, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:26:34 SAST" name="verifyReturnUserDetailsByEmail" finished-at="2026-07-31T13:26:53 SAST" duration-ms="19219" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyReturnUserDetailsByEmail -->
-        <test-method signature="verifyUserAccountUpdate()[pri:5, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:08:07 SAST" name="verifyUserAccountUpdate" finished-at="2026-07-31T11:08:23 SAST" duration-ms="15617" status="PASS">
+        <test-method signature="verifyUserAccountUpdate()[pri:5, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:26:53 SAST" name="verifyUserAccountUpdate" finished-at="2026-07-31T13:26:59 SAST" duration-ms="5958" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyUserAccountUpdate -->
-        <test-method signature="verifyDeleteUserAccount()[pri:6, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:08:23 SAST" name="verifyDeleteUserAccount" finished-at="2026-07-31T11:08:28 SAST" duration-ms="5488" status="PASS">
+        <test-method signature="verifyDeleteUserAccount()[pri:6, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:26:59 SAST" name="verifyDeleteUserAccount" finished-at="2026-07-31T13:27:09 SAST" duration-ms="10374" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyDeleteUserAccount -->
-        <test-method signature="verifyLoginWithInvalidDetails()[pri:7, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:08:28 SAST" name="verifyLoginWithInvalidDetails" finished-at="2026-07-31T11:08:33 SAST" duration-ms="4612" status="PASS">
+        <test-method signature="verifyLoginWithInvalidDetails()[pri:7, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:27:09 SAST" name="verifyLoginWithInvalidDetails" finished-at="2026-07-31T13:27:23 SAST" duration-ms="13775" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyLoginWithInvalidDetails -->
-        <test-method signature="verifyDeleteLogin()[pri:8, instance:api.tests.AutomationExerciseAPITests@6f8e9d06]" started-at="2026-07-31T11:08:33 SAST" name="verifyDeleteLogin" finished-at="2026-07-31T11:08:38 SAST" duration-ms="5170" status="PASS">
+        <test-method signature="verifyDeleteLogin()[pri:8, instance:api.tests.AutomationExerciseAPITests@53f0d09c]" started-at="2026-07-31T13:27:23 SAST" name="verifyDeleteLogin" finished-at="2026-07-31T13:27:33 SAST" duration-ms="9903" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyDeleteLogin -->

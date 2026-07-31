@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Elda, address2=Suite 844, city=Kuhicburgh, birth_month=May, address1=6311 Minh Loaf, birth_date=10, title=Mr, birth_year=1995, lastname=Feil, zipcode=67491, password=********, name=Jenise Russel, company=Ritchie, Stamm and Waelchi, state=California, mobile_number=334-696-5841, email=user1785489049864@test.com}
