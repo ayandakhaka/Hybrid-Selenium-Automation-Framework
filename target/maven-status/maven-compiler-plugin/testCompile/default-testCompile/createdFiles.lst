@@ -1,5 +1,5 @@
+ui\tests\LoginTest.class
 utility\BaseTest.class
-ui\CartTest.class
-api\AutomationExerciseAPITests.class
-ui\LoginTest.class
-ui\SearchProductTest.class
+api\tests\AutomationExerciseAPITests.class
+ui\tests\SearchProductTest.class
+ui\tests\CartTest.class

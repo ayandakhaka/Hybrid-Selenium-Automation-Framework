@@ -1,0 +1,19 @@
+{
+  "name" : "Krissy Durgan",
+  "email" : "user1785488796729@test.com",
+  "password" : "Test@123",
+  "title" : "Mr",
+  "birth_date" : "10",
+  "birth_month" : "May",
+  "birth_year" : "1995",
+  "firstname" : "Hubert",
+  "lastname" : "Koepp",
+  "company" : "Bahringer-Hauck",
+  "address1" : "42189 Metz Tunnel",
+  "address2" : "Apt. 854",
+  "country" : "South Africa",
+  "zipcode" : "97210",
+  "state" : "Arkansas",
+  "city" : "Farrellland",
+  "mobile_number" : "1-970-432-5504"
+}

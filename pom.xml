@@ -118,6 +118,10 @@
 		                ${project.build.directory}/allure-results
 		            </allure.results.directory>
 		        </systemPropertyVariables>
+		        
+		        <suiteXmlFiles>
+                    <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                </suiteXmlFiles>
 		    </configuration>
 		</plugin>
 		

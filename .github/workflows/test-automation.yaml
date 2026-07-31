@@ -1,37 +1,57 @@
-name: Test Automation
+name: API Automation CI
 
 on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
-  test:
-    name: Run Automated Tests
+  api-tests:
+
     runs-on: ubuntu-latest
 
     steps:
 
-      - name: Checkout Repository
+      # 1. Checkout source code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
+      # 2. Set up Java
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
           java-version: '21'
+          distribution: 'temurin'
           cache: maven
 
-      - name: Run Automated Tests
-        run: mvn clean test
+      # 3. Verify Java and Maven
+      - name: Verify Java and Maven
+        run: |
+          java -version
+          mvn -version
 
+      # 4. Run API Tests
+      - name: Run API Tests
+        run: |
+          mvn clean test \
+          -DsuiteXmlFile=src/test/resources/testng-api.xml
+
+      # 5. Upload Surefire Reports
+      - name: Upload Surefire Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: target/surefire-reports/
+
+      # 6. Upload Allure Results
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
-          path: allure-results
+          path: target/allure-results/
