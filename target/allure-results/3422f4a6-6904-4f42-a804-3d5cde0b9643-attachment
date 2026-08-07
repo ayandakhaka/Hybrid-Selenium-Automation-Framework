@@ -1,0 +1,16 @@
+INFO  - Created user: user1786106025191@test.com
+INFO  - Allure environment.properties created successfully.
+INFO  - Waiting for a page to load
+INFO  - Navigating to a https://automationexercise.com
+INFO  - Clicking an element
+INFO  - Clearing a text field
+INFO  - Setting text to a text field
+INFO  - Clearing a text field
+INFO  - Setting text to a text field
+INFO  - Clicking an element
+INFO  - Clicking an element
+INFO  - ========== START TEST: verifyFirstProductCanBeAddedToCart ==========
+INFO  - Waiting for an element : By.xpath: //img[@src='/get_product_picture/1']
+INFO  - Scroll to an element [[EdgeDriver: MicrosoftEdge on windows (e1a34981c45b314303195ff391dc90b4)] -> xpath: //img[@src='/get_product_picture/1']]
+INFO  - Hovering over a web element + By.xpath: //img[@src='/get_product_picture/1']
+INFO  - Clicking an element

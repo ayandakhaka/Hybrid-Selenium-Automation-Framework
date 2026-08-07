@@ -2,42 +2,42 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-08-07T13:14:01 SAST" name="Default suite" finished-at="2026-08-07T13:27:12 SAST" duration-ms="790747">
+  <suite started-at="2026-08-07T14:33:20 SAST" name="Default suite" finished-at="2026-08-07T14:47:17 SAST" duration-ms="836742">
     <groups>
     </groups>
-    <test started-at="2026-08-07T13:14:01 SAST" name="Default test" finished-at="2026-08-07T13:27:12 SAST" duration-ms="790747">
+    <test started-at="2026-08-07T14:33:20 SAST" name="Default test" finished-at="2026-08-07T14:47:17 SAST" duration-ms="836742">
       <class name="ui.tests.CartTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:ui.tests.CartTest@6ee88e21]" started-at="2026-08-07T13:14:02 SAST" name="setup" finished-at="2026-08-07T13:23:59 SAST" duration-ms="596454" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:33:28 SAST" name="setup" finished-at="2026-08-07T14:44:55 SAST" duration-ms="687053" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method is-config="true" signature="setupLogin()[pri:0, instance:ui.tests.CartTest@6ee88e21]" started-at="2026-08-07T13:24:23 SAST" name="setupLogin" finished-at="2026-08-07T13:25:59 SAST" duration-ms="95609" status="PASS">
+        <test-method is-config="true" signature="setupLogin()[pri:0, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:45:03 SAST" name="setupLogin" finished-at="2026-08-07T14:46:20 SAST" duration-ms="77562" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setupLogin -->
-        <test-method signature="verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@6ee88e21]" started-at="2026-08-07T13:25:59 SAST" name="verifyAddSingleProductToCart" finished-at="2026-08-07T13:26:30 SAST" duration-ms="31367" status="FAIL">
+        <test-method signature="verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:46:20 SAST" name="verifyAddSingleProductToCart" finished-at="2026-08-07T14:46:41 SAST" duration-ms="20133" status="FAIL">
           <exception class="org.openqa.selenium.ElementClickInterceptedException">
             <message>
-              <![CDATA[element click intercepted: Element <a data-product-id="1" class="btn btn-default add-to-cart">...</a> is not clickable at point (622, 669). Other element would receive the click: <iframe id="aswift_2" name="aswift_2" style="min-height: auto; max-height: none; min-width: auto; max-width: none; width: 728px !important; height: 90px !important; display: block; margin: 0px auto;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting; run-ad-auction" src="https://googleads.g.doubleclick.net/pagead/html/r20260804/r20190131/zrt_lookup_fy2021.html#RS-1-&amp;adk=1812271801&amp;client=ca-pub-1677597403311019&amp;fa=1&amp;ifi=3&amp;uci=a!3&amp;btvi=1" data-google-container-id="a!3" tabindex="0" title="Advertisement" aria-label="Advertisement" data-google-query-id="CL6iyNa0jpYDFXnjOwIdgP4r_w" data-load-complete="true"></iframe>
+              <![CDATA[element click intercepted: Element <a data-product-id="1" class="btn btn-default add-to-cart">...</a> is not clickable at point (622, 333). Other element would receive the click: <a data-product-id="1" class="btn btn-default add-to-cart">...</a>
   (Session info: MicrosoftEdge=150.0.4078.105)
 Build info: version: '4.43.0', revision: 'dd0f534'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [2e14ee02a30fc92f0826b5067eb91df7, clickElement {id=f.B6BD17C87E1F6C8319A3CD94FEA511D3.d.9A94DE72AA335C7E3AA035FD087FA1E1.e.131}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 150.0.4078.105, fedcm:accounts: true, goog:processID: 19996, ms:edgeOptions: {debuggerAddress: localhost:57666}, msedge: {msedgedriverVersion: 150.0.4078.96 (6af14c9da851..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57666/devtoo..., se:cdpVersion: 150.0.4078.105, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[EdgeDriver: MicrosoftEdge on windows (2e14ee02a30fc92f0826b5067eb91df7)] -> xpath: //a[@data-product-id='1']]
-Session ID: 2e14ee02a30fc92f0826b5067eb91df7]]>
+Command: [e1a34981c45b314303195ff391dc90b4, clickElement {id=f.28AF832E248FC726589D3F7D9392C3E0.d.FF02119540F3FBDC1E50CA71578B7B3F.e.144}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 150.0.4078.105, fedcm:accounts: true, goog:processID: 10652, ms:edgeOptions: {debuggerAddress: localhost:58046}, msedge: {msedgedriverVersion: 150.0.4078.96 (6af14c9da851..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58046/devtoo..., se:cdpVersion: 150.0.4078.105, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on windows (e1a34981c45b314303195ff391dc90b4)] -> css selector: a[data-product-id='1']]
+Session ID: e1a34981c45b314303195ff391dc90b4]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a data-product-id="1" class="btn btn-default add-to-cart">...</a> is not clickable at point (622, 669). Other element would receive the click: <iframe id="aswift_2" name="aswift_2" style="min-height: auto; max-height: none; min-width: auto; max-width: none; width: 728px !important; height: 90px !important; display: block; margin: 0px auto;" sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation" width="728" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allow="attribution-reporting; run-ad-auction" src="https://googleads.g.doubleclick.net/pagead/html/r20260804/r20190131/zrt_lookup_fy2021.html#RS-1-&amp;adk=1812271801&amp;client=ca-pub-1677597403311019&amp;fa=1&amp;ifi=3&amp;uci=a!3&amp;btvi=1" data-google-container-id="a!3" tabindex="0" title="Advertisement" aria-label="Advertisement" data-google-query-id="CL6iyNa0jpYDFXnjOwIdgP4r_w" data-load-complete="true"></iframe>
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a data-product-id="1" class="btn btn-default add-to-cart">...</a> is not clickable at point (622, 333). Other element would receive the click: <a data-product-id="1" class="btn btn-default add-to-cart">...</a>
   (Session info: MicrosoftEdge=150.0.4078.105)
 Build info: version: '4.43.0', revision: 'dd0f534'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [2e14ee02a30fc92f0826b5067eb91df7, clickElement {id=f.B6BD17C87E1F6C8319A3CD94FEA511D3.d.9A94DE72AA335C7E3AA035FD087FA1E1.e.131}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 150.0.4078.105, fedcm:accounts: true, goog:processID: 19996, ms:edgeOptions: {debuggerAddress: localhost:57666}, msedge: {msedgedriverVersion: 150.0.4078.96 (6af14c9da851..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57666/devtoo..., se:cdpVersion: 150.0.4078.105, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[EdgeDriver: MicrosoftEdge on windows (2e14ee02a30fc92f0826b5067eb91df7)] -> xpath: //a[@data-product-id='1']]
-Session ID: 2e14ee02a30fc92f0826b5067eb91df7
+Command: [e1a34981c45b314303195ff391dc90b4, clickElement {id=f.28AF832E248FC726589D3F7D9392C3E0.d.FF02119540F3FBDC1E50CA71578B7B3F.e.144}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 150.0.4078.105, fedcm:accounts: true, goog:processID: 10652, ms:edgeOptions: {debuggerAddress: localhost:58046}, msedge: {msedgedriverVersion: 150.0.4078.96 (6af14c9da851..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58046/devtoo..., se:cdpVersion: 150.0.4078.105, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on windows (e1a34981c45b314303195ff391dc90b4)] -> css selector: a[data-product-id='1']]
+Session ID: e1a34981c45b314303195ff391dc90b4
 at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
 at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
 at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
@@ -48,7 +48,7 @@ at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:606)
 at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
 at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
 at utility.ActionHelper.click(ActionHelper.java:30)
-at pages.ProductsPage.addFirstProductToCart(ProductsPage.java:88)
+at pages.ProductsPage.addFirstProductToCart(ProductsPage.java:90)
 at ui.tests.CartTest.verifyAddSingleProductToCart(CartTest.java:45)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
@@ -84,11 +84,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAddSingleProductToCart -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.tests.CartTest@6ee88e21]" started-at="2026-08-07T13:26:33 SAST" name="tearDown" finished-at="2026-08-07T13:27:12 SAST" duration-ms="38452" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:46:41 SAST" name="tearDown" finished-at="2026-08-07T14:47:17 SAST" duration-ms="36165" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyAddSingleProductToCart status=FAILURE method=CartTest.verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@6ee88e21] output={null}]]]>
+                <![CDATA[[TestResult name=verifyAddSingleProductToCart status=FAILURE method=CartTest.verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@4776e209] output={null}]]]>
               </value>
             </param>
           </params>

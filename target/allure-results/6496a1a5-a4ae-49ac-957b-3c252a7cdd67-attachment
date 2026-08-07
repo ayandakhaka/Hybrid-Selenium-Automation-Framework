@@ -1,0 +1,6 @@
+Method: POST
+Base URL: https://automationexercise.com
+Endpoint: /api/createAccount
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{country=South Africa, firstname=Deedee, address2=Suite 082, city=Lake Shermanburgh, birth_month=May, address1=6169 Streich Lakes, birth_date=10, title=Mr, birth_year=1995, lastname=Langworth, zipcode=32888-4867, password=********, name=Chester Stroman, company=Corwin-Rohan, state=Connecticut, mobile_number=404.144.3602, email=user1786106025191@test.com}
