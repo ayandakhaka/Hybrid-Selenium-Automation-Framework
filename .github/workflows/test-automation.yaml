@@ -8,7 +8,7 @@ on:
   pull_request:
     branches:
       - main
-      
+
 permissions:
   contents: read
   pages: write
@@ -19,13 +19,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Setup GitHub Pages
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
-      # 1. Checkout source code
+
+      # Checkout source code
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      # 2. Set up Java
+      # Set up Java
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -33,31 +35,30 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      # 3. Verify Java and Maven
+      # Verify Java and Maven
       - name: Verify Java and Maven
         run: |
           java -version
           mvn -version
 
-      # 4. Run API Tests
+      # Run API Tests
       - name: Run API Tests
         run: |
-          mvn clean test \
-          -DsuiteXmlFile=src/test/resources/testng-api.xml
+          mvn clean test -DsuiteXmlFile=src/test/resources/testng-api.xml
 
-      # 5. Generate Allure Report
+      # Generate Allure Report
       - name: Generate Allure Report
         if: always()
         run: mvn allure:report
-        
-      # 6. Upload report for GitHub Pages
+
+      # Upload GitHub Pages Artifact
       - name: Upload GitHub Pages Artifact
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
           path: target/site/allure-maven-plugin/
 
-      # 7. Upload Surefire Reports
+      # Upload Surefire Reports
       - name: Upload Surefire Reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -65,7 +66,7 @@ jobs:
           name: surefire-reports
           path: target/surefire-reports/
 
-      # 8. Upload Allure Results
+      # Upload Allure Results
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
@@ -73,10 +74,28 @@ jobs:
           name: allure-results
           path: target/allure-results/
 
-      # 7. Upload Allure HTML Report
+      # Upload Allure HTML Report
       - name: Upload Allure HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
           path: target/site/allure-maven-plugin/
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: api-tests
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
