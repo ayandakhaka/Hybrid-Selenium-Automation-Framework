@@ -23,8 +23,8 @@ public class ProductsPage extends BasePage {
 	private By searchedProductText = By.xpath("//h2[@class='title text-center']");
 	private By firstProduct = By.xpath("//img[@src='/get_product_picture/1']");
 	private By secondProduct = By.xpath("//img[@src='/get_product_picture/2']");
-	private By addToCartFirstProduct = By.xpath("//a[@data-product-id='1']");
-	private By addToCartSecondProduct = By.xpath("//a[@data-product-id='2']");
+	private By addToCartFirstProduct = By.cssSelector("a[data-product-id='1']");
+	private By addToCartSecondProduct = By.cssSelector("a[data-product-id='2']");
 	private By viewCart = By.cssSelector("a[href='view_cart']");
 	private By addedToCartSuccessText = By.xpath("//p[@class='text-center']");
 	
@@ -73,12 +73,14 @@ public class ProductsPage extends BasePage {
 	
 	@Step("User hovers over the first product")
 	public ProductsPage hoverOverFirstProduct() {
+		actions.scrollToElement(firstProduct);
 		actions.hoverOverElement(firstProduct);
 		return this;
 	}
 	
 	@Step("User hovers over the second product")
 	public ProductsPage hoverOverSecondProduct() {
+		actions.scrollToElement(secondProduct);
 		actions.hoverOverElement(secondProduct);
 		return this;
 	}
