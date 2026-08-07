@@ -1,0 +1,6 @@
+Method: POST
+Base URL: https://automationexercise.com
+Endpoint: /api/createAccount
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{country=South Africa, firstname=Chung, address2=Suite 456, city=West Gabriellastad, birth_month=May, address1=0359 Padberg Falls, birth_date=10, title=Mr, birth_year=1995, lastname=Davis, zipcode=53740, password=********, name=Shantae Sipes, company=Weimann, Weimann and Klocko, state=Vermont, mobile_number=1-892-656-3995, email=user1786098334703@test.com}

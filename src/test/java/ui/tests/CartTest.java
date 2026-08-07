@@ -21,44 +21,36 @@ public class CartTest extends BaseTest {
 	private ViewCartPage viewPageCart;
 	
 	
-//	@BeforeMethod
-//	public void setupLogin() {
-//		
-//		homePage = new HomePage(driver);
-//		loginPage = new LoginPage(driver);
-//		productsPage = new ProductsPage(driver);
-//		viewPageCart = new ViewCartPage(driver);
-//
-//		homePage.clickSignLoginButton();
-//		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
-//		
-//		productsPage.clickProductsLink();
-//	}
-//	
-//	@Test(priority = 1)
-//	public void verifyFirstProductCanBeAddedToCart() {
-//
-//	    FrameworkLogger.testStart("verifyFirstProductCanBeAddedToCart");
-//
-//	    FrameworkLogger.info("Adding the first product to the cart.");
-//
-//	    productsPage.addFirstProductToCart();
-//
-//	    Assert.assertTrue(
-//	            productsPage.validateAddedToCartSuccessMessage(
-//	                    ConfigReader.getProperty("addtoCartSuccessMessage")),
-//	            "The success message was not displayed after adding the product to the cart.");
-//	    FrameworkLogger.testEnd("verifyFirstProductCanBeAddedToCart");
-//	    
-//
-//	}
-//	
-//	@AfterMethod
-//	public void cleanCart() {
-//		homePage.clickCartButton();
-//		while(!homePage.isCartEmpty()) {
-//			viewPageCart.clickRemoveProduct();
-//		}
-//	}
+	@BeforeMethod
+	public void setupLogin() {
+		
+		homePage = new HomePage(driver);
+		loginPage = new LoginPage(driver);
+		productsPage = new ProductsPage(driver);
+		viewPageCart = new ViewCartPage(driver);
 
+		homePage.clickSignLoginButton();
+		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
+		
+		productsPage.clickProductsLink();
+	}
+	
+	@Test(priority = 1)
+	public void verifyAddSingleProductToCart() {
+
+	    FrameworkLogger.testStart("verifyFirstProductCanBeAddedToCart");
+
+	    // Act
+	    productsPage.hoverOverFirstProduct();
+	    productsPage.addFirstProductToCart();
+	    
+	    // Assert
+	    Assert.assertTrue(
+	            productsPage.validateAddedToCartSuccessMessage(
+	                    ConfigReader.getProperty("addtoCartSuccessMessage")),
+	            "The success message was not displayed after adding the product to the cart.");
+	    FrameworkLogger.testEnd("verifyFirstProductCanBeAddedToCart");
+	    
+
+	}
 }

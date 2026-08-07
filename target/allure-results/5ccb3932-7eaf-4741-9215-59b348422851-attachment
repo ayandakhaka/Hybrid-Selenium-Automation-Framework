@@ -1,0 +1,6 @@
+Method: POST
+Base URL: https://automationexercise.com
+Endpoint: /api/createAccount
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{country=South Africa, firstname=Lurlene, address2=Suite 838, city=Lake Kenia, birth_month=May, address1=764 Aldo Summit, birth_date=10, title=Mr, birth_year=1995, lastname=Beahan, zipcode=65971-5034, password=********, name=Austin Von, company=VonRueden and Sons, state=Louisiana, mobile_number=983-282-5244, email=user1786097859742@test.com}

@@ -11,11 +11,9 @@ on:
 
 jobs:
   api-tests:
-
     runs-on: ubuntu-latest
 
     steps:
-
       # 1. Checkout source code
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -40,7 +38,12 @@ jobs:
           mvn clean test \
           -DsuiteXmlFile=src/test/resources/testng-api.xml
 
-      # 5. Upload Surefire Reports
+      # 5. Generate Allure Report
+      - name: Generate Allure Report
+        if: always()
+        run: mvn allure:report
+
+      # 6. Upload Surefire Reports
       - name: Upload Surefire Reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -48,10 +51,18 @@ jobs:
           name: surefire-reports
           path: target/surefire-reports/
 
-      # 6. Upload Allure Results
+      # 7. Upload Allure Results
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: target/allure-results/
+
+      # 8. Upload Allure HTML Report
+      - name: Upload Allure HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: target/site/allure-maven-plugin/
