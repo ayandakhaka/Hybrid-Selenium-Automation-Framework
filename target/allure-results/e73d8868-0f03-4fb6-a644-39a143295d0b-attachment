@@ -1,0 +1,6 @@
+Method: DELETE
+Base URL: https://automationexercise.com
+Endpoint: /api/deleteAccount
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{password=********, email=user1786705580005@test.com}

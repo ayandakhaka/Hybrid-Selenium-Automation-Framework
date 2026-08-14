@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Caryn, address2=Apt. 368, city=Lake Stephine, birth_month=May, address1=07333 Bradtke Crossroad, birth_date=10, title=Mr, birth_year=1995, lastname=Bayer, zipcode=84421-8889, password=********, name=Miss Dan Oberbrunner, company=Smith, Reilly and McDermott, state=Pennsylvania, mobile_number=(490) 253-5259, email=user1786100186290@test.com}

@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Ray, address2=Apt. 415, city=East Ali, birth_month=May, address1=701 Gerhold Ways, birth_date=10, title=Mr, birth_year=1995, lastname=Hammes, zipcode=78827-8787, password=********, name=Vern Nitzsche, company=Brekke-Cremin, state=Missouri, mobile_number=(540) 529-9039, email=user1786104332981@test.com}

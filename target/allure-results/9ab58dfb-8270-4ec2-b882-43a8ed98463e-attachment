@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Pia, address2=Apt. 549, city=South Douglas, birth_month=May, address1=73929 Boehm Roads, birth_date=10, title=Mr, birth_year=1995, lastname=Zulauf, zipcode=22513-7222, password=********, name=Dewey Watsica Jr., company=Schultz LLC, state=Louisiana, mobile_number=318-709-0958, email=user1786101257666@test.com}

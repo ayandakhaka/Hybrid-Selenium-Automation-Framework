@@ -1,37 +1,22 @@
 [
   {
-    "name": "API Failures",
-    "matchedStatuses": [
-      "failed"
-    ],
-    "messageRegex": ".*(success status code|responseCode|API|HTTP|RestAssured).*"
+    "name": "Product Defect",
+    "matchedStatuses": ["failed"],
+    "messageRegex": ".*AssertionError.*|.*expected.*but.*actual.*"
   },
   {
-    "name": "Assertion Failures",
-    "matchedStatuses": [
-      "failed"
-    ],
-    "messageRegex": ".*(expected.*but found|Failed to verify success message body).*"
+    "name": "Automation Defect",
+    "matchedStatuses": ["broken"],
+    "traceRegex": ".*NoSuchElementException.*|.*NullPointerException.*|.*WebDriverException.*"
   },
   {
-    "name": "UI Element Failures",
-    "matchedStatuses": [
-      "broken"
-    ],
-    "messageRegex": ".*(NoSuchElementException|ElementNotInteractableException|ElementClickInterceptedException).*"
+    "name": "Infrastructure Failure",
+    "matchedStatuses": ["broken"],
+    "traceRegex": ".*Connection refused.*|.*Connection reset.*|.*UnknownHostException.*|.*SSLHandshakeException.*"
   },
   {
-    "name": "Timeout Failures",
-    "matchedStatuses": [
-      "broken"
-    ],
-    "messageRegex": ".*(TimeoutException|Expected condition failed).*"
-  },
-  {
-    "name": "WebDriver Failures",
-    "matchedStatuses": [
-      "broken"
-    ],
-    "messageRegex": ".*(WebDriverException|SessionNotCreatedException|Driver).*"
+    "name": "Timeout Failure",
+    "matchedStatuses": ["broken"],
+    "traceRegex": ".*TimeoutException.*|.*timeout.*"
   }
 ]
