@@ -10,10 +10,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AllureEnvironment {
+	
+	private static Properties properties;
+	private static File directory;
 
     public static void createEnvironmentFile(WebDriver driver) {
 
-        Properties properties = new Properties();
+        properties = new Properties();
 
         // Get browser capabilities
         Capabilities capabilities =
@@ -66,7 +69,7 @@ public class AllureEnvironment {
         );
 
         // Create Allure results directory
-        File directory =
+        directory =
                 new File("target/allure-results");
 
         if (!directory.exists()) {
@@ -89,6 +92,94 @@ public class AllureEnvironment {
 
             FrameworkLogger.info(
                     "Allure environment.properties created successfully."
+            );
+
+        } catch (IOException e) {
+
+            FrameworkLogger.error(
+                    "Failed to create Allure environment.properties: "
+                            + e.getMessage()
+            );
+
+            throw new RuntimeException(
+                    "Failed to create Allure environment.properties",
+                    e
+            );
+        }
+    }
+    
+    public static void createEnvironmentFile() {
+
+        properties = new Properties();
+
+        // Operating system
+        properties.setProperty(
+                "Operating System",
+                System.getProperty("os.name")
+        );
+
+        properties.setProperty(
+                "OS Version",
+                System.getProperty("os.version")
+        );
+
+        // Java
+        properties.setProperty(
+                "Java Version",
+                System.getProperty("java.version")
+        );
+
+        // Test environment
+        properties.setProperty(
+                "Test Environment",
+                System.getProperty(
+                        "environment",
+                        "QA"
+                )
+        );
+
+        // Execution mode
+        properties.setProperty(
+                "Execution Mode",
+                System.getProperty(
+                        "execution",
+                        "local"
+                )
+        );
+
+        // Test suite
+        properties.setProperty(
+                "Test Suite",
+                System.getProperty(
+                        "suite",
+                        "API"
+                )
+        );
+
+        // Create Allure results directory
+        directory =
+                new File("target/allure-results");
+
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        File file =
+                new File(
+                        directory,
+                        "environment.properties"
+                );
+
+        try (FileWriter writer =
+                     new FileWriter(file)) {
+
+            properties.store(
+                    writer,
+                    "Allure Test Environment Information"
+            );
+
+            FrameworkLogger.info(
+                    "Allure API/CI environment.properties created successfully."
             );
 
         } catch (IOException e) {

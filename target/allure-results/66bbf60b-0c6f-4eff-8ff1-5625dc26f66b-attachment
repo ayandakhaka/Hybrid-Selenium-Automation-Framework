@@ -3,4 +3,4 @@ Base URL: https://automationexercise.com
 Endpoint: /api/verifyLogin
 Content-Type: application/x-www-form-urlencoded
 Request Parameters:
-{password=********, email=user1786705580005@test.com}
+{password=********, email=user1787043206368@test.com}

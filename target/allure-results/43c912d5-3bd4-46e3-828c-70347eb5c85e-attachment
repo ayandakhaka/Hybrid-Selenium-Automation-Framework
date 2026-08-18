@@ -1,0 +1,6 @@
+Method: PUT
+Base URL: https://automationexercise.com
+Endpoint: /api/verifyLogin
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{country=South Africa, firstname=Freda, address2=Suite 401, city=West Clint, birth_month=May, address1=4888 Tswelopele ext8 Thembisa, birth_date=10, title=Mr, birth_year=1995, lastname=Flatley, zipcode=70557, password=********, name=Ayanda Khaka, company=Ferry, Gorczany and Walker, state=New Jersey, mobile_number=0634943658, email=user1787043206368@test.com}

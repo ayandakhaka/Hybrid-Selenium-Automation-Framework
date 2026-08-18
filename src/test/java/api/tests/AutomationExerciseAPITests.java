@@ -16,6 +16,7 @@ import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
+import utility.AllureEnvironment;
 import utility.ConfigReader;
 import utility.FrameworkLogger;
 
@@ -30,6 +31,9 @@ public class AutomationExerciseAPITests {
 		// This sets the system property
 		System.setProperty(ConfigReader.getProperty("systemPropertyName"), 
 				ConfigReader.getProperty("systemPropertyValue"));
+		
+		// Create environment variables
+		AllureEnvironment.createEnvironmentFile();
 
 		// This register a new user and save to a json file
 		UserApiService.registerRandomUser();
