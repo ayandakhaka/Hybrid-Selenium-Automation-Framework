@@ -49,15 +49,20 @@ jobs:
       # Generate Allure Report
       - name: Generate Allure Report
         if: always()
-        run: mvn allure:report
+          run: mvn allure:report
 
-      # Upload GitHub Pages Artifact
-      - name: Upload GitHub Pages Artifact
+      # Customize Allure Report title
+      - name: Customize Allure Report
         if: always()
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: target/site/allure-maven-plugin/
+        run: |
+          find target/site/allure-maven-plugin -type f -name "*.js" -exec sed -i 's/Allure Report/Hybrid UI \& API Test Automation — QA Report/g' {} +
 
+# Upload GitHub Pages Artifact
+- name: Upload GitHub Pages Artifact
+  if: always()
+  uses: actions/upload-pages-artifact@v3
+  with:
+    path: target/site/allure-maven-plugin/
       # Upload Surefire Reports
       - name: Upload Surefire Reports
         if: always()
