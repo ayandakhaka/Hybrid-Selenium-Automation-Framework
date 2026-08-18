@@ -140,11 +140,11 @@ public class AllureEnvironment {
 
         // Execution mode
         properties.setProperty(
-                "Execution Mode",
-                System.getProperty(
-                        "execution",
-                        "local"
-                )
+            "Execution Mode",
+            System.getProperty(
+                "execution",
+                System.getenv("CI") != null ? "CI/CD" : "Local"
+            )
         );
 
         // Test suite
