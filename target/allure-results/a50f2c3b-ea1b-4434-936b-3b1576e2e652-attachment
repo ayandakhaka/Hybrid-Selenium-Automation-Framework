@@ -1,0 +1,6 @@
+Method: POST
+Base URL: https://automationexercise.com
+Endpoint: /api/createAccount
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{country=South Africa, firstname=Beckie, address2=Suite 955, city=East Karmaberg, birth_month=May, address1=0134 Osinski Springs, birth_date=10, title=Mr, birth_year=1995, lastname=Barton, zipcode=96161, password=********, name=Leonard Conroy, company=McCullough, Mante and Koelpin, state=Nebraska, mobile_number=3355726999, email=user1789382166609@test.com}

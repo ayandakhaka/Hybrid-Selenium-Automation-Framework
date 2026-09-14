@@ -1,0 +1,4 @@
+Method: DELETE
+Base URL: https://automationexercise.com
+Endpoint: /api/verifyLogin
+Content-Type: application/x-www-form-urlencoded

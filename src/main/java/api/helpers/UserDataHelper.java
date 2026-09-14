@@ -34,7 +34,7 @@ public class UserDataHelper {
         user.setZipcode(faker.address().zipCode());
         user.setState(faker.address().state());
         user.setCity(faker.address().city());
-        user.setMobile_number(faker.phoneNumber().cellPhone());
+        user.setMobile_number(faker.phoneNumber().subscriberNumber(10));
 
         saveToJson(user);
 

@@ -1,0 +1,6 @@
+INFO  - Allure environment.properties created successfully.
+INFO  - Navigating to: https://automationexercise.com/
+INFO  - Waiting for page to load
+INFO  - Current URL: https://automationexercise.com/
+INFO  - Page Title: Automation Exercise
+INFO  - Clicking an element: By.xpath: //i[@class='fa fa-lock' ]

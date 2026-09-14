@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import api.model.UserModel;
+import api.testdata.TestDataManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -23,12 +25,16 @@ import utility.FrameworkLogger;
 @Feature("Search Products")
 public class SearchProductTest extends BaseTest {
 
+	private UserModel user;
+	
 	private HomePage homePage;
 	private LoginPage loginPage;
 	private ProductsPage productsPage;
 
 	@BeforeMethod
 	public void setupLogin() {
+		
+		user = TestDataManager.getInstance().gerUser();
 
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);

@@ -1,0 +1,19 @@
+INFO  - Allure environment.properties created successfully.
+INFO  - Navigating to: https://automationexercise.com/
+INFO  - Current URL before wait: https://automationexercise.com/
+INFO  - Page title before wait: Automation Exercise
+INFO  - Waiting for page to load
+INFO  - Current document.readyState: interactive
+INFO  - Page load condition satisfied.
+INFO  - Page loaded successfully.
+INFO  - Current URL after wait: https://automationexercise.com/
+INFO  - Page title after wait: Automation Exercise
+INFO  - Current URL: https://automationexercise.com/
+INFO  - Page Title: Automation Exercise
+INFO  - Clicking an element: By.cssSelector: a[href='/login']
+INFO  - Clearing a text field: By.xpath: //input[@name='email' and @placeholder='Email Address']
+INFO  - Setting text into a text field: By.xpath: //input[@name='email' and @placeholder='Email Address']
+INFO  - Clearing a text field: By.name: password
+INFO  - Setting text into a text field: By.name: password
+INFO  - Clicking an element: By.xpath: //button[@type='submit' and @data-qa='login-button']
+INFO  - Clicking an element: By.xpath: //a[@href='/products']

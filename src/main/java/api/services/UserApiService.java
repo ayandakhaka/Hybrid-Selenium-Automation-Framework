@@ -1,7 +1,6 @@
 package api.services;
 
 
-import api.helpers.UserDataHelper;
 import api.model.UserModel;
 import api.payload.UserPayload;
 import io.qameta.allure.Step;
@@ -17,21 +16,20 @@ import utility.ConfigReader;
 import utility.FrameworkLogger;
 public class UserApiService {
 
-	private static UserModel user;
 	private static Map<String, String> requestPayload;
 	private static Map<String, String> allureRequestPayload;
 	private static String requestDetails;
 	private static Response response;
 
-	@Step("Register a random user.")
-	public static UserModel registerRandomUser() {
+	private UserApiService() {
 
-		// Generate a random user
-		user = UserDataHelper.generateUserData();
+	}
 
-		// Register the user via API
+	public static Response createUser(UserModel user) {
 
-		Map<String, String> requestPayload =
+		FrameworkLogger.info("Creating user: " + user.getEmail());
+
+		requestPayload =
 				UserPayload.createUserPayload(
 						user.getName(),
 						user.getEmail(),
@@ -91,83 +89,37 @@ public class UserApiService {
 		AllureApiAttachment.attachResponse(
 				response.asPrettyString()
 				);
-		if (response.statusCode() != 200
-				|| response.jsonPath().getInt("responseCode") != 201) {
+		if (response.statusCode() != 200) {
 
 			throw new RuntimeException(
-					"User registration failed.\nResponse:\n"
-							+ response.asPrettyString());
+					"User registration failed."
+							+ "\nHTTP Status: " + response.statusCode()
+							+ "\nResponse:\n"
+							+ response.getBody().asString()
+					);
 		}
 
-		return user;
+		if (!response.getContentType().contains(ConfigReader.getProperty("contentType"))) {
 
-	}
+			throw new RuntimeException(
+					"Expected JSON response but received: "
+							+ response.getContentType()
+							+ "\nResponse:\n"
+							+ response.getBody().asString()
+					);
+		}
 
-	@Step("User ccount update")
-	public static Response userAccountUpdate(UserModel user) {
+		int responseCode = response.jsonPath().getInt("responseCode");
 
-		requestPayload = UserPayload.updateUserPayload(
-				ConfigReader.getProperty("updatedNameText"),
-				user.getEmail(),
-				user.getPassword(),
-				user.getTitle(),
-				user.getBirth_date(),
-				user.getBirth_month(),
-				user.getBirth_year(),
-				user.getFirstname(),
-				user.getLastname(), 
-				user.getCompany(), 
-				ConfigReader.getProperty("updatedAddress1Text"), 
-				user.getAddress2(), 
-				user.getCountry(), 
-				user.getZipcode(), 
-				user.getState(), 
-				user.getCity(), 
-				ConfigReader.getProperty("updatedMobileNumber"));
-		allureRequestPayload =
-				new HashMap<>(requestPayload);
+		if (responseCode != 201) {
 
-		allureRequestPayload.put(
-				"password",
-				"********"
-				);
-
-		requestDetails =
-				"Method: PUT\n"
-						+ "Base URL: "
-						+ ConfigReader.getProperty("apiBaseUrl")
-						+ "\n"
-						+ "Endpoint: "
-						+ ConfigReader.getProperty("loginEndpoint")
-						+ "\n"
-						+ "Content-Type: "
-						+ ContentType.URLENC
-						+ "\n"
-						+ "Request Parameters:\n"
-						+ allureRequestPayload;
-
-		AllureApiAttachment.attachRequest(
-				requestDetails
-				);
-
-		response =
-				given()
-				.relaxedHTTPSValidation()
-				.baseUri(
-						ConfigReader.getProperty("apiBaseUrl")
-						)
-				.contentType(ContentType.URLENC)
-				.formParams(requestPayload)
-				.when()
-				.put(
-						ConfigReader.getProperty(
-								"updateUserAccountEndpoint"
-								)
-						);
-
-		AllureApiAttachment.attachResponse(
-				response.asPrettyString()
-				);
+			throw new RuntimeException(
+					"User creation failed."
+							+ "\nAPI Response Code: " + responseCode
+							+ "\nResponse:\n"
+							+ response.getBody().asString()
+					);
+		}
 
 		return response;
 	}
@@ -178,60 +130,6 @@ public class UserApiService {
 		requestPayload = UserPayload.createValidLoginPayload(
 				user.getEmail(),
 				user.getPassword()
-				);
-		allureRequestPayload =
-				new HashMap<>(requestPayload);
-
-		allureRequestPayload.put(
-				"password",
-				"********"
-				);
-
-		requestDetails =
-				"Method: POST\n"
-						+ "Base URL: "
-						+ ConfigReader.getProperty("apiBaseUrl")
-						+ "\n"
-						+ "Endpoint: "
-						+ ConfigReader.getProperty("loginEndpoint")
-						+ "\n"
-						+ "Content-Type: "
-						+ ContentType.URLENC
-						+ "\n"
-						+ "Request Parameters:\n"
-						+ allureRequestPayload;
-
-		AllureApiAttachment.attachRequest(
-				requestDetails
-				);
-
-		response =
-				given()
-				.relaxedHTTPSValidation()
-				.baseUri(
-						ConfigReader.getProperty("apiBaseUrl")
-						)
-				.contentType(ContentType.URLENC)
-				.formParams(requestPayload)
-				.when()
-				.post(
-						ConfigReader.getProperty(
-								"loginEndpoint"
-								)
-						);
-
-		AllureApiAttachment.attachResponse(
-				response.asPrettyString()
-				);
-
-		return response;
-	}
-
-	public static Response loginWithInvalidCredentials(String email, String password) {
-
-		requestPayload = UserPayload.createInvalidLoginPayload(
-				email,
-				password
 				);
 		allureRequestPayload =
 				new HashMap<>(requestPayload);
@@ -416,13 +314,139 @@ public class UserApiService {
 		AllureApiAttachment.attachResponse(
 				response.asPrettyString()
 				);
-		
+
 		return response;
 
 	}
 
-	@Step("Delete existing user")
+	@Step("User account update")
+	public static Response userAccountUpdate(UserModel user) {
+
+		requestPayload = UserPayload.updateUserPayload(
+				ConfigReader.getProperty("updatedNameText"),
+				user.getEmail(),
+				user.getPassword(),
+				user.getTitle(),
+				user.getBirth_date(),
+				user.getBirth_month(),
+				user.getBirth_year(),
+				user.getFirstname(),
+				user.getLastname(), 
+				user.getCompany(), 
+				ConfigReader.getProperty("updatedAddress1Text"), 
+				user.getAddress2(), 
+				user.getCountry(), 
+				user.getZipcode(), 
+				user.getState(), 
+				user.getCity(), 
+				ConfigReader.getProperty("updatedMobileNumber"));
+		allureRequestPayload =
+				new HashMap<>(requestPayload);
+
+		allureRequestPayload.put(
+				"password",
+				"********"
+				);
+
+		requestDetails =
+				"Method: PUT\n"
+						+ "Base URL: "
+						+ ConfigReader.getProperty("apiBaseUrl")
+						+ "\n"
+						+ "Endpoint: "
+						+ ConfigReader.getProperty("loginEndpoint")
+						+ "\n"
+						+ "Content-Type: "
+						+ ContentType.URLENC
+						+ "\n"
+						+ "Request Parameters:\n"
+						+ allureRequestPayload;
+
+		AllureApiAttachment.attachRequest(
+				requestDetails
+				);
+
+		response =
+				given()
+				.relaxedHTTPSValidation()
+				.baseUri(
+						ConfigReader.getProperty("apiBaseUrl")
+						)
+				.contentType(ContentType.URLENC)
+				.formParams(requestPayload)
+				.when()
+				.put(
+						ConfigReader.getProperty(
+								"updateUserAccountEndpoint"
+								)
+						);
+
+		AllureApiAttachment.attachResponse(
+				response.asPrettyString()
+				);
+
+		return response;
+	}
+
+	@Step("Login with invalid login credentials")
+	public static Response loginWithInvalidCredentials(String email, String password) {
+
+		requestPayload = UserPayload.createInvalidLoginPayload(
+				email,
+				password
+				);
+		allureRequestPayload =
+				new HashMap<>(requestPayload);
+
+		allureRequestPayload.put(
+				"password",
+				"********"
+				);
+
+		requestDetails =
+				"Method: POST\n"
+						+ "Base URL: "
+						+ ConfigReader.getProperty("apiBaseUrl")
+						+ "\n"
+						+ "Endpoint: "
+						+ ConfigReader.getProperty("loginEndpoint")
+						+ "\n"
+						+ "Content-Type: "
+						+ ContentType.URLENC
+						+ "\n"
+						+ "Request Parameters:\n"
+						+ allureRequestPayload;
+
+		AllureApiAttachment.attachRequest(
+				requestDetails
+				);
+
+		response =
+				given()
+				.relaxedHTTPSValidation()
+				.baseUri(
+						ConfigReader.getProperty("apiBaseUrl")
+						)
+				.contentType(ContentType.URLENC)
+				.formParams(requestPayload)
+				.when()
+				.post(
+						ConfigReader.getProperty(
+								"loginEndpoint"
+								)
+						);
+
+		AllureApiAttachment.attachResponse(
+				response.asPrettyString()
+				);
+
+		return response;
+	}
+
+	@Step("Deleting existing user.")
 	public static Response deleteUser(UserModel user) {
+
+		FrameworkLogger.info("Deleting user: " + user.getEmail());
 
 		requestPayload = UserPayload.createDeleteUserAccountPayload(user.getEmail(), user.getPassword());
 
@@ -472,8 +496,10 @@ public class UserApiService {
 				);
 
 		return response;
+
 	}
 
+	@Step("Delete login")
 	public static Response deleteLogin() {
 
 		requestDetails =

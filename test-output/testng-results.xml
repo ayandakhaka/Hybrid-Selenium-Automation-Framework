@@ -1,73 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-08-07T14:33:20 SAST" name="Default suite" finished-at="2026-08-07T14:47:17 SAST" duration-ms="836742">
+  <suite started-at="2026-09-14T13:13:03 SAST" name="Default suite" finished-at="2026-09-14T13:13:05 SAST" duration-ms="2515">
     <groups>
     </groups>
-    <test started-at="2026-08-07T14:33:20 SAST" name="Default test" finished-at="2026-08-07T14:47:17 SAST" duration-ms="836742">
+    <test started-at="2026-09-14T13:13:03 SAST" name="Default test" finished-at="2026-09-14T13:13:05 SAST" duration-ms="2515">
       <class name="ui.tests.CartTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:33:28 SAST" name="setup" finished-at="2026-08-07T14:44:55 SAST" duration-ms="687053" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method is-config="true" signature="setupLogin()[pri:0, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:45:03 SAST" name="setupLogin" finished-at="2026-08-07T14:46:20 SAST" duration-ms="77562" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setupLogin -->
-        <test-method signature="verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:46:20 SAST" name="verifyAddSingleProductToCart" finished-at="2026-08-07T14:46:41 SAST" duration-ms="20133" status="FAIL">
-          <exception class="org.openqa.selenium.ElementClickInterceptedException">
+        <test-method is-config="true" signature="initializeTestData()[pri:0, instance:ui.tests.CartTest@7742a45c]" started-at="2026-09-14T13:11:58 SAST" name="initializeTestData" finished-at="2026-09-14T13:12:55 SAST" duration-ms="57040" status="FAIL">
+          <exception class="java.net.SocketException">
             <message>
-              <![CDATA[element click intercepted: Element <a data-product-id="1" class="btn btn-default add-to-cart">...</a> is not clickable at point (622, 333). Other element would receive the click: <a data-product-id="1" class="btn btn-default add-to-cart">...</a>
-  (Session info: MicrosoftEdge=150.0.4078.105)
-Build info: version: '4.43.0', revision: 'dd0f534'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [e1a34981c45b314303195ff391dc90b4, clickElement {id=f.28AF832E248FC726589D3F7D9392C3E0.d.FF02119540F3FBDC1E50CA71578B7B3F.e.144}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 150.0.4078.105, fedcm:accounts: true, goog:processID: 10652, ms:edgeOptions: {debuggerAddress: localhost:58046}, msedge: {msedgedriverVersion: 150.0.4078.96 (6af14c9da851..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58046/devtoo..., se:cdpVersion: 150.0.4078.105, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[EdgeDriver: MicrosoftEdge on windows (e1a34981c45b314303195ff391dc90b4)] -> css selector: a[data-product-id='1']]
-Session ID: e1a34981c45b314303195ff391dc90b4]]>
+              <![CDATA[Network is unreachable: connect]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <a data-product-id="1" class="btn btn-default add-to-cart">...</a> is not clickable at point (622, 333). Other element would receive the click: <a data-product-id="1" class="btn btn-default add-to-cart">...</a>
-  (Session info: MicrosoftEdge=150.0.4078.105)
-Build info: version: '4.43.0', revision: 'dd0f534'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.12'
-Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [e1a34981c45b314303195ff391dc90b4, clickElement {id=f.28AF832E248FC726589D3F7D9392C3E0.d.FF02119540F3FBDC1E50CA71578B7B3F.e.144}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 150.0.4078.105, fedcm:accounts: true, goog:processID: 10652, ms:edgeOptions: {debuggerAddress: localhost:58046}, msedge: {msedgedriverVersion: 150.0.4078.96 (6af14c9da851..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58046/devtoo..., se:cdpVersion: 150.0.4078.105, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[EdgeDriver: MicrosoftEdge on windows (e1a34981c45b314303195ff391dc90b4)] -> css selector: a[data-product-id='1']]
-Session ID: e1a34981c45b314303195ff391dc90b4
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:223)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:606)
-at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
-at utility.ActionHelper.click(ActionHelper.java:30)
-at pages.ProductsPage.addFirstProductToCart(ProductsPage.java:90)
-at ui.tests.CartTest.verifyAddSingleProductToCart(CartTest.java:45)
+              <![CDATA[java.net.SocketException: Network is unreachable: connect
+at java.base/sun.nio.ch.Net.connect0(Native Method)
+at java.base/sun.nio.ch.Net.connect(Net.java:579)
+at java.base/sun.nio.ch.Net.connect(Net.java:568)
+at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+at java.base/java.net.Socket.connect(Socket.java:633)
+at org.apache.http.conn.ssl.SSLSocketFactory.connectSocket(SSLSocketFactory.java:543)
+at org.apache.http.conn.ssl.SSLSocketFactory.connectSocket(SSLSocketFactory.java:415)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180)
+at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:326)
+at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440)
+at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835)
+at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+at io.restassured.internal.RestAssuredHttpBuilder.doRequest(RestAssuredHttpBuilder.java:141)
+at io.restassured.internal.http.HTTPBuilder.post(HTTPBuilder.java:349)
+at io.restassured.internal.http.HTTPBuilder$post$2.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
+at io.restassured.internal.RequestSpecificationImpl.sendRequest(RequestSpecificationImpl.groovy:1209)
+at io.restassured.internal.RequestSpecificationImpl.this$2$sendRequest(RequestSpecificationImpl.groovy)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:790)
+at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:166)
+at io.restassured.internal.filter.SendRequestFilter.filter(SendRequestFilter.groovy:30)
+at io.restassured.filter.Filter$filter.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at io.restassured.filter.Filter$filter$0.call(Unknown Source)
+at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)
+at io.restassured.filter.time.TimingFilter.filter(TimingFilter.java:56)
+at io.restassured.filter.Filter$filter$0.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at io.restassured.filter.Filter$filter.call(Unknown Source)
+at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)
+at io.restassured.filter.FilterContext$next.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
+at io.restassured.internal.filter.CsrfFilter.filter(CsrfFilter.groovy:89)
+at io.restassured.filter.Filter$filter.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:157)
+at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)
+at io.restassured.filter.FilterContext$next.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
+at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1704)
+at io.restassured.internal.RequestSpecificationImpl.this$2$applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:790)
+at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:57)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)
+at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1710)
+at io.restassured.internal.RequestSpecificationImpl.this$2$applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:790)
+at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:57)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)
+at io.restassured.internal.RequestSpecificationImpl.post(RequestSpecificationImpl.groovy:176)
+at io.restassured.internal.RequestSpecificationImpl.post(RequestSpecificationImpl.groovy)
+at api.services.UserApiService.createUser(UserApiService.java:86)
+at api.testdata.TestDataManager.initializeUser(TestDataManager.java:52)
+at api.setup.TestDataSetup.initializeTestData(TestDataSetup.java:26)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-at org.testng.TestRunner.privateRun(TestRunner.java:741)
-at org.testng.TestRunner.run(TestRunner.java:616)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:358)
 at org.testng.SuiteRunner.run(SuiteRunner.java:312)
 at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
 at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
@@ -80,21 +137,167 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
+          </exception> <!-- java.net.SocketException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initializeTestData -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ui.tests.CartTest@7742a45c]" started-at="2026-09-14T13:13:04 SAST" name="setup" finished-at="2026-09-14T13:13:04 SAST" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupLogin()[pri:0, instance:ui.tests.CartTest@7742a45c]" started-at="2026-09-14T13:13:05 SAST" name="setupLogin" finished-at="2026-09-14T13:13:05 SAST" duration-ms="0" status="SKIP">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupLogin -->
+        <test-method signature="verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@7742a45c]" started-at="2026-09-14T13:13:05 SAST" name="verifyAddSingleProductToCart" finished-at="2026-09-14T13:13:05 SAST" duration-ms="0" status="SKIP">
+          <exception class="java.net.SocketException">
+            <message>
+              <![CDATA[Network is unreachable: connect]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.net.SocketException: Network is unreachable: connect
+at java.base/sun.nio.ch.Net.connect0(Native Method)
+at java.base/sun.nio.ch.Net.connect(Net.java:579)
+at java.base/sun.nio.ch.Net.connect(Net.java:568)
+at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593)
+at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+at java.base/java.net.Socket.connect(Socket.java:633)
+at org.apache.http.conn.ssl.SSLSocketFactory.connectSocket(SSLSocketFactory.java:543)
+at org.apache.http.conn.ssl.SSLSocketFactory.connectSocket(SSLSocketFactory.java:415)
+at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:180)
+at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:326)
+at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:605)
+at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:440)
+at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:835)
+at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+at io.restassured.internal.RestAssuredHttpBuilder.doRequest(RestAssuredHttpBuilder.java:141)
+at io.restassured.internal.http.HTTPBuilder.post(HTTPBuilder.java:349)
+at io.restassured.internal.http.HTTPBuilder$post$2.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
+at io.restassured.internal.RequestSpecificationImpl.sendRequest(RequestSpecificationImpl.groovy:1209)
+at io.restassured.internal.RequestSpecificationImpl.this$2$sendRequest(RequestSpecificationImpl.groovy)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:790)
+at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:166)
+at io.restassured.internal.filter.SendRequestFilter.filter(SendRequestFilter.groovy:30)
+at io.restassured.filter.Filter$filter.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at io.restassured.filter.Filter$filter$0.call(Unknown Source)
+at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)
+at io.restassured.filter.time.TimingFilter.filter(TimingFilter.java:56)
+at io.restassured.filter.Filter$filter$0.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at io.restassured.filter.Filter$filter.call(Unknown Source)
+at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)
+at io.restassured.filter.FilterContext$next.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
+at io.restassured.internal.filter.CsrfFilter.filter(CsrfFilter.groovy:89)
+at io.restassured.filter.Filter$filter.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:157)
+at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)
+at io.restassured.filter.FilterContext$next.call(Unknown Source)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:125)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:148)
+at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1704)
+at io.restassured.internal.RequestSpecificationImpl.this$2$applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:790)
+at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:57)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)
+at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1710)
+at io.restassured.internal.RequestSpecificationImpl.this$2$applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)
+at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)
+at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1333)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1088)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1007)
+at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:790)
+at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)
+at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:57)
+at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)
+at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)
+at io.restassured.internal.RequestSpecificationImpl.post(RequestSpecificationImpl.groovy:176)
+at io.restassured.internal.RequestSpecificationImpl.post(RequestSpecificationImpl.groovy)
+at api.services.UserApiService.createUser(UserApiService.java:86)
+at api.testdata.TestDataManager.initializeUser(TestDataManager.java:52)
+at api.setup.TestDataSetup.initializeTestData(TestDataSetup.java:26)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:71)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:400)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:358)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.net.SocketException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyAddSingleProductToCart -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.tests.CartTest@4776e209]" started-at="2026-08-07T14:46:41 SAST" name="tearDown" finished-at="2026-08-07T14:47:17 SAST" duration-ms="36165" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.tests.CartTest@7742a45c]" started-at="2026-09-14T13:13:05 SAST" name="tearDown" finished-at="2026-09-14T13:13:05 SAST" duration-ms="116" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=verifyAddSingleProductToCart status=FAILURE method=CartTest.verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@4776e209] output={null}]]]>
+                <![CDATA[[TestResult name=verifyAddSingleProductToCart status=SKIP method=CartTest.verifyAddSingleProductToCart()[pri:1, instance:ui.tests.CartTest@7742a45c] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="cleanupTestData()[pri:0, instance:ui.tests.CartTest@7742a45c]" started-at="2026-09-14T13:13:36 SAST" name="cleanupTestData" finished-at="2026-09-14T13:13:37 SAST" duration-ms="228" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanupTestData -->
       </class> <!-- ui.tests.CartTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

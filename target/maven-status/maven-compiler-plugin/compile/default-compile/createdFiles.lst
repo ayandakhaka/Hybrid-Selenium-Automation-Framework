@@ -5,7 +5,6 @@ utility\BasePage.class
 pages\LoginPage.class
 utility\ConfigReader.class
 pages\HomePage.class
-utility\FakerDataGenerator.class
 api\services\UserApiService.class
 api\payload\UserPayload.class
 utility\ActionHelper.class

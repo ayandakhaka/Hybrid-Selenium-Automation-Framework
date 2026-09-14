@@ -6,9 +6,13 @@
 
     <test name="UI Tests">
 
-        <packages>
+       <!-- <packages>
             <package name="ui.tests"/>
-        </packages>
+        </packages>-->
+        
+        <classes>
+            <class name="ui.tests.LoginTest"/>
+        </classes>
 
     </test>
 

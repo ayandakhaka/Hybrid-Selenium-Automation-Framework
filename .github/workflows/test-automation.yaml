@@ -27,6 +27,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      # Restore previous Allure history
+      - name: Restore Allure History
+        uses: actions/cache/restore@v4
+        with:
+          path: allure-history
+          key: allure-history-${{ github.ref_name }}-${{ github.run_id }}
+          restore-keys: |
+            allure-history-${{ github.ref_name }}-
+            allure-history-
+
       # Set up Java
       - name: Set up Java
         uses: actions/setup-java@v4
@@ -50,6 +60,39 @@ jobs:
       - name: Generate Allure Report
         if: always()
         run: mvn allure:report
+        
+      # Preserve the generated history
+      - name: Prepare Allure History
+        if: always()
+        run: |
+          rm -rf allure-history
+          mkdir -p allure-history
+          cp -R target/site/allure-maven-plugin/history/. allure-history/
+          
+      # Save it for the next run   
+      - name: Save Allure History
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: allure-history
+          key: allure-history-${{ github.ref_name }}-${{ github.run_id }}
+          
+      # Restore previous history into the new Allure report
+      - name: Add Allure History
+        if: always()
+        run: |
+          if [ -d "allure-history" ]; then
+            mkdir -p target/site/allure-maven-plugin/history
+            cp -R allure-history/. target/site/allure-maven-plugin/history/
+          fi
+
+      # Save current Allure history for the next run
+      - name: Save Allure History
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: target/site/allure-maven-plugin/history
+          key: allure-history-${{ github.ref_name }}-${{ github.run_id }}
 
       # Customize Allure Report title
       - name: Customize Allure Report

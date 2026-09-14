@@ -21,10 +21,10 @@ public class ProductsPage extends BasePage {
 	private By submitSearch = By.id("submit_search");
 	private By searchedProducts = By.xpath("//div[@class='productinfo text-center']//p");
 	private By searchedProductText = By.xpath("//h2[@class='title text-center']");
-	private By firstProduct = By.xpath("//img[@src='/get_product_picture/1']");
-	private By secondProduct = By.xpath("//img[@src='/get_product_picture/2']");
-	private By addToCartFirstProduct = By.cssSelector("a[data-product-id='1']");
-	private By addToCartSecondProduct = By.cssSelector("a[data-product-id='2']");
+	private By firstProduct = By.xpath("//img[@src='/get_product_picture/1' and @alt='ecommerce website products']");
+	private By secondProduct = By.xpath("");
+	private By addToCartFirstProduct = By.xpath("//a[@data-product-id='1'] and @class='btn btn-default add-to-cart'");
+	private By addToCartSecondProduct = By.cssSelector("");
 	private By viewCart = By.cssSelector("a[href='view_cart']");
 	private By addedToCartSuccessText = By.xpath("//p[@class='text-center']");
 	
@@ -86,7 +86,25 @@ public class ProductsPage extends BasePage {
 	}
 	
 	@Step("User click first product, adding to cart")
-	public ProductsPage addFirstProductToCart() {
+	public ProductsPage clickAddToCartOnFirstProduct() {
+		
+		List<WebElement> buttons = driver.findElements(addToCartFirstProduct);
+		
+		FrameworkLogger.info("Add to Cart matches: " + buttons.size());
+
+		for (int i = 0; i < buttons.size(); i++) {
+		    WebElement button = buttons.get(i);
+
+		    FrameworkLogger.info(
+		        "Button " + i +
+		        " displayed=" + button.isDisplayed() +
+		        " enabled=" + button.isEnabled() +
+		        " location=" + button.getLocation()
+		    );
+		}
+
+	    FrameworkLogger.info("Number of matching Add to Cart buttons: " + buttons.size());
+	    FrameworkLogger.info("Web locators : " + addToCartFirstProduct);
 		actions.click(addToCartFirstProduct);
 		return this;
 	}

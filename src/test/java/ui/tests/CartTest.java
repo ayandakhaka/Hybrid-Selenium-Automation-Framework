@@ -5,6 +5,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import api.model.UserModel;
+import api.testdata.TestDataManager;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -15,6 +17,8 @@ import utility.FrameworkLogger;
 
 public class CartTest extends BaseTest {
 	
+	private UserModel user;
+	
 	private HomePage homePage;
 	private LoginPage loginPage;
 	private ProductsPage productsPage;
@@ -24,10 +28,13 @@ public class CartTest extends BaseTest {
 	@BeforeMethod
 	public void setupLogin() {
 		
+		user = TestDataManager.getInstance().gerUser();
+		
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
 		productsPage = new ProductsPage(driver);
 		viewPageCart = new ViewCartPage(driver);
+	
 
 		homePage.clickSignLoginButton();
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
@@ -42,7 +49,7 @@ public class CartTest extends BaseTest {
 
 	    // Act
 	    productsPage.hoverOverFirstProduct();
-	    productsPage.addFirstProductToCart();
+	    productsPage.clickAddToCartOnFirstProduct();
 	    
 	    // Assert
 	    Assert.assertTrue(

@@ -7,7 +7,7 @@ import io.qameta.allure.Step;
 
 public class UserPayload {
 	
-	public static Map<String, String> payload;
+	private static Map<String, String> payload;
 	
 	public static Map<String, String> createUserPayload(
 			String nameText, 

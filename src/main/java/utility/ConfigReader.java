@@ -6,34 +6,52 @@ import java.util.Properties;
 
 public class ConfigReader {
 
-    private static Properties properties;
+    private static final Properties properties =
+            new Properties();
+
+    private static final String CONFIG_FILE =
+            "environmentvariables/config.properties";
 
     static {
-        properties = new Properties();
 
         try (InputStream inputStream =
                      ConfigReader.class
                              .getClassLoader()
-                             .getResourceAsStream("environmentvariables/config.properties")) {
+                             .getResourceAsStream(CONFIG_FILE)) {
 
             if (inputStream == null) {
+
                 throw new RuntimeException(
-                    "config.properties not found in classpath: " +
-                    "environmentvariables/config.properties"
+                        "Configuration file not found in classpath: "
+                                + CONFIG_FILE
                 );
             }
 
             properties.load(inputStream);
 
         } catch (IOException e) {
+
             throw new RuntimeException(
-                "Failed to load config.properties",
-                e
+                    "Failed to load configuration file: "
+                            + CONFIG_FILE,
+                    e
             );
         }
     }
 
     public static String getProperty(String key) {
-        return properties.getProperty(key);
+
+        String value = properties.getProperty(key);
+
+        if (value == null || value.trim().isEmpty()) {
+
+            throw new RuntimeException(
+                    "Configuration property is missing or empty: "
+                            + key
+            );
+        }
+
+        return value.trim();
     }
 }
+

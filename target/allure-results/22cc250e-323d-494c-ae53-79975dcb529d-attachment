@@ -1,0 +1,6 @@
+Method: POST
+Base URL: https://automationexercise.com
+Endpoint: /api/createAccount
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{country=South Africa, firstname=Gloria, address2=Suite 839, city=Laceyville, birth_month=May, address1=4163 Lang Walk, birth_date=10, title=Mr, birth_year=1995, lastname=McLaughlin, zipcode=97183-3631, password=********, name=Merle Rice, company=Reinger-Ferry, state=Massachusetts, mobile_number=(159) 603-8710, email=user1788871587307@test.com}

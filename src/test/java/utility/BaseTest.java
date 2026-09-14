@@ -7,31 +7,24 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import api.model.UserModel;
-import api.services.UserApiService;
+import api.setup.TestDataSetup;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
 
 import java.io.ByteArrayInputStream;
 
-public class BaseTest {
+public class BaseTest extends TestDataSetup {
 
 	protected WebDriver driver;
 	protected UserModel user;
 	protected ActionHelper action;
 
 	@BeforeMethod
-	@Step("Create a random user, driver and launch the URL")
+	@Step("Create driver and launch the application")
 	public void setup() {
 
 		// Clear the logs
 		FrameworkLogger.clearTestLogs();
-
-		// Create random user
-		user = UserApiService.registerRandomUser();
-
-		FrameworkLogger.info(
-				"Created user: " + user.getEmail()
-				);
 
 		// Create thread-safe WebDriver
 		DriverFactory.createDriver();
@@ -47,13 +40,35 @@ public class BaseTest {
 				driver
 				);
 
-		// Wait for page load
-		action.waitForPageLoad();
-
 		// Navigate to application
 		action.navigateTo(
 				ConfigReader.getProperty("url")
 				);
+
+		FrameworkLogger.info("Current URL before wait: " + driver.getCurrentUrl());
+		FrameworkLogger.info("Page title before wait: " + driver.getTitle());
+		// Wait for page load
+		action.waitForPageLoad();
+		
+		FrameworkLogger.info("Page loaded successfully.");
+		FrameworkLogger.info("Current URL after wait: " + driver.getCurrentUrl());
+		FrameworkLogger.info("Page title after wait: " + driver.getTitle());
+
+		String currentTitle = driver.getTitle();
+		String currentUrl = driver.getCurrentUrl();
+
+		FrameworkLogger.info("Current URL: " + currentUrl);
+		FrameworkLogger.info("Page Title: " + currentTitle);
+
+		if (currentTitle.equalsIgnoreCase("One moment, please...")) {
+
+			throw new IllegalStateException(
+					"Application is blocked by a verification page. " +
+							"Expected the Automation Exercise homepage but received: "
+							+ currentTitle
+					);
+
+		}
 	}
 
 	// Returns the current driver

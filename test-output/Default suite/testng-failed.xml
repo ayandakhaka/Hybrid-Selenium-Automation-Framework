@@ -6,8 +6,10 @@
       <class name="ui.tests.CartTest">
         <methods>
           <include name="setup"/>
+          <include name="cleanupTestData"/>
           <include name="tearDown"/>
           <include name="verifyAddSingleProductToCart"/>
+          <include name="initializeTestData"/>
           <include name="setupLogin"/>
         </methods>
       </class> <!-- ui.tests.CartTest -->

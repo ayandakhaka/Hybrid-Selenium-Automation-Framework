@@ -13,7 +13,7 @@ public class HomePage extends BasePage {
 		super(driver);
 	}
 	
-	private By signupLoginButton = By.xpath("//i[@class='fa fa-lock' ]");
+	private By signupLoginButton = By.cssSelector("a[href='/login']");
 	private By cartButton = By.cssSelector("a[href='/view_cart']");
 	private By emptyCart = By.xpath("//p[@class='text-center']");
 	
