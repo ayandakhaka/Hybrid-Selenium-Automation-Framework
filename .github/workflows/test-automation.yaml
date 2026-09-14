@@ -51,6 +51,18 @@ jobs:
           java -version
           mvn -version
 
+      # Restore previous history into Allure results
+      - name: Prepare Previous Allure History
+        if: always()
+        run: |
+          if [ -d "allure-history" ] && [ "$(ls -A allure-history)" ]; then
+            echo "Previous Allure history found."
+            mkdir -p target/allure-results/history
+            cp -R allure-history/. target/allure-results/history/
+          else
+            echo "No previous Allure history found. This may be the first run."
+          fi
+
       # Run API Tests
       - name: Run API Tests
         run: |
@@ -59,46 +71,40 @@ jobs:
       # Generate Allure Report
       - name: Generate Allure Report
         if: always()
-        run: mvn allure:report
-        
-      # Preserve the generated history
-      - name: Prepare Allure History
+        run: |
+          mvn allure:report
+
+      # Prepare updated Allure history
+      - name: Prepare Updated Allure History
         if: always()
         run: |
           rm -rf allure-history
           mkdir -p allure-history
-          cp -R target/site/allure-maven-plugin/history/. allure-history/
-          
-      # Save it for the next run   
+
+          if [ -d "target/site/allure-maven-plugin/history" ]; then
+            cp -R target/site/allure-maven-plugin/history/. allure-history/
+            echo "Updated Allure history prepared."
+          else
+            echo "No Allure history directory found."
+          fi
+
+      # Save updated history
       - name: Save Allure History
         if: always()
         uses: actions/cache/save@v4
         with:
           path: allure-history
           key: allure-history-${{ github.ref_name }}-${{ github.run_id }}
-          
-      # Restore previous history into the new Allure report
-      - name: Add Allure History
-        if: always()
-        run: |
-          if [ -d "allure-history" ]; then
-            mkdir -p target/site/allure-maven-plugin/history
-            cp -R allure-history/. target/site/allure-maven-plugin/history/
-          fi
-
-      # Save current Allure history for the next run
-      - name: Save Allure History
-        if: always()
-        uses: actions/cache/save@v4
-        with:
-          path: target/site/allure-maven-plugin/history
-          key: allure-history-${{ github.ref_name }}-${{ github.run_id }}
 
       # Customize Allure Report title
       - name: Customize Allure Report
         if: always()
         run: |
-          find target/site/allure-maven-plugin -type f -name "*.js" -exec sed -i 's/Allure Report/Hybrid UI \& API Test Automation — QA Report/g' {} +
+          find target/site/allure-maven-plugin \
+            -type f \
+            -name "*.js" \
+            -exec sed -i \
+            's/Allure Report/Hybrid UI \& API Test Automation — QA Report/g' {} +
 
       # Upload GitHub Pages Artifact
       - name: Upload GitHub Pages Artifact
