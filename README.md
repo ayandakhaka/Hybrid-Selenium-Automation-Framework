@@ -64,6 +64,8 @@ src
 |       |   |   └── UserPayload
 │       │   └── services
 │       │       └── UserApiService
+|       |   ├── testdata
+|       |   |   └── TestDataManager
 │       ├── pages
 |       |   ├── HomePage
 |       |   ├── LoginPage
@@ -84,7 +86,11 @@ src
 ├── test
 │   └── java
 │       ├── api
-|           └── AutomationExerciseAPITests
+|       |   ├──setup
+|       |   |  └── ApiTestSetup
+|       |   |  ├── TestDataSetup
+|       |   ├──tests
+|       |   |  └── AutomationExerciseAPITests
 │       ├── ui
 |           ├── CartTest
 |           ├── LoginTest
