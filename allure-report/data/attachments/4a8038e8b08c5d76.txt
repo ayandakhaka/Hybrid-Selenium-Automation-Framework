@@ -1,0 +1,6 @@
+Method: PUT
+Base URL: https://automationexercise.com
+Endpoint: /api/verifyLogin
+Content-Type: application/x-www-form-urlencoded
+Request Parameters:
+{country=South Africa, firstname=Karyn, address2=Apt. 180, city=New Yolondaburgh, birth_month=May, address1=4888 Tswelopele ext8 Thembisa, birth_date=10, title=Mr, birth_year=1995, lastname=Breitenberg, zipcode=52950, password=********, name=Ayanda Khaka, company=Deckow and Sons, state=Michigan, mobile_number=0634943658, email=user1789562267678@test.com}

@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Leora, address2=Apt. 227, city=Keturahville, birth_month=May, address1=020 Kristian Light, birth_date=10, title=Mr, birth_year=1995, lastname=Senger, zipcode=99551-8476, password=********, name=Denis Gerlach, company=Hansen, Klocko and Walsh, state=Texas, mobile_number=6403206495, email=user1789384323496@test.com}

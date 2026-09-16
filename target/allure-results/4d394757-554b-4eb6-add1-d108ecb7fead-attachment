@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Kelley, address2=Suite 044, city=Kiraland, birth_month=May, address1=460 Gregory Crossroad, birth_date=10, title=Mr, birth_year=1995, lastname=Schoen, zipcode=72750, password=********, name=Ms. Demetria Keeling, company=Yost Group, state=Kansas, mobile_number=2057352491, email=user1789121406001@test.com}

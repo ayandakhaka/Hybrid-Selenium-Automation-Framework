@@ -51,7 +51,12 @@ jobs:
           java -version
           mvn -version
 
-      # Restore previous history into Allure results
+      # Run API Tests
+      - name: Run API Tests
+        run: |
+          mvn clean test -DsuiteXmlFile=src/test/resources/testng-api.xml
+
+      # Restore previous Allure history into new test results
       - name: Prepare Previous Allure History
         if: always()
         run: |
@@ -62,11 +67,6 @@ jobs:
           else
             echo "No previous Allure history found. This may be the first run."
           fi
-
-      # Run API Tests
-      - name: Run API Tests
-        run: |
-          mvn clean test -DsuiteXmlFile=src/test/resources/testng-api.xml
 
       # Generate Allure Report
       - name: Generate Allure Report

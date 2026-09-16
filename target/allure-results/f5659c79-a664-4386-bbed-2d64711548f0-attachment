@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Denis, address2=Suite 428, city=Shantaeshire, birth_month=May, address1=87888 Torp Points, birth_date=10, title=Mr, birth_year=1995, lastname=Haley, zipcode=19754-3151, password=********, name=Eleonore Walker, company=Metz-Mante, state=Alaska, mobile_number=2256224065, email=user1789375265742@test.com}

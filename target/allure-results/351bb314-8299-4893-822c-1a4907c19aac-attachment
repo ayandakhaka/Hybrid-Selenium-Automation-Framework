@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Jan, address2=Suite 172, city=Botsfordshire, birth_month=May, address1=7166 Baumbach Ville, birth_date=10, title=Mr, birth_year=1995, lastname=Rodriguez, zipcode=11221, password=********, name=Yoshiko Herman, company=Prosacco LLC, state=Oregon, mobile_number=3958148547, email=user1789382943162@test.com}

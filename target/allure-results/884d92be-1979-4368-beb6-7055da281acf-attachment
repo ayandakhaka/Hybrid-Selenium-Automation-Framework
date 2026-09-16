@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Bret, address2=Suite 936, city=West Yadirafurt, birth_month=May, address1=84983 Ned Plains, birth_date=10, title=Mr, birth_year=1995, lastname=Bosco, zipcode=55411, password=********, name=Phylicia Koss, company=Hartmann, Goodwin and Rutherford, state=Kansas, mobile_number=0278172832, email=user1789378494329@test.com}

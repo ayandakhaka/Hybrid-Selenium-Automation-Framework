@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Merrill, address2=Apt. 179, city=South Maritaville, birth_month=May, address1=886 Gidget Harbors, birth_date=10, title=Mr, birth_year=1995, lastname=McDermott, zipcode=07694-7955, password=********, name=Hollis Johnston, company=O'Connell-Lindgren, state=Ohio, mobile_number=9339535696, email=user1789381421410@test.com}

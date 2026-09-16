@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Maria, address2=Apt. 026, city=Hortensiaton, birth_month=May, address1=82823 Adelia View, birth_date=10, title=Mr, birth_year=1995, lastname=Harvey, zipcode=80975-1053, password=********, name=Lionel Leannon, company=Orn, Lowe and Welch, state=Minnesota, mobile_number=8239229340, email=user1789383875603@test.com}

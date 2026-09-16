@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Dylan, address2=Apt. 673, city=Isauraton, birth_month=May, address1=032 Rosenbaum Fords, birth_date=10, title=Mr, birth_year=1995, lastname=Schaefer, zipcode=47324-9908, password=********, name=Jae Renner, company=Bergnaum Inc, state=South Carolina, mobile_number=(600) 541-6375, email=user1788778598850@test.com}

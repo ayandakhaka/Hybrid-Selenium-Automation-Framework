@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Sheldon, address2=Apt. 604, city=Peteshire, birth_month=May, address1=5035 Conn Lodge, birth_date=10, title=Mr, birth_year=1995, lastname=Padberg, zipcode=17529, password=********, name=Cora Kertzmann, company=Wiegand Inc, state=Alaska, mobile_number=2789653020, email=user1789120131966@test.com}

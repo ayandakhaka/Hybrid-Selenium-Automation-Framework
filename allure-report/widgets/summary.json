@@ -1,1 +1,1 @@
-{"reportName":"Automation Exercise - UI & API Test Report","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":0,"unknown":0,"total":0},"time":{}}
+{"reportName":"Allure Report","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":8,"unknown":0,"total":8},"time":{"start":1789562305488,"stop":1789562330396,"duration":24908,"minDuration":1173,"maxDuration":6304,"sumDuration":23278}}

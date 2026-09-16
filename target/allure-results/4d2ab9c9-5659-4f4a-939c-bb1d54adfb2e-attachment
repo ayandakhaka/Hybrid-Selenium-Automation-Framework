@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Roseanne, address2=Apt. 839, city=West Luramouth, birth_month=May, address1=09106 Waelchi Light, birth_date=10, title=Mr, birth_year=1995, lastname=Dach, zipcode=28874-0419, password=********, name=Mr. Kory Swift, company=Emard, Goyette and DuBuque, state=Oklahoma, mobile_number=9470673236, email=user1789381107023@test.com}

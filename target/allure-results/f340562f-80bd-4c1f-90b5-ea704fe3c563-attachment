@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Jared, address2=Suite 861, city=West Kenyaside, birth_month=May, address1=6879 Seth Curve, birth_date=10, title=Mr, birth_year=1995, lastname=Howe, zipcode=42725-4370, password=********, name=Carlie Kuhlman, company=Kautzer, Sawayn and Larkin, state=Georgia, mobile_number=3618969992, email=user1789122236421@test.com}

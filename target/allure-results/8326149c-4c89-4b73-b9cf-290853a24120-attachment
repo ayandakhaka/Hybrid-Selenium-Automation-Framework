@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Terrell, address2=Apt. 914, city=South Ignaciomouth, birth_month=May, address1=23719 Chandra Lodge, birth_date=10, title=Mr, birth_year=1995, lastname=Gottlieb, zipcode=11112, password=********, name=Lester Padberg, company=Pouros, Satterfield and Marvin, state=Georgia, mobile_number=3553409628, email=user1789379509427@test.com}

@@ -1,6 +1,0 @@
-INFO  - ========== CREATE ENVIRONMENT FILE ==========
-INFO  - Allure API/CI environment.properties created successfully.
-INFO  - ========== TEST SUITE SETUP ==========
-INFO  - Generating test user data..
-INFO  - Creating test user through API: user1789383875603@test.com
-INFO  - Creating user: user1789383875603@test.com

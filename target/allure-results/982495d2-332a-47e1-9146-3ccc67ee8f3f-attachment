@@ -1,6 +1,0 @@
-Method: POST
-Base URL: https://automationexercise.com
-Endpoint: /api/createAccount
-Content-Type: application/x-www-form-urlencoded
-Request Parameters:
-{country=South Africa, firstname=Walton, address2=Suite 739, city=South Reatha, birth_month=May, address1=23113 Eugenio Run, birth_date=10, title=Mr, birth_year=1995, lastname=Hamill, zipcode=65585, password=********, name=Miguel Wolff II, company=Hintz LLC, state=Montana, mobile_number=1-612-926-0157, email=user1788777430171@test.com}
