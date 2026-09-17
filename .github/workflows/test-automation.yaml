@@ -182,6 +182,34 @@ jobs:
           echo "========================================"
 
           mvn allure:report
+          
+      # ========================================================
+      # CUSTOMIZE ALLURE REPORT TITLE
+      # ========================================================
+      - name: Customize Allure Report Title
+        if: always()
+        run: |
+
+          REPORT_DIR="target/site/allure-maven-plugin"
+
+          echo "========================================"
+          echo "Customizing Allure Report Title"
+          echo "========================================"
+
+          if [ -f "$REPORT_DIR/index.html" ]; then
+
+            sed -i 's/<title>[^<]*<\/title>/<title>Hybrid UI \& API Test Automation — QA Report<\/title>/' \
+              "$REPORT_DIR/index.html"
+
+            echo "Report title changed successfully."
+
+            grep -o '<title>[^<]*</title>' "$REPORT_DIR/index.html"
+
+          else
+
+            echo "ERROR: index.html not found."
+
+          fi
 
 
       # ========================================================
