@@ -1,34 +1,40 @@
-/* =========================================================
+/* ============================================================
    HYBRID UI & API TEST AUTOMATION
-   Dark QA Portfolio Theme
-   ========================================================= */
+   DARK QA PORTFOLIO THEME FOR ALLURE
+   ============================================================ */
 
 :root {
     --qa-bg: #0b0f14;
     --qa-surface: #111820;
     --qa-surface-2: #161f29;
+    --qa-surface-3: #1c2631;
     --qa-border: #263341;
+
     --qa-text: #f1f5f9;
+    --qa-text-secondary: #cbd5e1;
     --qa-muted: #94a3b8;
+
     --qa-accent: #38bdf8;
+
     --qa-success: #22c55e;
     --qa-danger: #ef4444;
     --qa-warning: #f59e0b;
 }
 
-/* =========================================================
-   Main application
-   ========================================================= */
 
+/* ============================================================
+   GLOBAL PAGE
+   ============================================================ */
+
+html,
 body {
     background: var(--qa-bg) !important;
     color: var(--qa-text) !important;
 }
 
-
-/* =========================================================
-   Main content
-   ========================================================= */
+body {
+    color: var(--qa-text) !important;
+}
 
 #app {
     background: var(--qa-bg) !important;
@@ -36,9 +42,29 @@ body {
 }
 
 
-/* =========================================================
-   Navigation
-   ========================================================= */
+/* ============================================================
+   ALLURE MAIN CONTENT
+   ============================================================ */
+
+.page {
+    background: var(--qa-bg) !important;
+    color: var(--qa-text) !important;
+}
+
+.content {
+    background: var(--qa-bg) !important;
+    color: var(--qa-text) !important;
+}
+
+.main {
+    background: var(--qa-bg) !important;
+    color: var(--qa-text) !important;
+}
+
+
+/* ============================================================
+   SIDE NAVIGATION
+   ============================================================ */
 
 .side-nav {
     background: #080c11 !important;
@@ -54,10 +80,15 @@ body {
     color: var(--qa-text) !important;
 }
 
+.side-nav__item.active {
+    background: var(--qa-surface-3) !important;
+    color: var(--qa-text) !important;
+}
 
-/* =========================================================
-   Panels / Cards
-   ========================================================= */
+
+/* ============================================================
+   CARDS / WIDGETS
+   ============================================================ */
 
 .card {
     background: var(--qa-surface) !important;
@@ -68,36 +99,13 @@ body {
 .widget {
     background: var(--qa-surface) !important;
     border-color: var(--qa-border) !important;
-}
-
-
-/* =========================================================
-   Tables
-   ========================================================= */
-
-table {
-    background: var(--qa-surface) !important;
     color: var(--qa-text) !important;
 }
 
-th {
-    background: var(--qa-surface-2) !important;
-    color: var(--qa-text) !important;
-}
 
-td {
-    border-color: var(--qa-border) !important;
-    color: var(--qa-text) !important;
-}
-
-tr:hover {
-    background: var(--qa-surface-2) !important;
-}
-
-
-/* =========================================================
-   Text
-   ========================================================= */
+/* ============================================================
+   HEADINGS
+   ============================================================ */
 
 h1,
 h2,
@@ -108,34 +116,175 @@ h6 {
     color: var(--qa-text) !important;
 }
 
+
+/* ============================================================
+   GENERAL TEXT
+   ============================================================ */
+
 p,
 span,
-label {
+label,
+div {
     color: inherit;
 }
 
 
-/* =========================================================
-   Links
-   ========================================================= */
+/* ============================================================
+   TABLES
+   ============================================================ */
+
+table {
+    background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
+    border-color: var(--qa-border) !important;
+}
+
+thead,
+tbody {
+    background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
+}
+
+th {
+    background: var(--qa-surface-2) !important;
+    color: var(--qa-text) !important;
+    border-color: var(--qa-border) !important;
+}
+
+td {
+    background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
+    border-color: var(--qa-border) !important;
+}
+
+tr {
+    background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
+}
+
+tr:hover {
+    background: var(--qa-surface-2) !important;
+}
+
+
+/* ============================================================
+   ALLURE ENVIRONMENT
+   ============================================================ */
+
+/*
+ * Allure Environment uses several internal classes depending
+ * on the Allure version. These selectors intentionally cover
+ * the common variants.
+ */
+
+.environment,
+.environment__content,
+.environment__table,
+.environment__item,
+.environment__row,
+.environment__name,
+.environment__value {
+    color: var(--qa-text) !important;
+}
+
+
+/* Environment containers */
+
+.environment,
+.environment__content,
+.environment__table {
+    background: var(--qa-surface) !important;
+}
+
+
+/* Environment labels */
+
+.environment__name,
+.environment__item-name,
+.environment .name,
+.environment .label {
+    color: var(--qa-text-secondary) !important;
+    font-weight: 600 !important;
+}
+
+
+/* Environment values */
+
+.environment__value,
+.environment__item-value,
+.environment .value {
+    color: var(--qa-text) !important;
+    font-weight: 500 !important;
+}
+
+
+/* Environment table */
+
+.environment table {
+    background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
+}
+
+.environment table tr {
+    background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
+}
+
+.environment table tr:nth-child(even) {
+    background: var(--qa-surface-2) !important;
+}
+
+.environment table td,
+.environment table th {
+    background: transparent !important;
+    color: var(--qa-text) !important;
+    border-color: var(--qa-border) !important;
+}
+
+
+/* Strong text / bold values */
+
+.environment strong,
+.environment b {
+    color: var(--qa-text) !important;
+}
+
+
+/* ============================================================
+   ALLURE LABELS / DETAILS
+   ============================================================ */
+
+.label {
+    color: var(--qa-text-secondary) !important;
+}
+
+.label__value {
+    color: var(--qa-text) !important;
+}
+
+
+/* ============================================================
+   LINKS
+   ============================================================ */
 
 a {
     color: var(--qa-accent) !important;
 }
 
+a:hover {
+    color: #7dd3fc !important;
+}
 
-/* =========================================================
-   Test status
-   ========================================================= */
+
+/* ============================================================
+   TEST STATUS
+   ============================================================ */
 
 .status-passed {
     color: var(--qa-success) !important;
 }
 
-.status-failed {
-    color: var(--qa-danger) !important;
-}
-
+.status-failed,
 .status-broken {
     color: var(--qa-danger) !important;
 }
@@ -145,9 +294,9 @@ a {
 }
 
 
-/* =========================================================
-   Code / Logs
-   ========================================================= */
+/* ============================================================
+   CODE / LOGS
+   ============================================================ */
 
 pre,
 code {
@@ -156,10 +305,15 @@ code {
     border-color: var(--qa-border) !important;
 }
 
+pre *,
+code * {
+    color: #e2e8f0 !important;
+}
 
-/* =========================================================
-   Test details
-   ========================================================= */
+
+/* ============================================================
+   TEST RESULT DETAILS
+   ============================================================ */
 
 .test-result {
     background: var(--qa-bg) !important;
@@ -168,12 +322,13 @@ code {
 
 .test-result__content {
     background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
 }
 
 
-/* =========================================================
-   Inputs
-   ========================================================= */
+/* ============================================================
+   INPUTS / CONTROLS
+   ============================================================ */
 
 input,
 textarea,
@@ -183,10 +338,10 @@ select {
     border: 1px solid var(--qa-border) !important;
 }
 
-
-/* =========================================================
-   Buttons
-   ========================================================= */
+input::placeholder,
+textarea::placeholder {
+    color: var(--qa-muted) !important;
+}
 
 button {
     background: var(--qa-surface-2) !important;
@@ -196,12 +351,24 @@ button {
 
 button:hover {
     background: #1e2936 !important;
+    color: #ffffff !important;
 }
 
 
-/* =========================================================
-   Scrollbars
-   ========================================================= */
+/* ============================================================
+   FILTERS / SEARCH
+   ============================================================ */
+
+input[type="text"],
+input[type="search"] {
+    background: var(--qa-surface-2) !important;
+    color: var(--qa-text) !important;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
 
 ::-webkit-scrollbar {
     width: 10px;
