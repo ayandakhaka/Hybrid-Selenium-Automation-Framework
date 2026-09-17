@@ -197,42 +197,102 @@ jobs:
           echo "========================================"
 
           mvn allure:report
+          
+      - name: Diagnose Allure Title
+        if: always()
+        run: |
+
+          echo "========================================"
+          echo "Searching Allure Report for title"
+          echo "========================================"
+
+          grep -RIn \
+            --exclude="*.map" \
+            "Allure Report" \
+            target/site/allure-maven-plugin/ \
+            | head -100 || true
 
 
       # ========================================================
-      # Customize Allure Report Browser Title
+      # CUSTOMIZE ALLURE REPORT BRANDING
       # ========================================================
-      - name: Customize Allure Report Title
+      - name: Customize Allure Report Branding
         if: always()
         run: |
 
           REPORT_DIR="target/site/allure-maven-plugin"
 
           echo "========================================"
-          echo "Customizing Allure Report Title"
+          echo "Customizing Allure Report Branding"
           echo "========================================"
 
+          if [ ! -d "$REPORT_DIR" ]; then
+            echo "ERROR: Allure report directory not found."
+            exit 1
+          fi
+
+          echo ""
+          echo "Searching generated Allure files..."
+
+          # ----------------------------------------------------
+          # Find JavaScript files containing the default title
+          # ----------------------------------------------------
+          grep -RIl \
+            --exclude="*.map" \
+            "Allure Report" \
+            "$REPORT_DIR" \
+            > /tmp/allure-title-files.txt || true
+
+
+          echo ""
+          echo "Files containing 'Allure Report':"
+
+          cat /tmp/allure-title-files.txt || true
+
+
+          # ----------------------------------------------------
+          # Replace the default Allure title in generated files
+          # ----------------------------------------------------
+          while IFS= read -r FILE
+          do
+
+            if [ -f "$FILE" ]; then
+
+              echo ""
+              echo "Updating:"
+              echo "$FILE"
+
+              sed -i \
+                's/Allure Report/Hybrid UI \& API Test Automation — QA Report/g' \
+                "$FILE"
+
+            fi
+
+          done < /tmp/allure-title-files.txt
+
+
+          # ----------------------------------------------------
+          # Also update HTML title if present
+          # ----------------------------------------------------
           if [ -f "$REPORT_DIR/index.html" ]; then
 
             sed -i \
-              's/<title>[^<]*<\/title>/<title>Hybrid UI \& API Test Automation — QA Report<\/title>/' \
+              's/<title>[^<]*<\/title>/<title>Hybrid UI \& API Test Automation — QA Report<\/title>/g' \
               "$REPORT_DIR/index.html"
-
-            echo ""
-            echo "Report title changed successfully."
-
-            echo ""
-            echo "Current title:"
-
-            grep -o \
-              '<title>[^<]*</title>' \
-              "$REPORT_DIR/index.html"
-
-          else
-
-            echo "ERROR: index.html not found."
 
           fi
+
+
+          echo ""
+          echo "========================================"
+          echo "Branding verification"
+          echo "========================================"
+
+          grep -RIl \
+            --exclude="*.map" \
+            "Hybrid UI & API Test Automation" \
+            "$REPORT_DIR" \
+            | head -50 || true
 
 
       # ========================================================
