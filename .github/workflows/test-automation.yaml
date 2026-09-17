@@ -77,15 +77,50 @@ jobs:
 
 
       # ========================================================
-      # Restore previous Allure history
+      # RESTORE PREVIOUS ALLURE HISTORY
+      #
+      # Every run gets a unique cache key.
+      # restore-keys allows GitHub Actions to retrieve the
+      # latest existing allure-history-* cache.
       # ========================================================
       - name: Restore Allure History
         uses: actions/cache/restore@v4
         with:
           path: allure-history
-          key: allure-history-main
+          key: allure-history-${{ github.run_id }}
           restore-keys: |
             allure-history-
+
+
+      # ========================================================
+      # Show restored history
+      # ========================================================
+      - name: Inspect Restored Allure History
+        if: always()
+        run: |
+
+          echo "========================================"
+          echo "Inspecting Restored Allure History"
+          echo "========================================"
+
+          if [ -d "allure-history" ] && [ "$(ls -A allure-history)" ]; then
+
+            echo "Previous Allure history found."
+
+            echo ""
+            echo "History files:"
+
+            find allure-history \
+              -maxdepth 2 \
+              -type f \
+              -print
+
+          else
+
+            echo "No previous Allure history found."
+            echo "This may be the first Allure execution."
+
+          fi
 
 
       # ========================================================
@@ -130,11 +165,15 @@ jobs:
 
 
       # ========================================================
-      # Restore previous Allure history
+      # Prepare Previous Allure History
       # ========================================================
       - name: Prepare Previous Allure History
         if: always()
         run: |
+
+          echo "========================================"
+          echo "Preparing Previous Allure History"
+          echo "========================================"
 
           if [ -d "allure-history" ] && [ "$(ls -A allure-history)" ]; then
 
@@ -147,6 +186,14 @@ jobs:
               target/allure-results/history/
 
             echo "Previous Allure history copied."
+
+            echo ""
+            echo "History now available to Allure:"
+
+            find target/allure-results/history \
+              -maxdepth 2 \
+              -type f \
+              -print
 
           else
 
@@ -209,7 +256,7 @@ jobs:
           mvn allure:report
 
 
-            # ========================================================
+      # ========================================================
       # APPLY DARK QA PORTFOLIO THEME
       # ========================================================
       - name: Apply Dark QA Portfolio Theme
@@ -219,70 +266,123 @@ jobs:
           REPORT_DIR="target/site/allure-maven-plugin"
 
           echo "========================================"
-          echo "Applying Allure Theme"
+          echo "Applying Dark QA Portfolio Theme"
           echo "========================================"
 
-          if [ ! -f "$REPORT_DIR/index.html" ]; then
-            echo "ERROR: Allure index.html not found."
+          if [ ! -d "$REPORT_DIR" ]; then
+
+            echo "ERROR: Allure report directory not found."
+
             exit 1
+
           fi
 
-          cat > "$REPORT_DIR/allure-theme.css" <<'EOF'
 
-          # ================================================
-          #  FORCE DARK BACKGROUND
-          # ================================================ */
+          # ----------------------------------------------------
+          # Check custom CSS
+          # ----------------------------------------------------
+
+          if [ ! -f "src/test/resources/allure-theme.css" ]; then
+
+            echo "ERROR: allure-theme.css not found."
+
+            echo "Expected location:"
+            echo "src/test/resources/allure-theme.css"
+
+            exit 1
+
+          fi
+
+
+          # ----------------------------------------------------
+          # Copy custom CSS
+          # ----------------------------------------------------
+
+          cp src/test/resources/allure-theme.css \
+             "$REPORT_DIR/allure-theme.css"
+
+
+          # ----------------------------------------------------
+          # Create additional dark-mode override
+          # ----------------------------------------------------
+
+          cat > "$REPORT_DIR/allure-dark-override.css" <<'EOF'
+
+          /* ==================================================
+             ALLURE DARK MODE
+             ================================================== */
 
           html,
           body,
           #app {
               background: #0b0f14 !important;
+              color: #ffffff !important;
           }
 
 
-          # ================================================
-          #  FORCE WHITE TEXT EVERYWHERE
-          # ================================================ 
+          /* ==================================================
+             GLOBAL TEXT
+             ================================================== */
 
-          body,
-          #app,
           #app * {
               color: #ffffff !important;
           }
 
 
-          # ================================================
-          #  ENVIRONMENT
-          # ================================================ */
+          /* ==================================================
+             ENVIRONMENT
+             ================================================== */
 
-          #app table {
-              background: #111820 !important;
+          #app [class*="environment"],
+          #app [class*="environment"] * {
+              color: #ffffff !important;
           }
 
-          #app table tr {
-              background: #111820 !important;
-          }
 
-          #app table td,
-          #app table th {
-              background: #111820 !important;
+          #app [class*="environment"] table,
+          #app [class*="environment"] tr,
+          #app [class*="environment"] td,
+          #app [class*="environment"] th {
+              background-color: #111820 !important;
               color: #ffffff !important;
               border-color: #263341 !important;
           }
 
 
-          # ================================================
-          #  LINKS
-          # ================================================ */
+          /* ==================================================
+             TABLES
+             ================================================== */
+
+          #app table {
+              background-color: #111820 !important;
+              color: #ffffff !important;
+          }
+
+
+          #app th {
+              background-color: #161f29 !important;
+              color: #ffffff !important;
+          }
+
+
+          #app td {
+              background-color: #111820 !important;
+              color: #ffffff !important;
+          }
+
+
+          /* ==================================================
+             LINKS
+             ================================================== */
 
           #app a {
               color: #38bdf8 !important;
           }
 
 
-          # ================================================
-          #   HEADINGS
-          # ================================================ 
+          /* ==================================================
+             HEADINGS
+             ================================================== */
 
           #app h1,
           #app h2,
@@ -293,17 +393,59 @@ jobs:
               color: #ffffff !important;
           }
 
+
+          /* ==================================================
+             CODE / LOGS
+             ================================================== */
+
+          #app pre,
+          #app code {
+              background-color: #070b10 !important;
+              color: #e2e8f0 !important;
+          }
+
+
+          /* ==================================================
+             INPUTS
+             ================================================== */
+
+          #app input,
+          #app textarea,
+          #app select {
+              background-color: #161f29 !important;
+              color: #ffffff !important;
+              border-color: #263341 !important;
+          }
+
+
+          /* ==================================================
+             BUTTONS
+             ================================================== */
+
+          #app button {
+              background-color: #161f29 !important;
+              color: #ffffff !important;
+              border-color: #263341 !important;
+          }
+
+
+          /* ==================================================
+             CARDS
+             ================================================== */
+
+          #app .card,
+          #app .widget {
+              background-color: #111820 !important;
+              color: #ffffff !important;
+              border-color: #263341 !important;
+          }
+
           EOF
 
 
-          echo ""
-          echo "Created:"
-          ls -lh "$REPORT_DIR/allure-theme.css"
-
-
-          # ====================================================
-          # Inject CSS BEFORE </head>
-          # ====================================================
+          # ----------------------------------------------------
+          # Inject stylesheets into index.html
+          # ----------------------------------------------------
 
           python3 <<'PY'
 
@@ -317,16 +459,21 @@ jobs:
               encoding="utf-8"
           )
 
-          css = """
+
+          styles = """
           <link rel="stylesheet"
                 href="allure-theme.css?v=999">
+
+          <link rel="stylesheet"
+                href="allure-dark-override.css?v=999">
           """
 
-          if "allure-theme.css?v=999" not in html:
+
+          if "allure-dark-override.css?v=999" not in html:
 
               html = html.replace(
                   "</head>",
-                  css + "\n</head>"
+                  styles + "\n</head>"
               )
 
               report.write_text(
@@ -334,19 +481,21 @@ jobs:
                   encoding="utf-8"
               )
 
-          print("CSS injection completed.")
+
+          print(
+              "Dark Allure theme injected successfully."
+          )
 
           PY
 
 
           echo ""
-          echo "========================================"
-          echo "Verify CSS injection"
-          echo "========================================"
+          echo "Theme files:"
 
-          grep -n \
-            "allure-theme.css" \
-            "$REPORT_DIR/index.html" || true
+          ls -lh \
+            "$REPORT_DIR/allure-theme.css" \
+            "$REPORT_DIR/allure-dark-override.css"
+
 
       # ========================================================
       # DIAGNOSE ALLURE TITLE
@@ -393,7 +542,7 @@ jobs:
 
 
           # ----------------------------------------------------
-          # Find files containing the default title
+          # Find files containing default title
           # ----------------------------------------------------
 
           grep -RIl \
@@ -432,7 +581,7 @@ jobs:
 
 
           # ----------------------------------------------------
-          # Update HTML title if present
+          # Update HTML title
           # ----------------------------------------------------
 
           if [ -f "$REPORT_DIR/index.html" ]; then
@@ -458,7 +607,7 @@ jobs:
 
 
       # ========================================================
-      # Verify Allure Report
+      # VERIFY ALLURE REPORT
       # ========================================================
       - name: Verify Allure Report
         if: always()
@@ -506,7 +655,7 @@ jobs:
 
 
       # ========================================================
-      # Verify Allure History
+      # VERIFY ALLURE HISTORY
       # ========================================================
       - name: Verify Allure History
         if: always()
@@ -523,9 +672,29 @@ jobs:
 
             echo ""
 
+            echo "History files:"
+
             find target/site/allure-maven-plugin/history \
               -maxdepth 2 \
-              -type f
+              -type f \
+              -print
+
+            echo ""
+
+            echo "========================================"
+            echo "History Trend"
+            echo "========================================"
+
+            if [ -f "target/site/allure-maven-plugin/history/history-trend.json" ]; then
+
+              cat \
+                target/site/allure-maven-plugin/history/history-trend.json
+
+            else
+
+              echo "history-trend.json not found."
+
+            fi
 
           else
 
@@ -535,11 +704,86 @@ jobs:
 
 
       # ========================================================
-      # Prepare Updated Allure History
+      # CHECK NUMBER OF TREND EXECUTIONS
+      # ========================================================
+      - name: Check Allure Trend History
+        if: always()
+        run: |
+
+          echo "========================================"
+          echo "Checking Allure Trend History"
+          echo "========================================"
+
+
+          TREND_FILE="target/site/allure-maven-plugin/history/history-trend.json"
+
+
+          if [ -f "$TREND_FILE" ]; then
+
+            echo "Trend file found."
+
+            echo ""
+
+            python3 <<'PY'
+
+          import json
+          from pathlib import Path
+
+          trend_file = Path(
+              "target/site/allure-maven-plugin/history/history-trend.json"
+          )
+
+          try:
+
+              data = json.loads(
+                  trend_file.read_text(
+                      encoding="utf-8"
+                  )
+              )
+
+              print(
+                  f"Number of Allure trend executions: {len(data)}"
+              )
+
+              for index, item in enumerate(data, start=1):
+
+                  stats = item.get("data", {})
+
+                  print(
+                      f"Execution {index}: "
+                      f"total={stats.get('total', 0)}, "
+                      f"passed={stats.get('passed', 0)}, "
+                      f"failed={stats.get('failed', 0)}, "
+                      f"broken={stats.get('broken', 0)}, "
+                      f"skipped={stats.get('skipped', 0)}"
+                  )
+
+          except Exception as exc:
+
+              print(
+                  f"Could not parse history-trend.json: {exc}"
+              )
+
+          PY
+
+          else
+
+            echo "No history-trend.json found."
+
+          fi
+
+
+      # ========================================================
+      # PREPARE UPDATED ALLURE HISTORY
       # ========================================================
       - name: Prepare Updated Allure History
         if: always()
         run: |
+
+          echo "========================================"
+          echo "Preparing Updated Allure History"
+          echo "========================================"
+
 
           rm -rf allure-history
 
@@ -556,10 +800,11 @@ jobs:
 
             echo ""
 
-            echo "History files:"
+            echo "History files to cache:"
 
             find allure-history \
-              -type f
+              -type f \
+              -print
 
           else
 
@@ -569,7 +814,12 @@ jobs:
 
 
       # ========================================================
-      # Save Updated Allure History
+      # SAVE UPDATED ALLURE HISTORY
+      #
+      # IMPORTANT:
+      # The cache key is unique for this GitHub Actions run.
+      # The next run restores the newest matching
+      # allure-history-* cache using restore-keys.
       # ========================================================
       - name: Save Allure History
         if: always()
@@ -580,7 +830,7 @@ jobs:
 
 
       # ========================================================
-      # Upload GitHub Pages Artifact
+      # UPLOAD GITHUB PAGES ARTIFACT
       # ========================================================
       - name: Upload GitHub Pages Artifact
         if: always()
@@ -590,7 +840,7 @@ jobs:
 
 
       # ========================================================
-      # Upload Surefire Reports
+      # UPLOAD SUREFIRE REPORTS
       # ========================================================
       - name: Upload Surefire Reports
         if: always()
@@ -602,7 +852,7 @@ jobs:
 
 
       # ========================================================
-      # Upload Raw Allure Results
+      # UPLOAD RAW ALLURE RESULTS
       # ========================================================
       - name: Upload Allure Results
         if: always()
@@ -614,7 +864,7 @@ jobs:
 
 
       # ========================================================
-      # Upload Generated Allure HTML Report
+      # UPLOAD GENERATED ALLURE HTML REPORT
       # ========================================================
       - name: Upload Allure HTML Report
         if: always()
