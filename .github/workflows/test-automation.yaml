@@ -1,7 +1,6 @@
 name: API Automation CI
 
 on:
-
   push:
     branches:
       - main
@@ -31,23 +30,23 @@ jobs:
 
     steps:
 
-      # --------------------------------------------------------
+      # ========================================================
       # Checkout repository
-      # --------------------------------------------------------
+      # ========================================================
       - name: Checkout Code
         uses: actions/checkout@v4
 
 
-      # --------------------------------------------------------
+      # ========================================================
       # Setup GitHub Pages
-      # --------------------------------------------------------
+      # ========================================================
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
 
-      # --------------------------------------------------------
+      # ========================================================
       # Setup Java 21
-      # --------------------------------------------------------
+      # ========================================================
       - name: Set up Java 21
         uses: actions/setup-java@v4
         with:
@@ -56,25 +55,28 @@ jobs:
           cache: maven
 
 
-      # --------------------------------------------------------
-      # Verify Java
-      # --------------------------------------------------------
+      # ========================================================
+      # Verify Java and Maven
+      # ========================================================
       - name: Verify Java and Maven
         run: |
+
           echo "========================================"
           echo "Java Version"
           echo "========================================"
+
           java -version
 
           echo ""
           echo "========================================"
           echo "Maven Version"
           echo "========================================"
+
           mvn -version
 
 
       # ========================================================
-      # RESTORE ALLURE HISTORY
+      # Restore previous Allure history
       # ========================================================
       - name: Restore Allure History
         uses: actions/cache/restore@v4
@@ -86,16 +88,21 @@ jobs:
 
 
       # ========================================================
-      # RUN API TESTS
+      # Run API Tests
       # ========================================================
       - name: Run API Tests
         run: |
+
+          echo "========================================"
+          echo "Running API Tests"
+          echo "========================================"
+
           mvn clean test \
             -DsuiteXmlFile=src/test/resources/testng-api.xml
 
 
       # ========================================================
-      # PREPARE ALLURE RESULTS
+      # Prepare Allure Results
       # ========================================================
       - name: Prepare Allure Results
         if: always()
@@ -108,14 +115,21 @@ jobs:
           echo "========================================"
 
           if [ -d "target/allure-results" ]; then
-            find target/allure-results -maxdepth 1 -type f -print
+
+            find target/allure-results \
+              -maxdepth 1 \
+              -type f \
+              -print
+
           else
+
             echo "No Allure results directory found."
+
           fi
 
 
       # ========================================================
-      # RESTORE PREVIOUS HISTORY INTO RESULTS
+      # Restore previous Allure history
       # ========================================================
       - name: Prepare Previous Allure History
         if: always()
@@ -127,7 +141,8 @@ jobs:
 
             mkdir -p target/allure-results/history
 
-            cp -R allure-history/. \
+            cp -R \
+              allure-history/. \
               target/allure-results/history/
 
             echo "Previous Allure history copied."
@@ -140,7 +155,7 @@ jobs:
 
 
       # ========================================================
-      # ADD ALLURE ENVIRONMENT
+      # Add Allure Environment
       # ========================================================
       - name: Add Allure Environment
         if: always()
@@ -171,7 +186,7 @@ jobs:
 
 
       # ========================================================
-      # GENERATE ALLURE REPORT
+      # Generate Allure Report
       # ========================================================
       - name: Generate Allure Report
         if: always()
@@ -182,9 +197,10 @@ jobs:
           echo "========================================"
 
           mvn allure:report
-          
+
+
       # ========================================================
-      # CUSTOMIZE ALLURE REPORT TITLE
+      # Customize Allure Report Browser Title
       # ========================================================
       - name: Customize Allure Report Title
         if: always()
@@ -198,12 +214,19 @@ jobs:
 
           if [ -f "$REPORT_DIR/index.html" ]; then
 
-            sed -i 's/<title>[^<]*<\/title>/<title>Hybrid UI \& API Test Automation — QA Report<\/title>/' \
+            sed -i \
+              's/<title>[^<]*<\/title>/<title>Hybrid UI \& API Test Automation — QA Report<\/title>/' \
               "$REPORT_DIR/index.html"
 
+            echo ""
             echo "Report title changed successfully."
 
-            grep -o '<title>[^<]*</title>' "$REPORT_DIR/index.html"
+            echo ""
+            echo "Current title:"
+
+            grep -o \
+              '<title>[^<]*</title>' \
+              "$REPORT_DIR/index.html"
 
           else
 
@@ -213,7 +236,7 @@ jobs:
 
 
       # ========================================================
-      # VERIFY ALLURE REPORT
+      # Verify Allure Report
       # ========================================================
       - name: Verify Allure Report
         if: always()
@@ -228,7 +251,16 @@ jobs:
           if [ -f "$REPORT" ]; then
 
             echo "Allure report generated successfully."
-            echo "Report: $REPORT"
+
+            echo ""
+            echo "Report location:"
+            echo "$REPORT"
+
+            echo ""
+            echo "Report title:"
+            grep -o \
+              '<title>[^<]*</title>' \
+              "$REPORT"
 
           else
 
@@ -236,7 +268,10 @@ jobs:
 
             echo ""
             echo "Contents of target:"
-            find target -maxdepth 4 -type f | head -200
+
+            find target \
+              -maxdepth 4 \
+              -type f | head -200
 
             exit 1
 
@@ -244,7 +279,7 @@ jobs:
 
 
       # ========================================================
-      # SHOW ALLURE HISTORY
+      # Verify Allure History
       # ========================================================
       - name: Verify Allure History
         if: always()
@@ -258,6 +293,8 @@ jobs:
 
             echo "Allure history exists."
 
+            echo ""
+
             find target/site/allure-maven-plugin/history \
               -type f \
               -maxdepth 2
@@ -270,7 +307,7 @@ jobs:
 
 
       # ========================================================
-      # PREPARE UPDATED HISTORY
+      # Prepare Updated Allure History
       # ========================================================
       - name: Prepare Updated Allure History
         if: always()
@@ -290,7 +327,9 @@ jobs:
 
             echo ""
             echo "History files:"
-            find allure-history -type f
+
+            find allure-history \
+              -type f
 
           else
 
@@ -300,7 +339,7 @@ jobs:
 
 
       # ========================================================
-      # SAVE ALLURE HISTORY
+      # Save Updated Allure History
       # ========================================================
       - name: Save Allure History
         if: always()
@@ -311,7 +350,7 @@ jobs:
 
 
       # ========================================================
-      # UPLOAD GITHUB PAGES ARTIFACT
+      # Upload GitHub Pages Artifact
       # ========================================================
       - name: Upload GitHub Pages Artifact
         if: always()
@@ -321,7 +360,7 @@ jobs:
 
 
       # ========================================================
-      # UPLOAD SUREFIRE REPORTS
+      # Upload Surefire Reports
       # ========================================================
       - name: Upload Surefire Reports
         if: always()
@@ -333,7 +372,7 @@ jobs:
 
 
       # ========================================================
-      # UPLOAD RAW ALLURE RESULTS
+      # Upload Raw Allure Results
       # ========================================================
       - name: Upload Allure Results
         if: always()
@@ -345,7 +384,7 @@ jobs:
 
 
       # ========================================================
-      # UPLOAD ALLURE HTML REPORT
+      # Upload Generated Allure HTML Report
       # ========================================================
       - name: Upload Allure HTML Report
         if: always()
@@ -378,12 +417,11 @@ jobs:
       pages: write
       id-token: write
 
-
     steps:
 
-      # --------------------------------------------------------
-      # Deploy Allure report
-      # --------------------------------------------------------
+      # ========================================================
+      # Deploy Allure Report
+      # ========================================================
       - name: Deploy Allure Report
         id: deployment
         uses: actions/deploy-pages@v4
