@@ -209,7 +209,7 @@ jobs:
           mvn allure:report
 
 
-      # ========================================================
+            # ========================================================
       # APPLY DARK QA PORTFOLIO THEME
       # ========================================================
       - name: Apply Dark QA Portfolio Theme
@@ -219,196 +219,70 @@ jobs:
           REPORT_DIR="target/site/allure-maven-plugin"
 
           echo "========================================"
-          echo "Applying Dark QA Portfolio Theme"
+          echo "Applying Allure Theme"
           echo "========================================"
 
-          if [ ! -d "$REPORT_DIR" ]; then
-            echo "ERROR: Allure report directory not found."
+          if [ ! -f "$REPORT_DIR/index.html" ]; then
+            echo "ERROR: Allure index.html not found."
             exit 1
           fi
 
+          cat > "$REPORT_DIR/allure-theme.css" <<'EOF'
 
-          # ----------------------------------------------------
-          # Copy custom CSS
-          # ----------------------------------------------------
-
-          cp src/test/resources/allure-theme.css \
-             "$REPORT_DIR/allure-theme.css"
-
-
-          # ----------------------------------------------------
-          # Create Allure theme override
-          # ----------------------------------------------------
-
-          cat > "$REPORT_DIR/allure-dark-override.css" <<'EOF'
-
-          # ==================================================
-          #  ALLURE DARK MODE - GLOBAL TEXT OVERRIDE
-          # ================================================== */
+          # ================================================
+          #  FORCE DARK BACKGROUND
+          # ================================================ */
 
           html,
           body,
           #app {
               background: #0b0f14 !important;
-              color: #f1f5f9 !important;
           }
 
 
-          #==================================================
-          #  FORCE TEXT TO LIGHT COLOUR
-          #================================================== */
+          # ================================================
+          #  FORCE WHITE TEXT EVERYWHERE
+          # ================================================ 
 
+          body,
+          #app,
           #app * {
-              color: #f1f5f9 !important;
-          }
-
-
-          # ==================================================
-          #   SECONDARY TEXT
-          # =================================================
-
-          #app .text-muted,
-          #app .muted,
-          #app [class*="muted"],
-          #app [class*="secondary"] {
-              color: #cbd5e1 !important;
-          }
-
-
-          # ==================================================
-          #   TABLES
-          #  ================================================== 
-
-          #app table,
-          #app thead,
-          #app tbody,
-          #app tr,
-          #app td,
-          #app th {
-              background-color: #111820 !important;
-              color: #f1f5f9 !important;
-              border-color: #263341 !important;
-          }
-
-
-          #app th {
-              background-color: #161f29 !important;
               color: #ffffff !important;
           }
 
 
-          #app td {
-              color: #f1f5f9 !important;
+          # ================================================
+          #  ENVIRONMENT
+          # ================================================ */
+
+          #app table {
+              background: #111820 !important;
           }
 
-
-          #==================================================
-          #  ENVIRONMENT SECTION
-          #================================================== 
-          
-
-          #app [class*="environment"] {
-              color: #f1f5f9 !important;
-              background-color: #111820 !important;
+          #app table tr {
+              background: #111820 !important;
           }
 
-
-          #app [class*="environment"] * {
-              color: #f1f5f9 !important;
-          }
-
-
-          #app [class*="environment"] table {
-              background-color: #111820 !important;
-          }
-
-
-          #app [class*="environment"] tr {
-              background-color: #111820 !important;
-          }
-
-
-          #app [class*="environment"] td,
-          #app [class*="environment"] th {
-              color: #f1f5f9 !important;
-              background-color: #111820 !important;
+          #app table td,
+          #app table th {
+              background: #111820 !important;
+              color: #ffffff !important;
               border-color: #263341 !important;
           }
 
 
-          # ==================================================
+          # ================================================
           #  LINKS
-          # ==================================================
+          # ================================================ */
 
           #app a {
               color: #38bdf8 !important;
           }
 
 
-          #==================================================
-          #  CODE / LOGS
-          #================================================== 
-
-          #app pre,
-          #app code {
-              background-color: #070b10 !important;
-              color: #e2e8f0 !important;
-          }
-
-
-          # ==================================================
-          #   INPUTS
-          # ================================================== */
-
-          #app input,
-          #app textarea,
-          #app select {
-              background-color: #161f29 !important;
-              color: #f1f5f9 !important;
-              border-color: #263341 !important;
-          }
-
-
-          # ==================================================
-          #   BUTTONS
-          # ================================================== */
-
-          #app button {
-              background-color: #161f29 !important;
-              color: #f1f5f9 !important;
-              border-color: #263341 !important;
-          }
-
-
-          # ==================================================
-          #  SIDE NAVIGATION
-          # ================================================== */
-
-          #app .side-nav {
-              background-color: #080c11 !important;
-          }
-
-
-          #app .side-nav * {
-              color: #cbd5e1 !important;
-          }
-
-
-          # ==================================================
-          #   CARDS
-          # ================================================== 
-
-          #app .card,
-          #app .widget {
-              background-color: #111820 !important;
-              color: #f1f5f9 !important;
-              border-color: #263341 !important;
-          }
-
-
-          # ==================================================
+          # ================================================
           #   HEADINGS
-          # ================================================== */
+          # ================================================ 
 
           #app h1,
           #app h2,
@@ -422,9 +296,14 @@ jobs:
           EOF
 
 
-          # ----------------------------------------------------
-          # Inject both stylesheets
-          # ----------------------------------------------------
+          echo ""
+          echo "Created:"
+          ls -lh "$REPORT_DIR/allure-theme.css"
+
+
+          # ====================================================
+          # Inject CSS BEFORE </head>
+          # ====================================================
 
           python3 <<'PY'
 
@@ -438,18 +317,16 @@ jobs:
               encoding="utf-8"
           )
 
-
-          styles = """
-          <link rel="stylesheet" href="allure-theme.css?v=3">
-          <link rel="stylesheet" href="allure-dark-override.css?v=3">
+          css = """
+          <link rel="stylesheet"
+                href="allure-theme.css?v=999">
           """
 
-
-          if "allure-dark-override.css" not in html:
+          if "allure-theme.css?v=999" not in html:
 
               html = html.replace(
                   "</head>",
-                  styles + "\n</head>"
+                  css + "\n</head>"
               )
 
               report.write_text(
@@ -457,23 +334,19 @@ jobs:
                   encoding="utf-8"
               )
 
-
-          print("Dark Allure theme injected successfully.")
+          print("CSS injection completed.")
 
           PY
 
 
           echo ""
           echo "========================================"
-          echo "Dark theme installation completed"
+          echo "Verify CSS injection"
           echo "========================================"
 
-          echo ""
-          echo "Theme files:"
-
-          ls -lh \
-            "$REPORT_DIR/allure-theme.css" \
-            "$REPORT_DIR/allure-dark-override.css"
+          grep -n \
+            "allure-theme.css" \
+            "$REPORT_DIR/index.html" || true
 
       # ========================================================
       # DIAGNOSE ALLURE TITLE
