@@ -223,10 +223,8 @@ jobs:
           echo "========================================"
 
           if [ ! -d "$REPORT_DIR" ]; then
-
             echo "ERROR: Allure report directory not found."
             exit 1
-
           fi
 
 
@@ -234,23 +232,198 @@ jobs:
           # Copy custom CSS
           # ----------------------------------------------------
 
-          if [ ! -f "src/test/resources/allure-theme.css" ]; then
-
-            echo "ERROR: allure-theme.css not found."
-
-            echo "Expected location:"
-            echo "src/test/resources/allure-theme.css"
-
-            exit 1
-
-          fi
-
           cp src/test/resources/allure-theme.css \
              "$REPORT_DIR/allure-theme.css"
 
 
           # ----------------------------------------------------
-          # Inject stylesheet into index.html
+          # Create Allure theme override
+          # ----------------------------------------------------
+
+          cat > "$REPORT_DIR/allure-dark-override.css" <<'EOF'
+
+          # ==================================================
+          #  ALLURE DARK MODE - GLOBAL TEXT OVERRIDE
+          # ================================================== */
+
+          html,
+          body,
+          #app {
+              background: #0b0f14 !important;
+              color: #f1f5f9 !important;
+          }
+
+
+          #==================================================
+          #  FORCE TEXT TO LIGHT COLOUR
+          #================================================== */
+
+          #app * {
+              color: #f1f5f9 !important;
+          }
+
+
+          # ==================================================
+          #   SECONDARY TEXT
+          # =================================================
+
+          #app .text-muted,
+          #app .muted,
+          #app [class*="muted"],
+          #app [class*="secondary"] {
+              color: #cbd5e1 !important;
+          }
+
+
+          # ==================================================
+          #   TABLES
+          #  ================================================== 
+
+          #app table,
+          #app thead,
+          #app tbody,
+          #app tr,
+          #app td,
+          #app th {
+              background-color: #111820 !important;
+              color: #f1f5f9 !important;
+              border-color: #263341 !important;
+          }
+
+
+          #app th {
+              background-color: #161f29 !important;
+              color: #ffffff !important;
+          }
+
+
+          #app td {
+              color: #f1f5f9 !important;
+          }
+
+
+          #==================================================
+          #  ENVIRONMENT SECTION
+          #================================================== 
+          
+
+          #app [class*="environment"] {
+              color: #f1f5f9 !important;
+              background-color: #111820 !important;
+          }
+
+
+          #app [class*="environment"] * {
+              color: #f1f5f9 !important;
+          }
+
+
+          #app [class*="environment"] table {
+              background-color: #111820 !important;
+          }
+
+
+          #app [class*="environment"] tr {
+              background-color: #111820 !important;
+          }
+
+
+          #app [class*="environment"] td,
+          #app [class*="environment"] th {
+              color: #f1f5f9 !important;
+              background-color: #111820 !important;
+              border-color: #263341 !important;
+          }
+
+
+          # ==================================================
+          #  LINKS
+          # ==================================================
+
+          #app a {
+              color: #38bdf8 !important;
+          }
+
+
+          #==================================================
+          #  CODE / LOGS
+          #================================================== 
+
+          #app pre,
+          #app code {
+              background-color: #070b10 !important;
+              color: #e2e8f0 !important;
+          }
+
+
+          # ==================================================
+          #   INPUTS
+          # ================================================== */
+
+          #app input,
+          #app textarea,
+          #app select {
+              background-color: #161f29 !important;
+              color: #f1f5f9 !important;
+              border-color: #263341 !important;
+          }
+
+
+          # ==================================================
+          #   BUTTONS
+          # ================================================== */
+
+          #app button {
+              background-color: #161f29 !important;
+              color: #f1f5f9 !important;
+              border-color: #263341 !important;
+          }
+
+
+          # ==================================================
+          #  SIDE NAVIGATION
+          # ================================================== */
+
+          #app .side-nav {
+              background-color: #080c11 !important;
+          }
+
+
+          #app .side-nav * {
+              color: #cbd5e1 !important;
+          }
+
+
+          # ==================================================
+          #   CARDS
+          # ================================================== 
+
+          #app .card,
+          #app .widget {
+              background-color: #111820 !important;
+              color: #f1f5f9 !important;
+              border-color: #263341 !important;
+          }
+
+
+          # ==================================================
+          #   HEADINGS
+          # ================================================== */
+
+          #app h1,
+          #app h2,
+          #app h3,
+          #app h4,
+          #app h5,
+          #app h6 {
+              color: #ffffff !important;
+          }
+
+          EOF
+
+
+          # ----------------------------------------------------
+          # Inject both stylesheets
           # ----------------------------------------------------
 
           python3 <<'PY'
@@ -265,16 +438,18 @@ jobs:
               encoding="utf-8"
           )
 
-          stylesheet = """
-          <link rel="stylesheet"
-                href="allure-theme.css">
+
+          styles = """
+          <link rel="stylesheet" href="allure-theme.css?v=3">
+          <link rel="stylesheet" href="allure-dark-override.css?v=3">
           """
 
-          if "allure-theme.css" not in html:
+
+          if "allure-dark-override.css" not in html:
 
               html = html.replace(
                   "</head>",
-                  stylesheet + "\n</head>"
+                  styles + "\n</head>"
               )
 
               report.write_text(
@@ -282,26 +457,23 @@ jobs:
                   encoding="utf-8"
               )
 
-              print(
-                  "Dark QA theme injected successfully."
-              )
 
-          else:
-
-              print(
-                  "Dark QA theme already exists."
-              )
+          print("Dark Allure theme injected successfully.")
 
           PY
 
 
           echo ""
-          echo "Theme file:"
-          echo "$REPORT_DIR/allure-theme.css"
+          echo "========================================"
+          echo "Dark theme installation completed"
+          echo "========================================"
 
           echo ""
-          echo "Theme installation completed."
+          echo "Theme files:"
 
+          ls -lh \
+            "$REPORT_DIR/allure-theme.css" \
+            "$REPORT_DIR/allure-dark-override.css"
 
       # ========================================================
       # DIAGNOSE ALLURE TITLE
