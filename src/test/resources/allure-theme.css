@@ -387,3 +387,46 @@ input[type="search"] {
 ::-webkit-scrollbar-thumb:hover {
     background: #475569;
 }
+
+/* ============================================================
+   ENVIRONMENT SECTION - FORCE WHITE TEXT
+   ============================================================ */
+
+#app .environment,
+#app .environment *,
+#app [class*="environment"],
+#app [class*="environment"] * {
+    color: #ffffff !important;
+}
+
+
+/* Environment table */
+
+#app .environment table,
+#app .environment table *,
+#app [class*="environment"] table,
+#app [class*="environment"] table * {
+    color: #ffffff !important;
+}
+
+
+/* Environment labels */
+
+#app .environment td,
+#app .environment th,
+#app [class*="environment"] td,
+#app [class*="environment"] th {
+    color: #ffffff !important;
+}
+
+
+/* Environment values */
+
+#app .environment span,
+#app .environment div,
+#app .environment p,
+#app [class*="environment"] span,
+#app [class*="environment"] div,
+#app [class*="environment"] p {
+    color: #ffffff !important;
+}
