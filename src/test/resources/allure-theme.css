@@ -1,0 +1,222 @@
+/* =========================================================
+   HYBRID UI & API TEST AUTOMATION
+   Dark QA Portfolio Theme
+   ========================================================= */
+
+:root {
+    --qa-bg: #0b0f14;
+    --qa-surface: #111820;
+    --qa-surface-2: #161f29;
+    --qa-border: #263341;
+    --qa-text: #f1f5f9;
+    --qa-muted: #94a3b8;
+    --qa-accent: #38bdf8;
+    --qa-success: #22c55e;
+    --qa-danger: #ef4444;
+    --qa-warning: #f59e0b;
+}
+
+/* =========================================================
+   Main application
+   ========================================================= */
+
+body {
+    background: var(--qa-bg) !important;
+    color: var(--qa-text) !important;
+}
+
+
+/* =========================================================
+   Main content
+   ========================================================= */
+
+#app {
+    background: var(--qa-bg) !important;
+    color: var(--qa-text) !important;
+}
+
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+
+.side-nav {
+    background: #080c11 !important;
+    border-right: 1px solid var(--qa-border) !important;
+}
+
+.side-nav__item {
+    color: var(--qa-muted) !important;
+}
+
+.side-nav__item:hover {
+    background: var(--qa-surface-2) !important;
+    color: var(--qa-text) !important;
+}
+
+
+/* =========================================================
+   Panels / Cards
+   ========================================================= */
+
+.card {
+    background: var(--qa-surface) !important;
+    border: 1px solid var(--qa-border) !important;
+    color: var(--qa-text) !important;
+}
+
+.widget {
+    background: var(--qa-surface) !important;
+    border-color: var(--qa-border) !important;
+}
+
+
+/* =========================================================
+   Tables
+   ========================================================= */
+
+table {
+    background: var(--qa-surface) !important;
+    color: var(--qa-text) !important;
+}
+
+th {
+    background: var(--qa-surface-2) !important;
+    color: var(--qa-text) !important;
+}
+
+td {
+    border-color: var(--qa-border) !important;
+    color: var(--qa-text) !important;
+}
+
+tr:hover {
+    background: var(--qa-surface-2) !important;
+}
+
+
+/* =========================================================
+   Text
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--qa-text) !important;
+}
+
+p,
+span,
+label {
+    color: inherit;
+}
+
+
+/* =========================================================
+   Links
+   ========================================================= */
+
+a {
+    color: var(--qa-accent) !important;
+}
+
+
+/* =========================================================
+   Test status
+   ========================================================= */
+
+.status-passed {
+    color: var(--qa-success) !important;
+}
+
+.status-failed {
+    color: var(--qa-danger) !important;
+}
+
+.status-broken {
+    color: var(--qa-danger) !important;
+}
+
+.status-skipped {
+    color: var(--qa-warning) !important;
+}
+
+
+/* =========================================================
+   Code / Logs
+   ========================================================= */
+
+pre,
+code {
+    background: #070b10 !important;
+    color: #e2e8f0 !important;
+    border-color: var(--qa-border) !important;
+}
+
+
+/* =========================================================
+   Test details
+   ========================================================= */
+
+.test-result {
+    background: var(--qa-bg) !important;
+    color: var(--qa-text) !important;
+}
+
+.test-result__content {
+    background: var(--qa-surface) !important;
+}
+
+
+/* =========================================================
+   Inputs
+   ========================================================= */
+
+input,
+textarea,
+select {
+    background: var(--qa-surface-2) !important;
+    color: var(--qa-text) !important;
+    border: 1px solid var(--qa-border) !important;
+}
+
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+button {
+    background: var(--qa-surface-2) !important;
+    color: var(--qa-text) !important;
+    border-color: var(--qa-border) !important;
+}
+
+button:hover {
+    background: #1e2936 !important;
+}
+
+
+/* =========================================================
+   Scrollbars
+   ========================================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #080c11;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}

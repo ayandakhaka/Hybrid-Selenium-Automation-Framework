@@ -68,6 +68,7 @@ jobs:
           java -version
 
           echo ""
+
           echo "========================================"
           echo "Maven Version"
           echo "========================================"
@@ -155,7 +156,7 @@ jobs:
 
 
       # ========================================================
-      # Add Allure Environment
+      # ADD ALLURE ENVIRONMENT
       # ========================================================
       - name: Add Allure Environment
         if: always()
@@ -167,12 +168,19 @@ jobs:
 
           cat > target/allure-results/environment.properties <<EOF
           Environment=QA
-          Suite=API Automation
-          Execution Date=${EXECUTION_DATE}
+          Project=Hybrid UI & API Test Automation
+          Test Suite=API Automation
           Execution Mode=CI/CD
-          Java Version=21
-          Operating System=Linux
+          Automation Framework=Selenium + Rest Assured
           Test Framework=TestNG
+          Programming Language=Java 21
+          Build Tool=Maven
+          CI/CD=GitHub Actions
+          Operating System=Ubuntu Linux
+          Browser Automation=Selenium WebDriver
+          API Automation=Rest Assured
+          Reporting=Allure
+          Execution Date=${EXECUTION_DATE}
           Build Number=${{ github.run_number }}
           Branch=${{ github.ref_name }}
           Commit=${{ github.sha }}
@@ -183,6 +191,8 @@ jobs:
           echo "========================================"
 
           cat target/allure-results/environment.properties
+
+          echo "========================================"
 
 
       # ========================================================
@@ -197,7 +207,105 @@ jobs:
           echo "========================================"
 
           mvn allure:report
-          
+
+
+      # ========================================================
+      # APPLY DARK QA PORTFOLIO THEME
+      # ========================================================
+      - name: Apply Dark QA Portfolio Theme
+        if: always()
+        run: |
+
+          REPORT_DIR="target/site/allure-maven-plugin"
+
+          echo "========================================"
+          echo "Applying Dark QA Portfolio Theme"
+          echo "========================================"
+
+          if [ ! -d "$REPORT_DIR" ]; then
+
+            echo "ERROR: Allure report directory not found."
+            exit 1
+
+          fi
+
+
+          # ----------------------------------------------------
+          # Copy custom CSS
+          # ----------------------------------------------------
+
+          if [ ! -f "src/test/resources/allure-theme.css" ]; then
+
+            echo "ERROR: allure-theme.css not found."
+
+            echo "Expected location:"
+            echo "src/test/resources/allure-theme.css"
+
+            exit 1
+
+          fi
+
+          cp src/test/resources/allure-theme.css \
+             "$REPORT_DIR/allure-theme.css"
+
+
+          # ----------------------------------------------------
+          # Inject stylesheet into index.html
+          # ----------------------------------------------------
+
+          python3 <<'PY'
+
+          from pathlib import Path
+
+          report = Path(
+              "target/site/allure-maven-plugin/index.html"
+          )
+
+          html = report.read_text(
+              encoding="utf-8"
+          )
+
+          stylesheet = """
+          <link rel="stylesheet"
+                href="allure-theme.css">
+          """
+
+          if "allure-theme.css" not in html:
+
+              html = html.replace(
+                  "</head>",
+                  stylesheet + "\n</head>"
+              )
+
+              report.write_text(
+                  html,
+                  encoding="utf-8"
+              )
+
+              print(
+                  "Dark QA theme injected successfully."
+              )
+
+          else:
+
+              print(
+                  "Dark QA theme already exists."
+              )
+
+          PY
+
+
+          echo ""
+          echo "Theme file:"
+          echo "$REPORT_DIR/allure-theme.css"
+
+          echo ""
+          echo "Theme installation completed."
+
+
+      # ========================================================
+      # DIAGNOSE ALLURE TITLE
+      # ========================================================
       - name: Diagnose Allure Title
         if: always()
         run: |
@@ -227,16 +335,22 @@ jobs:
           echo "========================================"
 
           if [ ! -d "$REPORT_DIR" ]; then
+
             echo "ERROR: Allure report directory not found."
+
             exit 1
+
           fi
+
 
           echo ""
           echo "Searching generated Allure files..."
 
+
           # ----------------------------------------------------
-          # Find JavaScript files containing the default title
+          # Find files containing the default title
           # ----------------------------------------------------
+
           grep -RIl \
             --exclude="*.map" \
             "Allure Report" \
@@ -251,8 +365,9 @@ jobs:
 
 
           # ----------------------------------------------------
-          # Replace the default Allure title in generated files
+          # Replace default Allure title
           # ----------------------------------------------------
+
           while IFS= read -r FILE
           do
 
@@ -272,8 +387,9 @@ jobs:
 
 
           # ----------------------------------------------------
-          # Also update HTML title if present
+          # Update HTML title if present
           # ----------------------------------------------------
+
           if [ -f "$REPORT_DIR/index.html" ]; then
 
             sed -i \
@@ -287,6 +403,7 @@ jobs:
           echo "========================================"
           echo "Branding verification"
           echo "========================================"
+
 
           grep -RIl \
             --exclude="*.map" \
@@ -308,25 +425,30 @@ jobs:
 
           REPORT="target/site/allure-maven-plugin/index.html"
 
+
           if [ -f "$REPORT" ]; then
 
             echo "Allure report generated successfully."
 
             echo ""
+
             echo "Report location:"
             echo "$REPORT"
 
             echo ""
+
             echo "Report title:"
+
             grep -o \
               '<title>[^<]*</title>' \
-              "$REPORT"
+              "$REPORT" || true
 
           else
 
             echo "ERROR: Allure report was not generated."
 
             echo ""
+
             echo "Contents of target:"
 
             find target \
@@ -349,6 +471,7 @@ jobs:
           echo "Allure History Verification"
           echo "========================================"
 
+
           if [ -d "target/site/allure-maven-plugin/history" ]; then
 
             echo "Allure history exists."
@@ -356,8 +479,8 @@ jobs:
             echo ""
 
             find target/site/allure-maven-plugin/history \
-              -type f \
-              -maxdepth 2
+              -maxdepth 2 \
+              -type f
 
           else
 
@@ -377,6 +500,7 @@ jobs:
 
           mkdir -p allure-history
 
+
           if [ -d "target/site/allure-maven-plugin/history" ]; then
 
             cp -R \
@@ -386,6 +510,7 @@ jobs:
             echo "Updated Allure history prepared."
 
             echo ""
+
             echo "History files:"
 
             find allure-history \
