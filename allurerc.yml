@@ -1,0 +1,7 @@
+name: "Hybrid UI & API Test Automation — QA Report"
+
+plugins:
+  awesome:
+    options:
+      reportName: "Hybrid UI & API Test Automation — QA Report"
+      reportLanguage: "en"

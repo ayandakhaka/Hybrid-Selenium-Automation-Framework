@@ -19,25 +19,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # ============================================================
       # Setup GitHub Pages
+      # ============================================================
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
+
+      # ============================================================
       # Checkout source code
+      # ============================================================
       - name: Checkout Code
         uses: actions/checkout@v4
 
+
+      # ============================================================
       # Restore previous Allure history
+      # ============================================================
       - name: Restore Allure History
         uses: actions/cache/restore@v4
         with:
           path: allure-history
-          key: allure-history-${{ github.ref_name }}-${{ github.run_id }}
+          key: allure-history-${{ github.ref_name }}
           restore-keys: |
-            allure-history-${{ github.ref_name }}-
             allure-history-
 
-      # Set up Java
+
+      # ============================================================
+      # Set up Java 21
+      # ============================================================
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
@@ -45,50 +56,166 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+
+      # ============================================================
       # Verify Java and Maven
+      # ============================================================
       - name: Verify Java and Maven
         run: |
+          echo "========================================"
+          echo "Java Version"
+          echo "========================================"
           java -version
+
+          echo ""
+          echo "========================================"
+          echo "Maven Version"
+          echo "========================================"
           mvn -version
 
+
+      # ============================================================
       # Run API Tests
+      # ============================================================
       - name: Run API Tests
         run: |
-          mvn clean test -DsuiteXmlFile=src/test/resources/testng-api.xml
+          mvn clean test \
+            -DsuiteXmlFile=src/test/resources/testng-api.xml
 
-      # Restore previous Allure history into new test results
+
+      # ============================================================
+      # Restore previous Allure history
+      # ============================================================
       - name: Prepare Previous Allure History
         if: always()
         run: |
           if [ -d "allure-history" ] && [ "$(ls -A allure-history)" ]; then
+
             echo "Previous Allure history found."
+
             mkdir -p target/allure-results/history
+
             cp -R allure-history/. target/allure-results/history/
+
+            echo "Previous Allure history copied."
+
           else
-            echo "No previous Allure history found. This may be the first run."
+
+            echo "No previous Allure history found."
+            echo "This is probably the first execution."
+
           fi
 
+
+      # ============================================================
+      # Add execution metadata
+      # ============================================================
+      - name: Add Allure Execution Metadata
+        if: always()
+        run: |
+
+          mkdir -p target/allure-results
+
+          EXECUTION_DATE=$(date '+%d %B %Y')
+
+          cat > target/allure-results/environment.properties <<EOF
+          Environment=QA
+          Suite=API Automation
+          Execution Date=${EXECUTION_DATE}
+          Execution Mode=CI/CD
+          Java Version=21
+          Operating System=Linux
+          Test Framework=TestNG
+          Build Number=${{ github.run_number }}
+          Branch=${{ github.ref_name }}
+          Commit=${{ github.sha }}
+          EOF
+
+          echo "========================================"
+          echo "Allure Environment"
+          echo "========================================"
+
+          cat target/allure-results/environment.properties
+
+          echo "========================================"
+
+
+      # ============================================================
       # Generate Allure Report
+      #
+      # IMPORTANT:
+      # Explicitly use Allure 2.35.1 to match allure-testng 2.35.1
+      # ============================================================
       - name: Generate Allure Report
         if: always()
         run: |
-          mvn allure:report
+          mvn \
+            -Dreport.version=2.35.1 \
+            allure:report
 
+
+      # ============================================================
+      # Verify generated Allure report
+      # ============================================================
+      - name: Verify Allure Report
+        if: always()
+        run: |
+
+          echo "========================================"
+          echo "Allure Report Verification"
+          echo "========================================"
+
+          if [ -f "target/site/allure-maven-plugin/index.html" ]; then
+
+            echo "Allure report generated successfully."
+
+          else
+
+            echo "ERROR: Allure report was not generated."
+
+            exit 1
+
+          fi
+
+          echo "Report location:"
+          echo "target/site/allure-maven-plugin/index.html"
+
+          echo "========================================"
+
+
+      # ============================================================
       # Prepare updated Allure history
+      # ============================================================
       - name: Prepare Updated Allure History
         if: always()
         run: |
+
           rm -rf allure-history
+
           mkdir -p allure-history
 
           if [ -d "target/site/allure-maven-plugin/history" ]; then
-            cp -R target/site/allure-maven-plugin/history/. allure-history/
+
+            cp -R \
+              target/site/allure-maven-plugin/history/. \
+              allure-history/
+
             echo "Updated Allure history prepared."
+
+            echo ""
+            echo "History files:"
+            find allure-history -type f
+
           else
+
             echo "No Allure history directory found."
+
           fi
 
-      # Save updated history
+
+      # ============================================================
+      # Save updated Allure history
+      # ============================================================
       - name: Save Allure History
         if: always()
         uses: actions/cache/save@v4
@@ -96,24 +223,20 @@ jobs:
           path: allure-history
           key: allure-history-${{ github.ref_name }}-${{ github.run_id }}
 
-      # Customize Allure Report title
-      - name: Customize Allure Report
-        if: always()
-        run: |
-          find target/site/allure-maven-plugin \
-            -type f \
-            -name "*.js" \
-            -exec sed -i \
-            's/Allure Report/Hybrid UI \& API Test Automation — QA Report/g' {} +
 
-      # Upload GitHub Pages Artifact
+      # ============================================================
+      # Upload GitHub Pages artifact
+      # ============================================================
       - name: Upload GitHub Pages Artifact
         if: always()
         uses: actions/upload-pages-artifact@v3
         with:
           path: target/site/allure-maven-plugin/
 
-      # Upload Surefire Reports
+
+      # ============================================================
+      # Upload Surefire reports
+      # ============================================================
       - name: Upload Surefire Reports
         if: always()
         uses: actions/upload-artifact@v4
@@ -121,7 +244,10 @@ jobs:
           name: surefire-reports
           path: target/surefire-reports/
 
-      # Upload Allure Results
+
+      # ============================================================
+      # Upload raw Allure results
+      # ============================================================
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
@@ -129,7 +255,10 @@ jobs:
           name: allure-results
           path: target/allure-results/
 
-      # Upload Allure HTML Report
+
+      # ============================================================
+      # Upload generated Allure HTML report
+      # ============================================================
       - name: Upload Allure HTML Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -137,9 +266,16 @@ jobs:
           name: allure-report
           path: target/site/allure-maven-plugin/
 
+
+  # ==================================================================
+  # Deploy to GitHub Pages
+  # ==================================================================
   deploy:
+
     if: github.ref == 'refs/heads/main'
+
     needs: api-tests
+
     runs-on: ubuntu-latest
 
     environment:
@@ -151,6 +287,10 @@ jobs:
       id-token: write
 
     steps:
+
+      # ============================================================
+      # Deploy report
+      # ============================================================
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
