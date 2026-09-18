@@ -4,6 +4,7 @@ import api.helpers.UserDataHelper;
 import api.model.UserModel;
 import api.services.UserApiService;
 import io.restassured.response.Response;
+import utility.ConfigReader;
 import utility.FrameworkLogger;
 
 public class TestDataManager {
@@ -56,7 +57,7 @@ public class TestDataManager {
 		FrameworkLogger.info("Create user response:\n" 
 				+ response.asPrettyString());
 
-		int expectedStatusCode = 200;
+		int expectedStatusCode = Integer.parseInt(ConfigReader.getProperty("successStatusCode"));
 
 		if (response.getStatusCode() != expectedStatusCode) {
 			throw new RuntimeException(
@@ -112,8 +113,10 @@ public class TestDataManager {
 
 		FrameworkLogger.info("Delete user response:\n" 
 				+ response.asPrettyString());
+		
+		int statusCode = Integer.parseInt(ConfigReader.getProperty("successStatusCode"));
 
-		if(response.getStatusCode() == 200) {
+		if(response.getStatusCode() == statusCode) {
 
 			FrameworkLogger.info( "Shared test user deleted successfully.");
 			user = null;

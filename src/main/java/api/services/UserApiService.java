@@ -27,8 +27,6 @@ public class UserApiService {
 
 	public static Response createUser(UserModel user) {
 
-		FrameworkLogger.info("Creating user: " + user.getEmail());
-
 		requestPayload =
 				UserPayload.createUserPayload(
 						user.getName(),
@@ -276,6 +274,128 @@ public class UserApiService {
 
 		return response;
 
+	}
+	
+	@Step("Search product item without providing product parameter")
+	public static Response searchProductItemWithoutSearchProduct() {
+		
+		requestDetails =
+				"Method: POST\n"
+						+ "Base URL: "
+						+ ConfigReader.getProperty("apiBaseUrl")
+						+ "\n"
+						+ "Endpoint: "
+						+ ConfigReader.getProperty("searchProductEndpoint")
+						+ "\n"
+						+ "Content-Type: "
+						+ ContentType.URLENC;
+		
+		AllureApiAttachment.attachRequest(
+				requestDetails
+				);
+
+		response =
+				given()
+				.relaxedHTTPSValidation()
+				.baseUri(
+						ConfigReader.getProperty("apiBaseUrl")
+						)
+				.contentType(ContentType.URLENC)
+				.when()
+				.post(
+						ConfigReader.getProperty(
+								"searchProductEndpoint"
+								)
+						);
+
+		AllureApiAttachment.attachResponse(
+				response.asPrettyString()
+				);
+
+		return response;
+						
+	}
+	
+	@Step("Update to all brand list")
+	public static Response updateToAllBrandList() {
+		
+		requestDetails =
+				"Method: PUT\n"
+						+ "Base URL: "
+						+ ConfigReader.getProperty("apiBaseUrl")
+						+ "\n"
+						+ "Endpoint: "
+						+ ConfigReader.getProperty("putToAllBrandList")
+						+ "\n"
+						+ "Content-Type: "
+						+ ContentType.URLENC;
+		
+		AllureApiAttachment.attachRequest(
+				requestDetails
+				);
+
+		response =
+				given()
+				.relaxedHTTPSValidation()
+				.baseUri(
+						ConfigReader.getProperty("apiBaseUrl")
+						)
+				.contentType(ContentType.URLENC)
+				.when()
+				.post(
+						ConfigReader.getProperty(
+								"putToAllBrandList"
+								)
+						);
+
+		AllureApiAttachment.attachResponse(
+				response.asPrettyString()
+				);
+
+		return response;
+		
+		
+	}
+	
+	@Step("Post to all product list")
+	public static Response postToAllProductList() {
+		
+		requestDetails =
+				"Method: POST\n"
+						+ "Base URL: "
+						+ ConfigReader.getProperty("apiBaseUrl")
+						+ "\n"
+						+ "Endpoint: "
+						+ ConfigReader.getProperty("postToAllProductList")
+						+ "\n"
+						+ "Content-Type: "
+						+ ContentType.URLENC;
+		
+		AllureApiAttachment.attachRequest(
+				requestDetails
+				);
+
+		response =
+				given()
+				.relaxedHTTPSValidation()
+				.baseUri(
+						ConfigReader.getProperty("apiBaseUrl")
+						)
+				.contentType(ContentType.URLENC)
+				.when()
+				.post(
+						ConfigReader.getProperty(
+								"postToAllProductList"
+								)
+						);
+
+		AllureApiAttachment.attachResponse(
+				response.asPrettyString()
+				);
+
+		return response;
+		
+		
 	}
 
 	@Step("Get user details by email.")
