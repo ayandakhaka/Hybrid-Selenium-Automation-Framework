@@ -98,6 +98,12 @@
 		    <artifactId>webdrivermanager</artifactId>
 		    <version>6.3.2</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>com.microsoft.sqlserver</groupId>
+		    <artifactId>mssql-jdbc</artifactId>
+		    <version>13.2.0.jre11</version>
+		</dependency>
 	    
     </dependencies>
     

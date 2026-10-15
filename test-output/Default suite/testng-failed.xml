@@ -3,16 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ui.tests.CartTest">
+      <class name="database.DatabaseConnectionTest">
         <methods>
-          <include name="setup"/>
-          <include name="cleanupTestData"/>
-          <include name="tearDown"/>
-          <include name="verifyAddSingleProductToCart"/>
-          <include name="initializeTestData"/>
-          <include name="setupLogin"/>
+          <include name="verifyDatabaseConnection"/>
         </methods>
-      </class> <!-- ui.tests.CartTest -->
+      </class> <!-- database.DatabaseConnectionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
