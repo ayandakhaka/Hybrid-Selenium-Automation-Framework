@@ -21,6 +21,12 @@
 		</dependency>
 		
 		<dependency>
+		    <groupId>io.github.cdimascio</groupId>
+		    <artifactId>dotenv-java</artifactId>
+		    <version>3.2.0</version>
+		</dependency>
+		
+		<dependency>
 	        <groupId>org.aspectj</groupId>
 	        <artifactId>aspectjweaver</artifactId>
 	        <version>1.9.24</version>
@@ -134,10 +140,11 @@
                 </systemPropertyVariables>
 
                 <!-- TestNG suite -->
-                <suiteXmlFiles>
-                    <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-                </suiteXmlFiles>
-
+				<suiteXmlFiles>
+				    <suiteXmlFile>
+				        ${project.basedir}/src/test/resources/testng-ui.xml
+				    </suiteXmlFile>
+				</suiteXmlFiles>
             </configuration>
         </plugin>
 

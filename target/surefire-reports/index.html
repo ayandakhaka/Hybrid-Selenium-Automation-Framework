@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,8 +38,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" panel-name="suite-API_Test_Suite" class="navigator-link">
-              <span class="suite-name border-passed">API Test Suite</span>
+            <a href="#" panel-name="suite-UI_Test_Suite" class="navigator-link">
+              <span class="suite-name border-failed">UI Test Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -49,37 +49,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" panel-name="test-xml-API_Test_Suite" class="navigator-link ">
-                    <span>C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\test\resources\testng-api.xml</span>
+                  <a href="#" panel-name="test-xml-UI_Test_Suite" class="navigator-link ">
+                    <span>C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\test\resources\testng-ui.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="testlist-API_Test_Suite" class="navigator-link ">
+                  <a href="#" panel-name="testlist-UI_Test_Suite" class="navigator-link ">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="group-API_Test_Suite" class="navigator-link ">
+                  <a href="#" panel-name="group-UI_Test_Suite" class="navigator-link ">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="times-API_Test_Suite" class="navigator-link ">
+                  <a href="#" panel-name="times-UI_Test_Suite" class="navigator-link ">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="reporter-API_Test_Suite" class="navigator-link ">
+                  <a href="#" panel-name="reporter-UI_Test_Suite" class="navigator-link ">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="ignored-methods-API_Test_Suite" class="navigator-link ">
+                  <a href="#" panel-name="ignored-methods-UI_Test_Suite" class="navigator-link ">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" panel-name="chronological-API_Test_Suite" class="navigator-link ">
+                  <a href="#" panel-name="chronological-UI_Test_Suite" class="navigator-link ">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -92,56 +92,40 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">8 methods,   8 passed</span>
+                    <span class="method-stats">3 methods, 2 failed,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-UI_Test_Suite" class="hide-methods failed suite-UI_Test_Suite"> (hide)</a> <!-- hide-methods failed suite-UI_Test_Suite -->
+                      <a href="#" panel-name="suite-UI_Test_Suite" class="show-methods failed suite-UI_Test_Suite"> (show)</a> <!-- show-methods failed suite-UI_Test_Suite -->
+                    </span>
+                    <div class="method-list-content failed suite-UI_Test_Suite">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-UI_Test_Suite" title="ui.tests.SearchProductTest" class="method navigator-link" hash-for-method="verifyAllItemsRelatedToSearchAreDisplayed">verifyAllItemsRelatedToSearchAreDisplayed</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-UI_Test_Suite" title="ui.tests.SearchProductTest" class="method navigator-link" hash-for-method="verifyUserSearchNonExistingItem">verifyUserSearchNonExistingItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-UI_Test_Suite -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
                     <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-API_Test_Suite" class="hide-methods passed suite-API_Test_Suite"> (hide)</a> <!-- hide-methods passed suite-API_Test_Suite -->
-                      <a href="#" panel-name="suite-API_Test_Suite" class="show-methods passed suite-API_Test_Suite"> (show)</a> <!-- show-methods passed suite-API_Test_Suite -->
+                      <a href="#" panel-name="suite-UI_Test_Suite" class="hide-methods passed suite-UI_Test_Suite"> (hide)</a> <!-- hide-methods passed suite-UI_Test_Suite -->
+                      <a href="#" panel-name="suite-UI_Test_Suite" class="show-methods passed suite-UI_Test_Suite"> (show)</a> <!-- show-methods passed suite-UI_Test_Suite -->
                     </span>
-                    <div class="method-list-content passed suite-API_Test_Suite">
+                    <div class="method-list-content passed suite-UI_Test_Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyDeleteLogin">verifyDeleteLogin</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-UI_Test_Suite" title="ui.tests.SearchProductTest" class="method navigator-link" hash-for-method="verifyUserNavigatedToProductsPage">verifyUserNavigatedToProductsPage</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyDeleteUserAccount">verifyDeleteUserAccount</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyLoginWithInvalidDetails">verifyLoginWithInvalidDetails</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyLoginWithValidLoginDetails">verifyLoginWithValidLoginDetails</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyLoginWithoutEmailParameter">verifyLoginWithoutEmailParameter</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyReturnUserDetailsByEmail">verifyReturnUserDetailsByEmail</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifySearchProductItem">verifySearchProductItem</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-API_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyUserAccountUpdate">verifyUserAccountUpdate</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content passed suite-API_Test_Suite -->
+                    </div> <!-- method-list-content passed suite-UI_Test_Suite -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -152,229 +136,229 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-API_Test_Suite" class="panel API_Test_Suite">
-          <div class="suite-API_Test_Suite-class-passed">
+        <div panel-name="suite-UI_Test_Suite" class="panel UI_Test_Suite">
+          <div class="suite-UI_Test_Suite-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">api.tests.AutomationExerciseAPITests</span>
+              <img src="failed.png"/>
+              <span class="class-name">ui.tests.SearchProductTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyDeleteLogin">
-                  </a> <!-- verifyDeleteLogin -->
-                  <span class="method-name">verifyDeleteLogin</span>
+                  <a name="verifyAllItemsRelatedToSearchAreDisplayed">
+                  </a> <!-- verifyAllItemsRelatedToSearchAreDisplayed -->
+                  <span class="method-name">verifyAllItemsRelatedToSearchAreDisplayed</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#search_product&quot;}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 19652, ms:edgeOptions: {debuggerAddress: localhost:64672}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64672/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 068f9052ec7c1377bbf53f2cef2529a9
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at utility.ActionHelper.typeText(ActionHelper.java:66)
+	at pages.ProductsPage.enterSearchItem(ProductsPage.java:44)
+	at ui.tests.SearchProductTest.verifyAllItemsRelatedToSearchAreDisplayed(SearchProductTest.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="verifyDeleteUserAccount">
-                  </a> <!-- verifyDeleteUserAccount -->
-                  <span class="method-name">verifyDeleteUserAccount</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyLoginWithInvalidDetails">
-                  </a> <!-- verifyLoginWithInvalidDetails -->
-                  <span class="method-name">verifyLoginWithInvalidDetails</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyLoginWithValidLoginDetails">
-                  </a> <!-- verifyLoginWithValidLoginDetails -->
-                  <span class="method-name">verifyLoginWithValidLoginDetails</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyLoginWithoutEmailParameter">
-                  </a> <!-- verifyLoginWithoutEmailParameter -->
-                  <span class="method-name">verifyLoginWithoutEmailParameter</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyReturnUserDetailsByEmail">
-                  </a> <!-- verifyReturnUserDetailsByEmail -->
-                  <span class="method-name">verifyReturnUserDetailsByEmail</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifySearchProductItem">
-                  </a> <!-- verifySearchProductItem -->
-                  <span class="method-name">verifySearchProductItem</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyUserAccountUpdate">
-                  </a> <!-- verifyUserAccountUpdate -->
-                  <span class="method-name">verifyUserAccountUpdate</span>
+                  <a name="verifyUserSearchNonExistingItem">
+                  </a> <!-- verifyUserSearchNonExistingItem -->
+                  <span class="method-name">verifyUserSearchNonExistingItem</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#search_product&quot;}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 17904, ms:edgeOptions: {debuggerAddress: localhost:64499}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64499/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9f85ec270c307c1b630023b93dfd92f4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at utility.ActionHelper.typeText(ActionHelper.java:66)
+	at pages.ProductsPage.enterSearchItem(ProductsPage.java:44)
+	at ui.tests.SearchProductTest.verifyUserSearchNonExistingItem(SearchProductTest.java:115)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 29 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-API_Test_Suite-class-passed -->
-        </div> <!-- panel API_Test_Suite -->
-        <div panel-name="test-xml-API_Test_Suite" class="panel">
+          </div> <!-- suite-UI_Test_Suite-class-failed -->
+          <div class="suite-UI_Test_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">ui.tests.SearchProductTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyUserNavigatedToProductsPage">
+                  </a> <!-- verifyUserNavigatedToProductsPage -->
+                  <span class="method-name">verifyUserNavigatedToProductsPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-UI_Test_Suite-class-passed -->
+        </div> <!-- panel UI_Test_Suite -->
+        <div panel-name="test-xml-UI_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\test\resources\testng-api.xml</span>
+            <span class="header-content">C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\test\resources\testng-ui.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;API Test Suite&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;API Tests&quot; verbose=&quot;0&quot;&gt;
-    &lt;packages&gt;
-      &lt;package name=&quot;api.tests&quot;/&gt;
-    &lt;/packages&gt;
+&lt;suite name=&quot;UI Test Suite&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;UI Tests&quot; verbose=&quot;0&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;api.tests.AutomationExerciseAPITests&quot;/&gt;
+      &lt;class name=&quot;ui.tests.SearchProductTest&quot;/&gt;
     &lt;/classes&gt;
-  &lt;/test&gt; &lt;!-- API Tests --&gt;
-&lt;/suite&gt; &lt;!-- API Test Suite --&gt;
+  &lt;/test&gt; &lt;!-- UI Tests --&gt;
+&lt;/suite&gt; &lt;!-- UI Test Suite --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-API_Test_Suite" class="panel">
+        <div panel-name="testlist-UI_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for API Test Suite</span>
+            <span class="header-content">Tests for UI Test Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">API Tests (1 class)</span>
+                <span class="test-name">UI Tests (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-API_Test_Suite" class="panel">
+        <div panel-name="group-UI_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for API Test Suite</span>
+            <span class="header-content">Groups for UI Test Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-API_Test_Suite" class="panel">
+        <div panel-name="times-UI_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for API Test Suite</span>
+            <span class="header-content">Times for UI Test Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_API_Test_Suite');
-function tableData_API_Test_Suite() {
+suiteTableInitFunctions.push('tableData_UI_Test_Suite');
+function tableData_UI_Test_Suite() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(8);
+data.addRows(3);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyReturnUserDetailsByEmail')
-data.setCell(0, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(0, 3, 6442);
+data.setCell(0, 1, 'verifyUserNavigatedToProductsPage')
+data.setCell(0, 2, 'ui.tests.SearchProductTest')
+data.setCell(0, 3, 49060);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'verifyDeleteUserAccount')
-data.setCell(1, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(1, 3, 4887);
+data.setCell(1, 1, 'verifyAllItemsRelatedToSearchAreDisplayed')
+data.setCell(1, 2, 'ui.tests.SearchProductTest')
+data.setCell(1, 3, 47775);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'verifyLoginWithInvalidDetails')
-data.setCell(2, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(2, 3, 3163);
-data.setCell(3, 0, 3)
-data.setCell(3, 1, 'verifyLoginWithoutEmailParameter')
-data.setCell(3, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(3, 3, 2417);
-data.setCell(4, 0, 4)
-data.setCell(4, 1, 'verifyDeleteLogin')
-data.setCell(4, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(4, 3, 2028);
-data.setCell(5, 0, 5)
-data.setCell(5, 1, 'verifyLoginWithValidLoginDetails')
-data.setCell(5, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(5, 3, 1798);
-data.setCell(6, 0, 6)
-data.setCell(6, 1, 'verifySearchProductItem')
-data.setCell(6, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(6, 3, 1647);
-data.setCell(7, 0, 7)
-data.setCell(7, 1, 'verifyUserAccountUpdate')
-data.setCell(7, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(7, 3, 1324);
-window.suiteTableData['API_Test_Suite']= { tableData: data, tableDiv: 'times-div-API_Test_Suite'}
+data.setCell(2, 1, 'verifyUserSearchNonExistingItem')
+data.setCell(2, 2, 'ui.tests.SearchProductTest')
+data.setCell(2, 3, 33042);
+window.suiteTableData['UI_Test_Suite']= { tableData: data, tableDiv: 'times-div-UI_Test_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 23 seconds</span>
-              <div id="times-div-API_Test_Suite">
-              </div> <!-- times-div-API_Test_Suite -->
+              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <div id="times-div-UI_Test_Suite">
+              </div> <!-- times-div-UI_Test_Suite -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-API_Test_Suite" class="panel">
+        <div panel-name="reporter-UI_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for API Test Suite</span>
+            <span class="header-content">Reporter output for UI Test Suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-API_Test_Suite" class="panel">
+        <div panel-name="ignored-methods-UI_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-API_Test_Suite" class="panel">
+        <div panel-name="chronological-UI_Test_Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">api.tests.AutomationExerciseAPITests</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">ui.tests.SearchProductTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite before">
                 <span class="method-name">initializeTestData</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-suite before -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">36111 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setupLogin</span>
+                <span class="method-start">67915 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verifyLoginWithValidLoginDetails</span>
-                <span class="method-start">42209 ms</span>
+                <span class="method-name">verifyUserNavigatedToProductsPage</span>
+                <span class="method-start">115705 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=verifyUserNavigatedToProductsPage status=SUCCESS method=SearchProductTest.verifyUse...)</span>
+                <span class="method-start">165253 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">196869 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setupLogin</span>
+                <span class="method-start">244143 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verifyLoginWithoutEmailParameter</span>
-                <span class="method-start">45098 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifyAllItemsRelatedToSearchAreDisplayed</span>
+                <span class="method-start">305857 ms</span>
               </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=verifyAllItemsRelatedToSearchAreDisplayed status=FAILURE method=SearchProductTest.v...)</span>
+                <span class="method-start">353718 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">396233 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setupLogin</span>
+                <span class="method-start">427608 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <span class="method-name">verifySearchProductItem</span>
-                <span class="method-start">47533 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifyUserSearchNonExistingItem</span>
+                <span class="method-start">487561 ms</span>
               </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">verifyReturnUserDetailsByEmail</span>
-                <span class="method-start">49217 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">verifyUserAccountUpdate</span>
-                <span class="method-start">55692 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">verifyDeleteUserAccount</span>
-                <span class="method-start">57029 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">verifyLoginWithInvalidDetails</span>
-                <span class="method-start">62095 ms</span>
-              </div> <!-- test-method -->
-              <div class="test-method">
-                <span class="method-name">verifyDeleteLogin</span>
-                <span class="method-start">65283 ms</span>
-              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=verifyUserSearchNonExistingItem status=FAILURE method=SearchProductTest.verifyUserS...)</span>
+                <span class="method-start">520642 ms</span>
+              </div> <!-- configuration-method after -->
               <div class="configuration-suite after">
                 <span class="method-name">cleanupTestData</span>
-                <span class="method-start">68393 ms</span>
+                <span class="method-start">553758 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

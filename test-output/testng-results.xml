@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-10-15T12:29:21 SAST" name="Default suite" finished-at="2026-10-15T12:29:31 SAST" duration-ms="9993">
+  <suite started-at="2026-10-15T14:54:30 SAST" name="Default suite" finished-at="2026-10-15T14:54:36 SAST" duration-ms="5734">
     <groups>
     </groups>
-    <test started-at="2026-10-15T12:29:21 SAST" name="Default test" finished-at="2026-10-15T12:29:31 SAST" duration-ms="9993">
+    <test started-at="2026-10-15T14:54:30 SAST" name="Default test" finished-at="2026-10-15T14:54:36 SAST" duration-ms="5734">
       <class name="database.DatabaseConnectionTest">
-        <test-method signature="verifyDatabaseConnection()[pri:0, instance:database.DatabaseConnectionTest@5a7df831]" started-at="2026-10-15T12:29:22 SAST" name="verifyDatabaseConnection" finished-at="2026-10-15T12:29:30 SAST" duration-ms="8316" status="PASS">
+        <test-method signature="verifyDatabaseConnection()[pri:0, instance:database.DatabaseConnectionTest@270a620]" started-at="2026-10-15T14:54:30 SAST" name="verifyDatabaseConnection" finished-at="2026-10-15T14:54:35 SAST" duration-ms="4482" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyDatabaseConnection -->

@@ -42,21 +42,18 @@ public class LoginTest extends BaseTest {
 	public void verifyUserCanLoginSuccessfully() {
 
 		FrameworkLogger.testStart("verifyUserCanLoginSuccessfully");
-
-		FrameworkLogger.info("User navigate to the login page");
-
+		
+		// Arrange
 		homePage.clickSignLoginButton();
-
-		FrameworkLogger.info("User enters valid email address, password and click login button");
-
+		
+		// Act
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
-
-		FrameworkLogger.info("Validating success user logged in");
-
+		
+		// Assert
 		Assert.assertTrue(loginPage.verifySuccessLoginUser(user.getName()),
 				"Failed to validate user logged in.");
-
-		FrameworkLogger.testEnd("verifyUserCanLoginSuccessfully");
+		
+		FrameworkLogger.testEnd("verifyUserCanLoginSuccessfully");		
 	}
 	
 	@Test(priority = 2)
@@ -65,21 +62,20 @@ public class LoginTest extends BaseTest {
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that user is unable to login with invalid format email.")
 	public void verifyLoginWithInvalidEmailFormat() {
-
+		
 		FrameworkLogger.testStart("verifyLoginWithInvalidEmail");
-
+		
+		// Arrange
 		homePage.clickSignLoginButton();
-
-		FrameworkLogger.info("User enters invalid email address, valid password and click login button");
-
-		loginPage.loginToAutomationExercisePage(ConfigReader.getProperty("invalidEmail"), user.getPassword());
 		
-		FrameworkLogger.info("Validate email validation message");
+		// Act
+		loginPage.loginToAutomationExercisePage(ConfigReader.getProperty("uiInvalidEmail"), user.getPassword());
 		
+		// Assert
 		Assert.assertEquals(loginPage.getEmailValidationMessage() , ConfigReader.getProperty("emailValidationMessage") 
-				+ " '" + ConfigReader.getProperty("invalidEmail") + "' is missing an '@'." ,
+				+ " '" + ConfigReader.getProperty("uiInvalidEmail") + "' is missing an '@'." ,
 				"Failed to validate email message validation");
-		
+
 		FrameworkLogger.testEnd("verifyLoginWithInvalidEmail");
 
 	}
@@ -91,17 +87,17 @@ public class LoginTest extends BaseTest {
 	public void verifyLoginWithInvalidPassword() {
 		
 		FrameworkLogger.testStart("verifyLoginWithInvalidPassword");
-
-		homePage.clickSignLoginButton();
-
-		FrameworkLogger.info("User enters valid email address, invalid password and click login button");
-
-		loginPage.loginToAutomationExercisePage(user.getEmail(), ConfigReader.getProperty("invalidPassword"));
 		
-		FrameworkLogger.info("Validate login error message");
+		// Arrange
+		homePage.clickSignLoginButton();
+		
+		// Act
+		loginPage.loginToAutomationExercisePage(user.getEmail(), ConfigReader.getProperty("uiInvalidPassword"));
+		
+		// Assert
 		
 		Assert.assertTrue(loginPage.validateLoginErrorMessage(), "Failed to validate login error message.");
-		
+
 		FrameworkLogger.testEnd("verifyLoginWithInvalidPassword");
 		
 	}
@@ -115,22 +111,15 @@ public class LoginTest extends BaseTest {
 		
 		FrameworkLogger.testStart("verifyLogout");
 		
+		// Arrange
 		homePage.clickSignLoginButton();
-
-		FrameworkLogger.info("User enters valid email address, valid password and click login button");
-
+		// Login to automation exercise web site
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
 		
-		FrameworkLogger.info("Validating success user logged in");
-
-		Assert.assertTrue(loginPage.verifySuccessLoginUser(user.getName()), "Failed to validate user logged in.");
-		
-		FrameworkLogger.info("Clicking logout link");
-		
+		// Act
 		logoutPage.clickLogout();
 		
-		FrameworkLogger.info("Validating if user logged out successfully");
-		
+		// Assert
 		Assert.assertTrue(loginPage.validateLoginFormHeaderText(), "Failed to validate user logged out.");
 		
 		FrameworkLogger.testEnd("verifyLogout");

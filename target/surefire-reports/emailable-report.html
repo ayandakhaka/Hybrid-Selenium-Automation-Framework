@@ -8,18 +8,39 @@
 <body>
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
-<tr><th colspan="8">API Test Suite</th></tr>
-<tr><td><a href="#t0">API Tests</a></td><td class="num">8</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">25,568</td><td></td><td></td></tr>
+<tr><th colspan="8">UI Test Suite</th></tr>
+<tr><td><a href="#t0">UI Tests</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">517,717</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">API Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">API Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="8">api.tests.AutomationExerciseAPITests</td><td><a href="#m0">verifyDeleteLogin</a></td><td rowspan="1">1789562328365</td><td rowspan="1">2028</td></tr><tr class="passedeven"><td><a href="#m1">verifyDeleteUserAccount</a></td><td rowspan="1">1789562320111</td><td rowspan="1">4887</td></tr><tr class="passedeven"><td><a href="#m2">verifyLoginWithInvalidDetails</a></td><td rowspan="1">1789562325177</td><td rowspan="1">3163</td></tr><tr class="passedeven"><td><a href="#m3">verifyLoginWithValidLoginDetails</a></td><td rowspan="1">1789562305291</td><td rowspan="1">1798</td></tr><tr class="passedeven"><td><a href="#m4">verifyLoginWithoutEmailParameter</a></td><td rowspan="1">1789562308180</td><td rowspan="1">2417</td></tr><tr class="passedeven"><td><a href="#m5">verifyReturnUserDetailsByEmail</a></td><td rowspan="1">1789562312299</td><td rowspan="1">6442</td></tr><tr class="passedeven"><td><a href="#m6">verifySearchProductItem</a></td><td rowspan="1">1789562310615</td><td rowspan="1">1647</td></tr><tr class="passedeven"><td><a href="#m7">verifyUserAccountUpdate</a></td><td rowspan="1">1789562318774</td><td rowspan="1">1324</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">UI Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">UI Tests &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">ui.tests.SearchProductTest</td><td><a href="#m0">verifyAllItemsRelatedToSearchAreDisplayed</a></td><td rowspan="1">1792412707294</td><td rowspan="1">47775</td></tr><tr class="failedeven"><td><a href="#m1">verifyUserSearchNonExistingItem</a></td><td rowspan="1">1792412888998</td><td rowspan="1">33042</td></tr><tr><th colspan="4">UI Tests &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">ui.tests.SearchProductTest</td><td><a href="#m2">verifyUserNavigatedToProductsPage</a></td><td rowspan="1">1792412517142</td><td rowspan="1">49060</td></tr></tbody>
 </table>
-<h2>API Tests</h2><h3 id="m0">api.tests.AutomationExerciseAPITests#verifyDeleteLogin</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">api.tests.AutomationExerciseAPITests#verifyDeleteUserAccount</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">api.tests.AutomationExerciseAPITests#verifyLoginWithInvalidDetails</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">api.tests.AutomationExerciseAPITests#verifyLoginWithValidLoginDetails</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">api.tests.AutomationExerciseAPITests#verifyLoginWithoutEmailParameter</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">api.tests.AutomationExerciseAPITests#verifyReturnUserDetailsByEmail</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m6">api.tests.AutomationExerciseAPITests#verifySearchProductItem</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m7">api.tests.AutomationExerciseAPITests#verifyUserAccountUpdate</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>UI Tests</h2><h3 id="m0">ui.tests.SearchProductTest#verifyAllItemsRelatedToSearchAreDisplayed</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#search_product&quot;}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 19652, ms:edgeOptions: {debuggerAddress: localhost:64672}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64672/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 068f9052ec7c1377bbf53f2cef2529a9
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at utility.ActionHelper.typeText(ActionHelper.java:66)
+	at pages.ProductsPage.enterSearchItem(ProductsPage.java:44)
+	at ui.tests.SearchProductTest.verifyAllItemsRelatedToSearchAreDisplayed(SearchProductTest.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">ui.tests.SearchProductTest#verifyUserSearchNonExistingItem</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;#search_product&quot;}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 17904, ms:edgeOptions: {debuggerAddress: localhost:64499}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64499/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9f85ec270c307c1b630023b93dfd92f4
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at utility.ActionHelper.typeText(ActionHelper.java:66)
+	at pages.ProductsPage.enterSearchItem(ProductsPage.java:44)
+	at ui.tests.SearchProductTest.verifyUserSearchNonExistingItem(SearchProductTest.java:115)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">ui.tests.SearchProductTest#verifyUserNavigatedToProductsPage</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

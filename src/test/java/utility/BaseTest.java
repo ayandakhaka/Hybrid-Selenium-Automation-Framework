@@ -10,6 +10,7 @@ import api.model.UserModel;
 import api.setup.TestDataSetup;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import api.testdata.TestDataManager;
 
 import java.io.ByteArrayInputStream;
 
@@ -18,19 +19,30 @@ public class BaseTest extends TestDataSetup {
 	protected WebDriver driver;
 	protected UserModel user;
 	protected ActionHelper action;
+	protected PopupHandler popupHandler;
+
 
 	@BeforeMethod
 	@Step("Create driver and launch the application")
 	public void setup() {
-
+		
 		// Clear the logs
 		FrameworkLogger.clearTestLogs();
+		
+		// Storing a shared user
+		user = TestDataManager.getInstance().getUser();
 
+		FrameworkLogger.info(
+			    "Using shared test user: " + user.getEmail()
+			); 
+		
 		// Create thread-safe WebDriver
 		DriverFactory.createDriver();
 
 		// Get driver for current thread
 		driver = DriverFactory.getDriver();
+		
+		popupHandler = new PopupHandler(driver);
 
 		// Create ActionHelper using current thread driver
 		action = new ActionHelper(driver);

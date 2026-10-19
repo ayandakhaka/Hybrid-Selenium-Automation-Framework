@@ -440,7 +440,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 
 	private UserModel getUser() {
 
-		return TestDataManager.getInstance().gerUser();
+		return TestDataManager.getInstance().getUser();
 	}
 
 }

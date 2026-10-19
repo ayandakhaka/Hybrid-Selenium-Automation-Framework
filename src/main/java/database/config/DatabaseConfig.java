@@ -1,51 +1,41 @@
 package database.config;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class DatabaseConfig {
 
-    private static final Properties properties = 
-    		new Properties();
-    
-    private static final String CONFIG_FILE =
-            "environmentvariables/config.properties";
+	private static final Dotenv dotenv = Dotenv.configure()
+            .ignoreIfMissing()
+            .load();
 
-    static {
-        try (InputStream input = DatabaseConfig.class
-                .getClassLoader()
-                .getResourceAsStream(CONFIG_FILE)) {
+    public static Connection getConnection() throws SQLException {
 
-            if (input == null) {
-                throw new RuntimeException(
-                    "config.properties not found in resources folder"
-                );
-            }
+        String url = getRequiredValue("db.url");
+        String username = getRequiredValue("db.username");
+        String password = getRequiredValue("db.password");
 
-            properties.load(input);
+        return DriverManager.getConnection(
+                url, username, password
+        );
+    }
 
-        } catch (IOException e) {
-            throw new RuntimeException(
-                "Failed to load database configuration",
-                e
+    private static String getRequiredValue(String key) {
+        String value = dotenv.get(key);
+
+        if (value == null || value.isBlank()) {
+            value = System.getenv(key);
+        }
+
+        if (value == null || value.isBlank()) {
+            throw new IllegalStateException(
+                    "Missing required environment variable: " + key
             );
         }
-    }
 
-    public static String getUrl() {
-        return properties.getProperty("db.url");
-    }
-
-    public static String getUsername() {
-        return properties.getProperty("db.username");
-    }
-
-    public static String getPassword() {
-        return properties.getProperty("db.password");
-    }
-
-    private DatabaseConfig() {
-        // Prevent object creation
+        return value;
     }
 }

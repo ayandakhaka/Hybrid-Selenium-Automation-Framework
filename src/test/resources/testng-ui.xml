@@ -11,7 +11,8 @@
         </packages>-->
         
         <classes>
-            <class name="ui.tests.LoginTest"/>
+        	<class name="ui.tests.LoginTest"/>
+            <class name="ui.tests.SearchProductTest"/>
         </classes>
 
     </test>

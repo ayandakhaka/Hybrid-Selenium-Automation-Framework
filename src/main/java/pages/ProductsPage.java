@@ -15,7 +15,7 @@ public class ProductsPage extends BasePage {
 		super(driver);
 	}
 	
-	private By productsLink = By.xpath("//a[@href='/products']");
+	
 	private By allProductsHeaderText = By.xpath("//h2[@class='title text-center']");
 	private By searchProduct = By.id("search_product");
 	private By submitSearch = By.id("submit_search");
@@ -27,12 +27,6 @@ public class ProductsPage extends BasePage {
 	private By addToCartSecondProduct = By.cssSelector("");
 	private By viewCart = By.cssSelector("a[href='view_cart']");
 	private By addedToCartSuccessText = By.xpath("//p[@class='text-center']");
-	
-	@Step("User click on products link")
-	public ProductsPage clickProductsLink() {
-		actions.click(productsLink);
-		return this;
-	}
 	
 	@Step("Validating all products header text : '{0}'")
 	public boolean validateAllProductsHeaderText(String textValidation) {

@@ -1,6 +1,6 @@
 package database;
 
-import database.connection.DatabaseConnection;
+import database.config.DatabaseConfig;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
@@ -23,7 +23,7 @@ public class DatabaseConnectionTest {
     public void verifyDatabaseConnection() {
 
         try (Connection connection =
-                 DatabaseConnection.getConnection()) {
+                 DatabaseConfig.getConnection()) {
 
             Assert.assertNotNull(
                 connection,

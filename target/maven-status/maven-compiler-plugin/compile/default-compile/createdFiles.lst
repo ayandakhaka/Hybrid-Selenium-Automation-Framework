@@ -1,3 +1,4 @@
+database\validation\DatabaseValidator.class
 utility\DriverFactory.class
 pages\ProductsPage.class
 utility\AllureApiAttachment.class
@@ -12,8 +13,11 @@ api\model\UserModel.class
 utility\AllureEnvironment.class
 utility\FrameworkLogger.class
 utility\AllureAttachment.class
+database\config\DatabaseConfig.class
 pages\LogoutPage.class
+pages\AutomationExerciseDashboardPage.class
 api\helpers\UserDataHelper.class
 api\testdata\TestDataManager.class
 pages\ViewCartPage.class
 utility\AllureApiHelper.class
+utility\PopupHandler.class

@@ -77,7 +77,7 @@ public class TestDataManager {
 	/**
 	 * Returns shared test user
 	 */
-	public UserModel gerUser() {
+	public UserModel getUser() {
 
 		if(user == null) {
 

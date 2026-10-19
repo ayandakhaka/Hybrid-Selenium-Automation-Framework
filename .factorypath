@@ -3,6 +3,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/io/qameta/allure/allure-java-commons/2.35.1/allure-java-commons-2.35.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/qameta/allure/allure-model/2.35.1/allure-model-2.35.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/qameta/allure/allure-test-filter/2.35.1/allure-test-filter-2.35.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/io/github/cdimascio/dotenv-java/3.2.0/dotenv-java-3.2.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/aspectj/aspectjweaver/1.9.24/aspectjweaver-1.9.24.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-core/2.25.1/log4j-core-2.25.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/logging/log4j/log4j-api/2.25.1/log4j-api-2.25.1.jar" enabled="true" runInBatchMode="false"/>

@@ -1,0 +1,55 @@
+# Maven build output
+target/
+
+# Compiled Java files
+*.class
+
+# Log files
+*.log
+logs/
+
+# IDE files - IntelliJ IDEA
+.idea/
+*.iml
+
+# IDE files - Eclipse
+.classpath
+.project
+.settings/
+
+# Visual Studio Code
+.vscode/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Test reports and generated results
+test-output/
+allure-results/
+allure-report/
+
+# Browser automation artifacts
+screenshots/
+downloads/
+*.har
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Database files and local backups
+*.db
+*.sqlite
+*.sqlite3
+*.sql.gz
+*.bak
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo

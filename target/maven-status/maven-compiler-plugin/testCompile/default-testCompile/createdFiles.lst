@@ -5,3 +5,4 @@ ui\tests\CartTest.class
 api\setup\ApiTestSetup.class
 api\tests\AutomationExerciseAPITests.class
 api\setup\TestDataSetup.class
+database\DatabaseConnectionTest.class

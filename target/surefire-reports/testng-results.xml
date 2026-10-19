@@ -1,53 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="1" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-09-16T14:38:24 SAST" name="API Test Suite" finished-at="2026-09-16T14:38:50 SAST" duration-ms="25568">
+  <suite started-at="2026-10-19T14:20:36 SAST" name="UI Test Suite" finished-at="2026-10-19T14:29:14 SAST" duration-ms="517717">
     <groups>
     </groups>
-    <test started-at="2026-09-16T14:38:24 SAST" name="API Tests" finished-at="2026-09-16T14:38:50 SAST" duration-ms="25568">
-      <class name="api.tests.AutomationExerciseAPITests">
-        <test-method is-config="true" signature="initializeTestData()[pri:0, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:37:43 SAST" name="initializeTestData" finished-at="2026-09-16T14:38:24 SAST" duration-ms="41759" status="PASS">
+    <test started-at="2026-10-19T14:20:36 SAST" name="UI Tests" finished-at="2026-10-19T14:29:14 SAST" duration-ms="517717">
+      <class name="ui.tests.SearchProductTest">
+        <test-method is-config="true" signature="initializeTestData()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:20:01 SAST" name="initializeTestData" finished-at="2026-10-19T14:20:36 SAST" duration-ms="35438" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeTestData -->
-        <test-method signature="verifyLoginWithValidLoginDetails()[pri:1, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:25 SAST" name="verifyLoginWithValidLoginDetails" finished-at="2026-09-16T14:38:27 SAST" duration-ms="1798" status="PASS">
+        <test-method is-config="true" signature="setup()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:20:37 SAST" name="setup" finished-at="2026-10-19T14:21:01 SAST" duration-ms="24201" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLoginWithValidLoginDetails -->
-        <test-method signature="verifyLoginWithoutEmailParameter()[pri:2, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:28 SAST" name="verifyLoginWithoutEmailParameter" finished-at="2026-09-16T14:38:30 SAST" duration-ms="2417" status="PASS">
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupLogin()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:21:09 SAST" name="setupLogin" finished-at="2026-10-19T14:21:57 SAST" duration-ms="47732" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLoginWithoutEmailParameter -->
-        <test-method signature="verifySearchProductItem()[pri:3, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:30 SAST" name="verifySearchProductItem" finished-at="2026-09-16T14:38:32 SAST" duration-ms="1647" status="PASS">
+        </test-method> <!-- setupLogin -->
+        <test-method signature="verifyUserNavigatedToProductsPage()[pri:1, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:21:57 SAST" name="verifyUserNavigatedToProductsPage" finished-at="2026-10-19T14:22:46 SAST" duration-ms="49060" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySearchProductItem -->
-        <test-method signature="verifyReturnUserDetailsByEmail()[pri:4, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:32 SAST" name="verifyReturnUserDetailsByEmail" finished-at="2026-09-16T14:38:38 SAST" duration-ms="6442" status="PASS">
+        </test-method> <!-- verifyUserNavigatedToProductsPage -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:22:46 SAST" name="tearDown" finished-at="2026-10-19T14:23:18 SAST" duration-ms="31597" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserNavigatedToProductsPage status=SUCCESS method=SearchProductTest.verifyUserNavigatedToProductsPage()[pri:1, instance:ui.tests.SearchProductTest@25953be6] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyReturnUserDetailsByEmail -->
-        <test-method signature="verifyUserAccountUpdate()[pri:5, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:38 SAST" name="verifyUserAccountUpdate" finished-at="2026-09-16T14:38:40 SAST" duration-ms="1324" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:23:18 SAST" name="setup" finished-at="2026-10-19T14:24:05 SAST" duration-ms="47248" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserAccountUpdate -->
-        <test-method signature="verifyDeleteUserAccount()[pri:6, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:40 SAST" name="verifyDeleteUserAccount" finished-at="2026-09-16T14:38:44 SAST" duration-ms="4887" status="PASS">
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupLogin()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:24:05 SAST" name="setupLogin" finished-at="2026-10-19T14:25:07 SAST" duration-ms="61705" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyDeleteUserAccount -->
-        <test-method signature="verifyLoginWithInvalidDetails()[pri:7, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:45 SAST" name="verifyLoginWithInvalidDetails" finished-at="2026-09-16T14:38:48 SAST" duration-ms="3163" status="PASS">
+        </test-method> <!-- setupLogin -->
+        <test-method signature="verifyAllItemsRelatedToSearchAreDisplayed()[pri:2, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:25:07 SAST" name="verifyAllItemsRelatedToSearchAreDisplayed" finished-at="2026-10-19T14:25:55 SAST" duration-ms="47775" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#search_product"}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: '4.43.0', revision: 'dd0f534'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 19652, ms:edgeOptions: {debuggerAddress: localhost:64672}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64672/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 068f9052ec7c1377bbf53f2cef2529a9]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#search_product"}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: '4.43.0', revision: 'dd0f534'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 19652, ms:edgeOptions: {debuggerAddress: localhost:64672}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64672/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 068f9052ec7c1377bbf53f2cef2529a9
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at utility.ActionHelper.typeText(ActionHelper.java:66)
+at pages.ProductsPage.enterSearchItem(ProductsPage.java:44)
+at ui.tests.SearchProductTest.verifyAllItemsRelatedToSearchAreDisplayed(SearchProductTest.java:84)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyLoginWithInvalidDetails -->
-        <test-method signature="verifyDeleteLogin()[pri:8, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:48 SAST" name="verifyDeleteLogin" finished-at="2026-09-16T14:38:50 SAST" duration-ms="2028" status="PASS">
+        </test-method> <!-- verifyAllItemsRelatedToSearchAreDisplayed -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:25:55 SAST" name="tearDown" finished-at="2026-10-19T14:26:37 SAST" duration-ms="42506" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyAllItemsRelatedToSearchAreDisplayed status=FAILURE method=SearchProductTest.verifyAllItemsRelatedToSearchAreDisplayed()[pri:2, instance:ui.tests.SearchProductTest@25953be6] output={null}]]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyDeleteLogin -->
-        <test-method is-config="true" signature="cleanupTestData()[pri:0, instance:api.tests.AutomationExerciseAPITests@66bf40e5]" started-at="2026-09-16T14:38:51 SAST" name="cleanupTestData" finished-at="2026-09-16T14:38:52 SAST" duration-ms="1232" status="PASS">
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="setup()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:26:37 SAST" name="setup" finished-at="2026-10-19T14:27:09 SAST" duration-ms="31365" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method is-config="true" signature="setupLogin()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:27:09 SAST" name="setupLogin" finished-at="2026-10-19T14:28:08 SAST" duration-ms="59948" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setupLogin -->
+        <test-method signature="verifyUserSearchNonExistingItem()[pri:3, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:28:08 SAST" name="verifyUserSearchNonExistingItem" finished-at="2026-10-19T14:28:42 SAST" duration-ms="33042" status="FAIL">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#search_product"}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: '4.43.0', revision: 'dd0f534'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 17904, ms:edgeOptions: {debuggerAddress: localhost:64499}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64499/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9f85ec270c307c1b630023b93dfd92f4]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.id: search_product, but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#search_product"}.
+(tried for 10 seconds with 500 milliseconds interval)
+Build info: version: '4.43.0', revision: 'dd0f534'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 155.0.4283.45, fedcm:accounts: true, goog:processID: 17904, ms:edgeOptions: {debuggerAddress: localhost:64499}, msedge: {msedgedriverVersion: 155.0.4283.62 (aa3a7406ba8c..., userDataDir: C:\Users\USER\AppData\Local...}, networkConnectionEnabled: false, pageLoadStrategy: eager, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64499/devtoo..., se:cdpVersion: 155.0.4283.45, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9f85ec270c307c1b630023b93dfd92f4
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at utility.ActionHelper.typeText(ActionHelper.java:66)
+at pages.ProductsPage.enterSearchItem(ProductsPage.java:44)
+at ui.tests.SearchProductTest.verifyUserSearchNonExistingItem(SearchProductTest.java:115)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:741)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:308)
+at org.apache.maven.surefire.testng.TestNGXmlTestSuite.execute(TestNGXmlTestSuite.java:71)
+at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:113)
+at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyUserSearchNonExistingItem -->
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:28:42 SAST" name="tearDown" finished-at="2026-10-19T14:29:14 SAST" duration-ms="32487" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=verifyUserSearchNonExistingItem status=FAILURE method=SearchProductTest.verifyUserSearchNonExistingItem()[pri:3, instance:ui.tests.SearchProductTest@25953be6] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method is-config="true" signature="cleanupTestData()[pri:0, instance:ui.tests.SearchProductTest@25953be6]" started-at="2026-10-19T14:29:15 SAST" name="cleanupTestData" finished-at="2026-10-19T14:29:17 SAST" duration-ms="2527" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanupTestData -->
-      </class> <!-- api.tests.AutomationExerciseAPITests -->
-    </test> <!-- API Tests -->
-  </suite> <!-- API Test Suite -->
+      </class> <!-- ui.tests.SearchProductTest -->
+    </test> <!-- UI Tests -->
+  </suite> <!-- UI Test Suite -->
 </testng-results>

@@ -28,7 +28,7 @@ public class CartTest extends BaseTest {
 	@BeforeMethod
 	public void setupLogin() {
 		
-		user = TestDataManager.getInstance().gerUser();
+		user = TestDataManager.getInstance().getUser();
 		
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
@@ -39,7 +39,7 @@ public class CartTest extends BaseTest {
 		homePage.clickSignLoginButton();
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
 		
-		productsPage.clickProductsLink();
+		//productsPage.clickProductsLink();
 	}
 	
 	@Test(priority = 1)

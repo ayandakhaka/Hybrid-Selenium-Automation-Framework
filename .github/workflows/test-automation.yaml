@@ -1,6 +1,13 @@
-name: API Automation CI
+
+name: Automation Exercise CI Pipeline
 
 on:
+  schedule:
+    - cron: '0 20 * * *'
+      timezone: 'Africa/Johannesburg'
+
+  workflow_dispatch:
+
   push:
     branches:
       - main
@@ -9,24 +16,19 @@ on:
     branches:
       - main
 
-
-# ============================================================
-# GitHub permissions
-# ============================================================
 permissions:
   contents: read
   pages: write
   id-token: write
 
-
 jobs:
 
   # ==========================================================
-  # API TESTS + ALLURE REPORT
+  # UI + API TESTS AND ALLURE REPORT
   # ==========================================================
   api-tests:
-
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     steps:
 
@@ -36,13 +38,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-
       # ========================================================
       # Setup GitHub Pages
       # ========================================================
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
-
 
       # ========================================================
       # Setup Java 21
@@ -51,37 +51,19 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin'
+          distribution: temurin
           cache: maven
-
 
       # ========================================================
       # Verify Java and Maven
       # ========================================================
       - name: Verify Java and Maven
         run: |
-
-          echo "========================================"
-          echo "Java Version"
-          echo "========================================"
-
           java -version
-
-          echo ""
-
-          echo "========================================"
-          echo "Maven Version"
-          echo "========================================"
-
           mvn -version
 
-
       # ========================================================
-      # RESTORE PREVIOUS ALLURE HISTORY
-      #
-      # Every run gets a unique cache key.
-      # restore-keys allows GitHub Actions to retrieve the
-      # latest existing allure-history-* cache.
+      # Restore previous Allure history
       # ========================================================
       - name: Restore Allure History
         uses: actions/cache/restore@v4
@@ -91,132 +73,103 @@ jobs:
           restore-keys: |
             allure-history-
 
-
-      # ========================================================
-      # Show restored history
-      # ========================================================
       - name: Inspect Restored Allure History
         if: always()
         run: |
-
-          echo "========================================"
-          echo "Inspecting Restored Allure History"
-          echo "========================================"
-
           if [ -d "allure-history" ] && [ "$(ls -A allure-history)" ]; then
-
-            echo "Previous Allure history found."
-
-            echo ""
-            echo "History files:"
-
-            find allure-history \
-              -maxdepth 2 \
-              -type f \
-              -print
-
+            echo "Previous Allure history restored."
+            find allure-history -maxdepth 2 -type f
           else
-
             echo "No previous Allure history found."
-            echo "This may be the first Allure execution."
-
           fi
 
-
       # ========================================================
-      # Run API Tests
+      # Run API and UI TestNG suites
+      #
+      # IMPORTANT:
+      # Run clean only before the first suite.
+      # The second Maven command must preserve API Allure results.
       # ========================================================
-      - name: Run API Tests
+      - name: Run UI and API Tests
+        id: run-tests
+        shell: bash
         run: |
+          echo "========================================"
+          echo "Running API TestNG Suite"
+          echo "========================================"
+
+          if mvn clean test \
+            -DsuiteXmlFile=src/test/resources/testng-api.xml; then
+            API_STATUS=0
+          else
+            API_STATUS=$?
+          fi
 
           echo "========================================"
-          echo "Running API Tests"
+          echo "Running UI TestNG Suite"
           echo "========================================"
 
-          mvn clean test \
-            -DsuiteXmlFile=src/test/resources/testng-api.xml
+          if mvn test \
+            -DsuiteXmlFile=src/test/resources/testng-ui.xml; then
+            UI_STATUS=0
+          else
+            UI_STATUS=$?
+          fi
 
+          echo "========================================"
+          echo "Test Execution Summary"
+          echo "========================================"
+          echo "API exit code: $API_STATUS"
+          echo "UI exit code: $UI_STATUS"
+
+          echo "api_status=$API_STATUS" >> "$GITHUB_OUTPUT"
+          echo "ui_status=$UI_STATUS" >> "$GITHUB_OUTPUT"
+
+          # Test failures are evaluated after report generation
+          # and artifact uploads.
 
       # ========================================================
-      # Prepare Allure Results
+      # Prepare Allure results
       # ========================================================
       - name: Prepare Allure Results
         if: always()
         run: |
-
           mkdir -p target/allure-results
 
-          echo "========================================"
-          echo "Allure Results"
-          echo "========================================"
-
-          if [ -d "target/allure-results" ]; then
-
-            find target/allure-results \
-              -maxdepth 1 \
-              -type f \
-              -print
-
-          else
-
-            echo "No Allure results directory found."
-
-          fi
-
+          echo "Allure result files:"
+          find target/allure-results -maxdepth 2 -type f || true
 
       # ========================================================
-      # Prepare Previous Allure History
+      # Restore previous Allure trend history
       # ========================================================
       - name: Prepare Previous Allure History
         if: always()
         run: |
-
-          echo "========================================"
-          echo "Preparing Previous Allure History"
-          echo "========================================"
-
           if [ -d "allure-history" ] && [ "$(ls -A allure-history)" ]; then
-
-            echo "Previous Allure history found."
-
             mkdir -p target/allure-results/history
 
-            cp -R \
-              allure-history/. \
-              target/allure-results/history/
+            cp -R allure-history/. target/allure-results/history/
 
             echo "Previous Allure history copied."
-
-            echo ""
-            echo "History now available to Allure:"
-
-            find target/allure-results/history \
-              -maxdepth 2 \
-              -type f \
-              -print
-
           else
-
-            echo "No previous Allure history found."
-
+            echo "No previous history available."
           fi
 
-
       # ========================================================
-      # ADD ALLURE ENVIRONMENT
+      # Add Allure environment metadata
       # ========================================================
       - name: Add Allure Environment
         if: always()
         run: |
-
           mkdir -p target/allure-results
 
           EXECUTION_DATE=$(date '+%d %B %Y')
+          EXECUTION_TIME=$(date '+%H:%M:%S %Z')
 
           cat > target/allure-results/environment.properties <<EOF
           Environment=QA
           Project=Hybrid UI & API Test Automation
-          Test Suite=API Automation
+          Test Suite=UI and API Automation
           Execution Mode=CI/CD
           Automation Framework=Selenium + Rest Assured
           Test Framework=TestNG
@@ -228,81 +181,37 @@ jobs:
           API Automation=Rest Assured
           Reporting=Allure
           Execution Date=${EXECUTION_DATE}
+          Execution Time=${EXECUTION_TIME}
           Build Number=${{ github.run_number }}
           Branch=${{ github.ref_name }}
           Commit=${{ github.sha }}
+          Trigger=${{ github.event_name }}
           EOF
-
-          echo "========================================"
-          echo "Allure Environment"
-          echo "========================================"
 
           cat target/allure-results/environment.properties
 
-          echo "========================================"
-
-
       # ========================================================
-      # Generate Allure Report
+      # Generate Allure report
       # ========================================================
       - name: Generate Allure Report
         if: always()
         run: |
-
-          echo "========================================"
-          echo "Generating Allure Report"
-          echo "========================================"
+          echo "Generating combined UI and API Allure report..."
 
           mvn allure:report
 
-
       # ========================================================
-      # DIAGNOSE ALLURE TITLE
-      # ========================================================
-      - name: Diagnose Allure Title
-        if: always()
-        run: |
-
-          echo "========================================"
-          echo "Searching Allure Report for title"
-          echo "========================================"
-
-          grep -RIn \
-            --exclude="*.map" \
-            "Allure Report" \
-            target/site/allure-maven-plugin/ \
-            | head -100 || true
-
-
-      # ========================================================
-      # CUSTOMIZE ALLURE REPORT BRANDING
+      # Customize Allure report branding
       # ========================================================
       - name: Customize Allure Report Branding
         if: always()
         run: |
-
           REPORT_DIR="target/site/allure-maven-plugin"
 
-          echo "========================================"
-          echo "Customizing Allure Report Branding"
-          echo "========================================"
-
           if [ ! -d "$REPORT_DIR" ]; then
-
             echo "ERROR: Allure report directory not found."
-
             exit 1
-
           fi
-
-
-          echo ""
-          echo "Searching generated Allure files..."
-
-
-          # ----------------------------------------------------
-          # Find files containing default title
-          # ----------------------------------------------------
 
           grep -RIl \
             --exclude="*.map" \
@@ -310,275 +219,101 @@ jobs:
             "$REPORT_DIR" \
             > /tmp/allure-title-files.txt || true
 
-
-          echo ""
-          echo "Files containing 'Allure Report':"
-
-          cat /tmp/allure-title-files.txt || true
-
-
-          # ----------------------------------------------------
-          # Replace default Allure title
-          # ----------------------------------------------------
-
-          while IFS= read -r FILE
-          do
-
+          while IFS= read -r FILE; do
             if [ -f "$FILE" ]; then
-
-              echo ""
-              echo "Updating:"
-              echo "$FILE"
-
               sed -i \
                 's/Allure Report/Hybrid UI \& API Test Automation — QA Report/g' \
                 "$FILE"
-
             fi
-
           done < /tmp/allure-title-files.txt
 
-
-          # ----------------------------------------------------
-          # Update HTML title
-          # ----------------------------------------------------
-
           if [ -f "$REPORT_DIR/index.html" ]; then
-
             sed -i \
               's/<title>[^<]*<\/title>/<title>Hybrid UI \& API Test Automation — QA Report<\/title>/g' \
               "$REPORT_DIR/index.html"
-
           fi
 
-
-          echo ""
-          echo "========================================"
-          echo "Branding verification"
-          echo "========================================"
-
-
-          grep -RIl \
-            --exclude="*.map" \
-            "Hybrid UI & API Test Automation" \
-            "$REPORT_DIR" \
-            | head -50 || true
-
+          echo "Report branding customization completed."
 
       # ========================================================
-      # VERIFY ALLURE REPORT
+      # Verify generated report
       # ========================================================
       - name: Verify Allure Report
         if: always()
         run: |
-
-          echo "========================================"
-          echo "Allure Report Verification"
-          echo "========================================"
-
           REPORT="target/site/allure-maven-plugin/index.html"
 
-
           if [ -f "$REPORT" ]; then
-
             echo "Allure report generated successfully."
-
-            echo ""
-
-            echo "Report location:"
-            echo "$REPORT"
-
-            echo ""
-
-            echo "Report title:"
-
-            grep -o \
-              '<title>[^<]*</title>' \
-              "$REPORT" || true
-
+            grep -o '<title>[^<]*</title>' "$REPORT" || true
           else
-
             echo "ERROR: Allure report was not generated."
-
-            echo ""
-
-            echo "Contents of target:"
-
-            find target \
-              -maxdepth 4 \
-              -type f | head -200
-
+            find target -maxdepth 4 -type f | head -200 || true
             exit 1
-
           fi
 
-
       # ========================================================
-      # VERIFY ALLURE HISTORY
+      # Verify Allure trend history
       # ========================================================
       - name: Verify Allure History
         if: always()
         run: |
+          HISTORY_DIR="target/site/allure-maven-plugin/history"
+          TREND_FILE="$HISTORY_DIR/history-trend.json"
 
-          echo "========================================"
-          echo "Allure History Verification"
-          echo "========================================"
+          if [ -d "$HISTORY_DIR" ]; then
+            echo "Allure history files:"
+            find "$HISTORY_DIR" -maxdepth 2 -type f
 
-
-          if [ -d "target/site/allure-maven-plugin/history" ]; then
-
-            echo "Allure history exists."
-
-            echo ""
-
-            echo "History files:"
-
-            find target/site/allure-maven-plugin/history \
-              -maxdepth 2 \
-              -type f \
-              -print
-
-            echo ""
-
-            echo "========================================"
-            echo "History Trend"
-            echo "========================================"
-
-            if [ -f "target/site/allure-maven-plugin/history/history-trend.json" ]; then
-
-              cat \
-                target/site/allure-maven-plugin/history/history-trend.json
-
-            else
-
-              echo "history-trend.json not found."
-
-            fi
-
-          else
-
-            echo "WARNING: No Allure history directory found."
-
-          fi
-
-
-      # ========================================================
-      # CHECK NUMBER OF TREND EXECUTIONS
-      # ========================================================
-      - name: Check Allure Trend History
-        if: always()
-        run: |
-
-          echo "========================================"
-          echo "Checking Allure Trend History"
-          echo "========================================"
-
-
-          TREND_FILE="target/site/allure-maven-plugin/history/history-trend.json"
-
-
-          if [ -f "$TREND_FILE" ]; then
-
-            echo "Trend file found."
-
-            echo ""
-
-            python3 <<'PY'
-
+            if [ -f "$TREND_FILE" ]; then
+              python3 -c '
           import json
           from pathlib import Path
 
-          trend_file = Path(
-              "target/site/allure-maven-plugin/history/history-trend.json"
-          )
+          path = Path("target/site/allure-maven-plugin/history/history-trend.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
 
-          try:
+          print(f"Recorded trend executions: {len(data)}")
 
-              data = json.loads(
-                  trend_file.read_text(
-                      encoding="utf-8"
-                  )
-              )
-
+          for i, item in enumerate(data, start=1):
+              stats = item.get("data", {})
               print(
-                  f"Number of Allure trend executions: {len(data)}"
+                  f"Execution {i}: "
+                  f"total={stats.get('total', 0)}, "
+                  f"passed={stats.get('passed', 0)}, "
+                  f"failed={stats.get('failed', 0)}, "
+                  f"broken={stats.get('broken', 0)}, "
+                  f"skipped={stats.get('skipped', 0)}"
               )
-
-              for index, item in enumerate(data, start=1):
-
-                  stats = item.get("data", {})
-
-                  print(
-                      f"Execution {index}: "
-                      f"total={stats.get('total', 0)}, "
-                      f"passed={stats.get('passed', 0)}, "
-                      f"failed={stats.get('failed', 0)}, "
-                      f"broken={stats.get('broken', 0)}, "
-                      f"skipped={stats.get('skipped', 0)}"
-                  )
-
-          except Exception as exc:
-
-              print(
-                  f"Could not parse history-trend.json: {exc}"
-              )
-
-          PY
-
+          '
+            else
+              echo "No history-trend.json found."
+            fi
           else
-
-            echo "No history-trend.json found."
-
+            echo "No generated history directory found."
           fi
 
-
       # ========================================================
-      # PREPARE UPDATED ALLURE HISTORY
+      # Prepare updated Allure history
       # ========================================================
       - name: Prepare Updated Allure History
         if: always()
         run: |
-
-          echo "========================================"
-          echo "Preparing Updated Allure History"
-          echo "========================================"
-
-
           rm -rf allure-history
-
           mkdir -p allure-history
 
+          HISTORY_DIR="target/site/allure-maven-plugin/history"
 
-          if [ -d "target/site/allure-maven-plugin/history" ]; then
-
-            cp -R \
-              target/site/allure-maven-plugin/history/. \
-              allure-history/
-
+          if [ -d "$HISTORY_DIR" ]; then
+            cp -R "$HISTORY_DIR"/. allure-history/
             echo "Updated Allure history prepared."
-
-            echo ""
-
-            echo "History files to cache:"
-
-            find allure-history \
-              -type f \
-              -print
-
+            find allure-history -type f
           else
-
-            echo "No Allure history to save."
-
+            echo "No report history available to cache."
           fi
 
-
       # ========================================================
-      # SAVE UPDATED ALLURE HISTORY
-      #
-      # IMPORTANT:
-      # The cache key is unique for this GitHub Actions run.
-      # The next run restores the newest matching
-      # allure-history-* cache using restore-keys.
+      # Save updated history
       # ========================================================
       - name: Save Allure History
         if: always()
@@ -587,9 +322,8 @@ jobs:
           path: allure-history
           key: allure-history-${{ github.run_id }}
 
-
       # ========================================================
-      # UPLOAD GITHUB PAGES ARTIFACT
+      # Upload GitHub Pages artifact
       # ========================================================
       - name: Upload GitHub Pages Artifact
         if: always()
@@ -597,70 +331,80 @@ jobs:
         with:
           path: target/site/allure-maven-plugin/
 
-
       # ========================================================
-      # UPLOAD SUREFIRE REPORTS
+      # Upload TestNG / Surefire reports
       # ========================================================
       - name: Upload Surefire Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: surefire-reports
+          name: surefire-reports-${{ github.run_id }}
           path: target/surefire-reports/
           if-no-files-found: warn
-
+          retention-days: 30
 
       # ========================================================
-      # UPLOAD RAW ALLURE RESULTS
+      # Upload raw Allure results
       # ========================================================
       - name: Upload Allure Results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-results
+          name: allure-results-${{ github.run_id }}
           path: target/allure-results/
           if-no-files-found: warn
-
+          retention-days: 30
 
       # ========================================================
-      # UPLOAD GENERATED ALLURE HTML REPORT
+      # Upload generated Allure HTML report
       # ========================================================
       - name: Upload Allure HTML Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: allure-report
+          name: allure-report-${{ github.run_id }}
           path: target/site/allure-maven-plugin/
           if-no-files-found: warn
+          retention-days: 30
 
+      # ========================================================
+      # Final test status
+      # Report and artifact steps run before this step.
+      # ========================================================
+      - name: Final Test Status
+        if: always()
+        shell: bash
+        env:
+          API_STATUS: ${{ steps.run-tests.outputs.api_status }}
+          UI_STATUS: ${{ steps.run-tests.outputs.ui_status }}
+        run: |
+          echo "API test exit code: ${API_STATUS:-unknown}"
+          echo "UI test exit code: ${UI_STATUS:-unknown}"
+
+          if [[ "$API_STATUS" != "0" || "$UI_STATUS" != "0" ]]; then
+            echo "One or more test suites failed."
+            exit 1
+          fi
+
+          echo "Both UI and API test suites passed."
 
   # ==========================================================
-  # DEPLOY TO GITHUB PAGES
+  # DEPLOY ALLURE REPORT TO GITHUB PAGES
   # ==========================================================
   deploy:
-
-    if: github.ref == 'refs/heads/main'
-
+    if: ${{ always() && github.ref == 'refs/heads/main' }}
     needs: api-tests
-
     runs-on: ubuntu-latest
 
     environment:
-
       name: github-pages
-
       url: ${{ steps.deployment.outputs.page_url }}
 
     permissions:
-
       pages: write
       id-token: write
 
     steps:
-
-      # ========================================================
-      # Deploy Allure Report
-      # ========================================================
       - name: Deploy Allure Report
         id: deployment
         uses: actions/deploy-pages@v4
