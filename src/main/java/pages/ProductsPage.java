@@ -49,13 +49,13 @@ public class ProductsPage extends BasePage {
 	public boolean validateSearchedProductText(String text) {
 		return actions.validateText(searchedProductText, text , "Validating searched product text");
 	}
-	// The method returns the product names
+	// The method returns a list of product names
 	@Step("Returns the list of product names")
 	public List<String> getSearchedProductNames() {
 		
 		List<WebElement> products = driver.findElements(searchedProducts);
 		
-		List<String> productNames = new ArrayList<String>();
+		List<String> productNames = new ArrayList<>();
 		
 		for(WebElement product : products) {
 			FrameworkLogger.info("Products : " + product.getText().trim());

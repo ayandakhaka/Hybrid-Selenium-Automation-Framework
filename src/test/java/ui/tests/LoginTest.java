@@ -19,7 +19,7 @@ import utility.FrameworkLogger;
 
 
 @Epic("Automation exercise")
-@Feature("User authentication")
+@Feature("User authentication Tests")
 public class LoginTest extends BaseTest {
 
 	private HomePage homePage;
@@ -113,7 +113,6 @@ public class LoginTest extends BaseTest {
 		
 		// Arrange
 		homePage.clickSignLoginButton();
-		// Login to automation exercise web site
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
 		
 		// Act

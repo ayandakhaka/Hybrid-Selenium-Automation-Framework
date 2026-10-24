@@ -14,7 +14,7 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import pages.AutomationExerciseDashboardPage;
+import pages.DashboardPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -30,7 +30,7 @@ public class SearchProductTest extends BaseTest {
 
 	private HomePage homePage;
 	private LoginPage loginPage;
-	private AutomationExerciseDashboardPage automationExerciseDashboardPage;
+	private DashboardPage dashboardPage;
 	private ProductsPage productsPage;
 
 	@BeforeMethod
@@ -41,7 +41,7 @@ public class SearchProductTest extends BaseTest {
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
 		productsPage = new ProductsPage(driver);
-		automationExerciseDashboardPage = new AutomationExerciseDashboardPage(driver);
+		dashboardPage = new DashboardPage(driver);
 
 		homePage.clickSignLoginButton();
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());	
@@ -57,11 +57,11 @@ public class SearchProductTest extends BaseTest {
 		FrameworkLogger.testStart("verifyUserNavigatedToProductsPage");
 
 		// Arrange
-		FrameworkLogger.info("Loggedin user text" + automationExerciseDashboardPage.getLoggedinUsernameText());
+		FrameworkLogger.info("Loggedin user text" + dashboardPage.getLoggedinUsernameText());
 		popupHandler.closeUnexpectedPopup();
 
 		// Act
-		automationExerciseDashboardPage.clickProductsLink();
+		dashboardPage.clickProductsLink();
 
 		// Assert
 		Assert.assertTrue(productsPage.validateAllProductsHeaderText(ConfigReader.getProperty("allProductsText")));
@@ -78,22 +78,25 @@ public class SearchProductTest extends BaseTest {
 		FrameworkLogger.testStart("verifyAllItemsRelatedToSearchAreDisplayed");
 
 		// Arrange
-		automationExerciseDashboardPage.clickProductsLink();
+		dashboardPage.clickProductsLink();
 
 		// Act
 		productsPage.enterSearchItem(ConfigReader.getProperty("searchItem"));
 		productsPage.clickOnSearchProduct();
-
-		// Assert
+		
 		List<String> actualProducts = productsPage.getSearchedProductNames();
 
-		Assert.assertFalse(actualProducts.isEmpty(), "No products were returned.");
+		// Assert
 
-		Assert.assertTrue(productsPage.validateSearchedProductText(ConfigReader.getProperty("searchedProductText")), 
+		Assert.assertFalse(actualProducts.isEmpty(), "No products were returned.");
+		
+		Assert.assertTrue(productsPage.validateSearchedProductText(
+				ConfigReader.getProperty("searchedProductText")), 
 				"Failed to validate searched product text");
 
 		for (String product : actualProducts) {
-			Assert.assertTrue(product.toLowerCase().contains(ConfigReader.getProperty("searchItem").trim().toLowerCase()),
+			Assert.assertTrue(product.toLowerCase().contains(
+					ConfigReader.getProperty("searchItem").trim().toLowerCase()),
 					"Product does not match search: " + product);
 		}
 
@@ -109,15 +112,15 @@ public class SearchProductTest extends BaseTest {
 		FrameworkLogger.testStart("verifyUserSearchNonExistingItem");
 
 		// Arrange
-		automationExerciseDashboardPage.clickProductsLink();
+		dashboardPage.clickProductsLink();
 
 		// Act
 		productsPage.enterSearchItem(ConfigReader.getProperty("nonExistingProduct"));
 		productsPage.clickOnSearchProduct();
-
-		// Assert
+		
 		List<String> actualProducts = productsPage.getSearchedProductNames();
 
+		// Assert
 		Assert.assertTrue(actualProducts.isEmpty(), "Failed to validate search non existing product.");
 
 		FrameworkLogger.testEnd("verifyUserSearchNonExistingItem");

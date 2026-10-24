@@ -7,9 +7,9 @@ import io.qameta.allure.Step;
 import utility.BasePage;
 import utility.FrameworkLogger;
 
-public class AutomationExerciseDashboardPage extends BasePage {
+public class DashboardPage extends BasePage {
 
-	public AutomationExerciseDashboardPage(WebDriver driver) {
+	public DashboardPage(WebDriver driver) {
 		super(driver);
 	}
 	
@@ -22,7 +22,7 @@ public class AutomationExerciseDashboardPage extends BasePage {
 	}
 	
 	@Step("User click on products link")
-	public AutomationExerciseDashboardPage clickProductsLink() {
+	public DashboardPage clickProductsLink() {
 		FrameworkLogger.info("Click in product link...");
 		actions.click(productsLink);
 		return this;

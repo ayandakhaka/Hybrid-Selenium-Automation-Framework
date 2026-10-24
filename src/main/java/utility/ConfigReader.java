@@ -51,11 +51,9 @@ public final class ConfigReader {
 
         // 4. Store the resolved environment
         properties.setProperty("environment", environment);
-
-        System.out.println(
-                "Loaded configuration for environment: "
-                        + environment.toUpperCase(Locale.ROOT)
-        );
+               
+        FrameworkLogger.info("Loaded configuration for environment: "
+                + environment.toUpperCase(Locale.ROOT));
     }
 
     private static void loadFile(

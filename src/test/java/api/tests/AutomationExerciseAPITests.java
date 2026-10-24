@@ -99,12 +99,10 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 				Integer.parseInt(ConfigReader.getProperty("successStatusCode")), 
 				"Failed to verify status code.");
 
-		// Verify response success status code
 		Assert.assertEquals(response.jsonPath().getInt("responseCode"),
 				Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
 				"Failed to verify " + 
 						response.jsonPath().getInt("responseCode"));
-		// Verify product size
 		Assert.assertTrue(productSize > 0,
 				"Product list is empty");
 
@@ -209,7 +207,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Return user details by email")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate return user details by email")
-	public void verifyReturnUserDetailsByEmail() {
+	public void verifyReturnedUserDetailsByEmail() {
 
 		FrameworkLogger.testStart("verifyReturnUserDetailsByEmail");
 
