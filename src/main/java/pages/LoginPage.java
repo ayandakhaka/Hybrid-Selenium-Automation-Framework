@@ -20,6 +20,9 @@ public class LoginPage extends BasePage {
 	private By loggedInUser = By.xpath("//a[contains(text(), 'Logged in as')]");
 	private By loginError = By.xpath("//p[contains(text(), 'Your email or password is incorrect!')]");
 	private By loginFormHeaderText = By.xpath("//h2[text()='Login to your account']");
+	private By nameSignupInput = By.name("name");
+	private By emailSignupInput = By.xpath("//input[@data-qa='signup-email' and @name='email']");
+	private By signupButton = By.xpath("//button[@data-qa='signup-button' and @class='btn btn-default']");
 	
 	// Login Method
 	public void loginToAutomationExercisePage(String email, String password) {
@@ -52,5 +55,14 @@ public class LoginPage extends BasePage {
 	public boolean validateLoginFormHeaderText() {
 		return actions.validateText(loginFormHeaderText, ConfigReader.getProperty("loginFormHeaderText"), 
 				"Validating login form header text");
+	}
+	
+	@Step("New user signup")
+	public LoginPage enterNewSignupDetails(String name, String email) {
+		actions
+			.typeText(nameSignupInput, name)
+			.typeText(emailSignupInput, email)
+			.click(signupButton);
+		return this;
 	}
 }

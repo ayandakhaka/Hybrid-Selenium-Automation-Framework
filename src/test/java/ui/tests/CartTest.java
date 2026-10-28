@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import api.model.UserModel;
 import api.testdata.TestDataManager;
+import pages.DashboardPage;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductsPage;
@@ -21,8 +22,9 @@ public class CartTest extends BaseTest {
 	
 	private HomePage homePage;
 	private LoginPage loginPage;
+	private DashboardPage dashboardPage;
 	private ProductsPage productsPage;
-	private ViewCartPage viewPageCart;
+	private ViewCartPage viewCartPage;
 	
 	
 	@BeforeMethod
@@ -33,13 +35,14 @@ public class CartTest extends BaseTest {
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
 		productsPage = new ProductsPage(driver);
-		viewPageCart = new ViewCartPage(driver);
+		dashboardPage = new DashboardPage(driver);
+		viewCartPage = new ViewCartPage(driver);
 	
 
 		homePage.clickSignLoginButton();
 		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
 		
-		//productsPage.clickProductsLink();
+		dashboardPage.clickProductsLink();
 	}
 	
 	@Test(priority = 1)
@@ -58,6 +61,42 @@ public class CartTest extends BaseTest {
 	            "The success message was not displayed after adding the product to the cart.");
 	    FrameworkLogger.testEnd("verifyFirstProductCanBeAddedToCart");
 	    
+
+	}
+	
+	@Test(priority = 2)
+	public void verifyAddTwoProductsToCart() {
+		
+		FrameworkLogger.testStart("verifyAddTwoProductsToCart");
+		// Arrange
+		productsPage.hoverOverFirstProduct();
+	    productsPage.clickAddToCartOnFirstProduct();
+	    productsPage.clickContinueShopping();
+	   
+	    
+	    // Act 
+	    productsPage.hoverOverSecondProduct();
+	    productsPage.clickAddToCartOnSecondProduct();
+	    productsPage.clickViewCartLink();
+		
+		// Assert
+	    
+	 // Blue Top: product ID 1
+	    Assert.assertEquals(
+	    	viewCartPage.getProductName(1),
+	        "Blue Top",
+	        "Product name mismatch"
+	    );
+
+	    Assert.assertEquals(
+	    	viewCartPage.getProductCategory(1),
+	        "Women > Tops",
+	        "Product category mismatch"
+	    );
+
+	    Assert.assertEquals(viewCartPage.getProductPrice(1), 500);
+	    Assert.assertEquals(viewCartPage.getProductQuantity(1), 2);
+	    Assert.assertEquals(viewCartPage.getProductTotal(1), 1000);
 
 	}
 }

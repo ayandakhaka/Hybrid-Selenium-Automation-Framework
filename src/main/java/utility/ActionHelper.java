@@ -462,5 +462,13 @@ public class ActionHelper {
 			return false;
 		}
 	}
+	
+	public void waitForVisibility(By locator, int timeoutSeconds) {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+		wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(locator)
+	    );
+	}
 }
 

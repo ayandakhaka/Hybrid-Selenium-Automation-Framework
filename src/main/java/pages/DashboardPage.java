@@ -15,6 +15,9 @@ public class DashboardPage extends BasePage {
 	
 	private By username = By.xpath("//a[contains(., 'Logged in as')]/b");
 	private By productsLink = By.xpath("//a[@href='/products']");
+	private By loggedInUser = By.xpath("//a[contains(text(), 'Logged in as')]");
+	private By deleteAccount = By.xpath("//a[@href='/delete_account']");
+	
 	
 	@Step("Get loggedin user text")
 	public String getLoggedinUsernameText() {
@@ -28,6 +31,13 @@ public class DashboardPage extends BasePage {
 		return this;
 	}
 	
+	public boolean verifySuccessRegistration(String username) {
+		return actions.validateText(loggedInUser, " Logged in as "+ username , "Logged In user");
+	}
 	
+	public DashboardPage clickDeleteAccount() {
+		actions.click(deleteAccount);
+		return this;
+	}
 	
 }

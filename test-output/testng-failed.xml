@@ -3,11 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="database.DatabaseConnectionTest">
+      <class name="ui.tests.RegisterTest">
         <methods>
-          <include name="verifyDatabaseConnection"/>
+          <include name="setup"/>
+          <include name="verifyAccountCreatedSuccessText"/>
+          <include name="cleanupTestData"/>
+          <include name="tearDown"/>
+          <include name="initializeTestData"/>
+          <include name="setupPages"/>
         </methods>
-      </class> <!-- database.DatabaseConnectionTest -->
+      </class> <!-- ui.tests.RegisterTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

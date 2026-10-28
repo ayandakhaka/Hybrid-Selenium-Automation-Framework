@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import utility.BasePage;
 
@@ -55,6 +56,51 @@ public class ViewCartPage extends BasePage {
 		return this;
 	}
 	
+	private WebElement getProductRow(int productId) {
+		return driver.findElement(By.id("product-" + productId));
+	}
+	
+	public String getProductName(int productId) {
+        return getProductRow(productId)
+            .findElement(By.cssSelector(".cart_description h4 a"))
+            .getText().trim();
+    }
+	
+	public String getProductCategory(int productId) {
+        return getProductRow(productId)
+            .findElement(By.cssSelector(".cart_description p"))
+            .getText().trim();
+    }
+
+    public int getProductPrice(int productId) {
+        String price = getProductRow(productId)
+            .findElement(By.cssSelector(".cart_price p"))
+            .getText();
+
+        return parseRupees(price);
+    }
+    
+    public int getProductQuantity(int productId) {
+        String quantity = getProductRow(productId)
+            .findElement(By.cssSelector(".cart_quantity button"))
+            .getText().trim();
+
+        return Integer.parseInt(quantity);
+    }
+
+    public int getProductTotal(int productId) {
+        String total = getProductRow(productId)
+            .findElement(By.cssSelector(".cart_total_price"))
+            .getText();
+
+        return parseRupees(total);
+    }
+
+    private int parseRupees(String text) {
+        return Integer.parseInt(
+            text.replaceAll("[^0-9]", "")
+        );
+    }
 	
 
 }

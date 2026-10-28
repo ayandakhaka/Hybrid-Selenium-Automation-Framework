@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
 		logoutPage = new LogoutPage(driver);
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, groups = {"smoke", "regression"})
 	@Owner("Ayanda Khaka")
 	@Story("Registered user login to the application")
 	@Severity(SeverityLevel.CRITICAL)
@@ -56,7 +56,7 @@ public class LoginTest extends BaseTest {
 		FrameworkLogger.testEnd("verifyUserCanLoginSuccessfully");		
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("User login with invalid email")
 	@Severity(SeverityLevel.CRITICAL)
@@ -79,7 +79,8 @@ public class LoginTest extends BaseTest {
 		FrameworkLogger.testEnd("verifyLoginWithInvalidEmail");
 
 	}
-	@Test(priority = 3)
+	
+	@Test(priority = 3, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("User login with invalid password")
 	@Severity(SeverityLevel.CRITICAL)
@@ -102,7 +103,7 @@ public class LoginTest extends BaseTest {
 		
 	}
 	
-	@Test(priority = 4)
+	@Test(priority = 4, groups = {"smoke", "regression"})
 	@Owner("Ayanda Khaka")
 	@Story("Loggedin user logout from the application")
 	@Severity(SeverityLevel.CRITICAL)
