@@ -16,6 +16,7 @@ public class HomePage extends BasePage {
 	private By signupLoginButton = By.cssSelector("a[href='/login']");
 	private By cartButton = By.cssSelector("a[href='/view_cart']");
 	private By emptyCart = By.xpath("//p[@class='text-center']");
+	private By contactUsLink = By.xpath("//a[@href='/contact_us']");
 	
 	@Step("Click 'Signup / Login' button")
 	public void clickSignLoginButton() {
@@ -31,6 +32,11 @@ public class HomePage extends BasePage {
 	@Step("Verifying cart is empty")
 	public boolean isCartEmpty() {
 		return actions.getText(emptyCart).contains("Cart is empty!");
+	}
+	
+	public HomePage clickContactUsLink() {
+		actions.click(contactUsLink);
+		return this;
 	}
 
 }

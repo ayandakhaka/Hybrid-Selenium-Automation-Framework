@@ -26,9 +26,7 @@ import utility.FrameworkLogger;
 @Epic("Automation exercise")
 @Feature("Registration Tests")
 public class RegisterTest extends BaseTest {
-	
-	//private UserModel user;
-	
+		
 	private HomePage homePage;
 	private LoginPage loginPage;
 	private SignupPage signupPage;
@@ -65,7 +63,8 @@ public class RegisterTest extends BaseTest {
 		loginPage.enterNewSignupDetails(user.getName(), user.getEmail());
 		// Assert
 		Assert.assertTrue(signupPage.validateEnterAccountInformationText(
-				ConfigReader.getProperty("signupHeaderText")), "Failed to validate enter account information text");
+				ConfigReader.getProperty("signupHeaderText")), 
+				"Failed to validate enter account information text");
 		
 		FrameworkLogger.testEnd("verifyUserNavigateToSignupPage");
 		
@@ -149,7 +148,9 @@ public class RegisterTest extends BaseTest {
 		accountCreatedPage.clickContinueButton();
 		
 		// Assert
-		Assert.assertTrue(dashboardPage.verifySuccessRegistration(user.getName()), "Failed to validate user registration");
+		Assert.assertTrue(dashboardPage.verifySuccessRegistration(
+				user.getName()), 
+				"Failed to validate user registration");
 		
 		FrameworkLogger.testEnd("verifyUserRgistersSuccessfully");
 	}
@@ -190,7 +191,10 @@ public class RegisterTest extends BaseTest {
 		dashboardPage.clickDeleteAccount();
 		
 		// Assert
-		Assert.assertTrue(deleteAccountPage.validateDeleteAccountHeaderText(ConfigReader.getProperty("accountDeleted")));
+		Assert.assertTrue(
+				deleteAccountPage.validateDeleteAccountHeaderText(
+						ConfigReader.getProperty("accountDeleted")),
+				"Failed to verify delete account header text");
 		
 		FrameworkLogger.testEnd("verifyDeleteAccount");
 	}
@@ -211,7 +215,9 @@ public class RegisterTest extends BaseTest {
 		loginPage.enterNewSignupDetails(user.getName(), user.getEmail());
 		
 		// Assert
-		Assert.assertTrue(signupPage.validateEmailErrorMessage(ConfigReader.getProperty("emailError")));
+		Assert.assertTrue(signupPage.validateEmailErrorMessage(
+				ConfigReader.getProperty("emailError")), 
+				"Failed to verify email address error message");
 		
 		FrameworkLogger.testEnd("verifyEmailAddressErrorMessage");
 	}

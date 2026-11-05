@@ -24,7 +24,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	private UserModel user;
 	private Response response;
 
-	@Test(priority = 1)
+	@Test(priority = 1, groups = {"smoke", "regression"})
 	@Owner("Ayanda Khaka")
 	@Story("Login with valid credentials")
 	@Severity(SeverityLevel.CRITICAL)
@@ -53,7 +53,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifyLoginWithValidLoginDetails");
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Login without email parameter")
 	@Severity(SeverityLevel.CRITICAL)
@@ -81,7 +81,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifyLoginWithoutEmailParameter");
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3, groups = {"smoke", "regression"})
 	@Owner("Ayanda Khaka")
 	@Story("Search product item")
 	@Severity(SeverityLevel.CRITICAL)
@@ -110,7 +110,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Search product item without product parameter")
 	@Severity(SeverityLevel.CRITICAL)
@@ -139,7 +139,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifySearchProductItemWithoutProductItemParameter");
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Update to all brand list")
 	@Severity(SeverityLevel.CRITICAL)
@@ -170,7 +170,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifyUpdateToAllBrandList");
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Post to all product list")
 	@Severity(SeverityLevel.CRITICAL)
@@ -202,7 +202,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	}
 
 
-	@Test(priority = 7)
+	@Test(priority = 7, groups = {"smoke", "regression"})
 	@Owner("Ayanda Khaka")
 	@Story("Return user details by email")
 	@Severity(SeverityLevel.CRITICAL)
@@ -307,7 +307,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifyReturnUserDetailsByEmail");
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 8, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Account update")
 	@Severity(SeverityLevel.CRITICAL)
@@ -342,7 +342,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifyUserAccountUpdate");
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 9, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Delete user account")
 	@Severity(SeverityLevel.CRITICAL)
@@ -374,7 +374,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifyDeleteUserAccount");
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 10, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Invalid login")
 	@Severity(SeverityLevel.CRITICAL)
@@ -406,7 +406,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 		FrameworkLogger.testEnd("verifyLoginWithInvalidDetails");
 	}
 
-	@Test(priority = 11)
+	@Test(priority = 11, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Delete login")
 	@Severity(SeverityLevel.CRITICAL)

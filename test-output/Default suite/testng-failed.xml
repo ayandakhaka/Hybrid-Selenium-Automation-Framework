@@ -3,16 +3,16 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ui.tests.RegisterTest">
+      <class name="ui.tests.ContactUsTest">
         <methods>
+          <include name="setupPages"/>
           <include name="setup"/>
-          <include name="verifyAccountCreatedSuccessText"/>
           <include name="cleanupTestData"/>
           <include name="tearDown"/>
+          <include name="verifyContactUsSuccessMessage"/>
           <include name="initializeTestData"/>
-          <include name="setupPages"/>
         </methods>
-      </class> <!-- ui.tests.RegisterTest -->
+      </class> <!-- ui.tests.ContactUsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

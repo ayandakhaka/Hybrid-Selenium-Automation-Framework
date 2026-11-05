@@ -45,6 +45,12 @@ public class ActionHelper {
 						)
 				);
 	}
+	
+	public String getValidationMessage(By locator, String validationText) {
+		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		FrameworkLogger.info("Validation text : " + element.getAttribute(validationText));
+		return element.getAttribute(validationText);
+	}
 
 	// Click element
 	public ActionHelper click(By locator) {

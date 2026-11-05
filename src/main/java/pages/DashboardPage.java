@@ -31,10 +31,12 @@ public class DashboardPage extends BasePage {
 		return this;
 	}
 	
+	@Step("Validate success registration text")
 	public boolean verifySuccessRegistration(String username) {
 		return actions.validateText(loggedInUser, " Logged in as "+ username , "Logged In user");
 	}
 	
+	@Step("Click delete account link")
 	public DashboardPage clickDeleteAccount() {
 		actions.click(deleteAccount);
 		return this;
