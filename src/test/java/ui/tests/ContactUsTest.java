@@ -17,30 +17,25 @@ import utility.FrameworkLogger;
 
 public class ContactUsTest extends BaseTest {
 
-	private HomePage homePage;
-	private ContactUsPage contactUsPage;
-
-	@BeforeMethod
-	public void setupPages() {
-
-		homePage = new HomePage(driver);
-		contactUsPage = new ContactUsPage(driver);
-	}
-	
 	@Test(priority = 1, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Contact form validation")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that contact us header text is displayed")
 	public void verifyContactUsHeaderText() {
-		
+
 		FrameworkLogger.testStart("verifyContactUsHeaderText");
-	
+
 		// Act
-		homePage.clickContactUsLink();
+		pages
+		.getHomePage()
+		.clickContactUsLink();
 		// Assert
-		Assert.assertTrue(contactUsPage.validateContactUsHeaderText(
-				ConfigReader.getProperty("contactUsHeaderText")),
+		Assert.assertTrue(
+				pages
+				.getContactUsPage()
+				.validateContactUsHeaderText(
+						ConfigReader.getProperty("contactUsHeaderText")),
 				"Failed to validate contact us header text");
 	}
 
@@ -54,44 +49,56 @@ public class ContactUsTest extends BaseTest {
 		FrameworkLogger.testStart("verifyContactUsSuccessMessage");
 
 		// Arrange
-		homePage.clickContactUsLink();
+		pages
+		.getHomePage()
+		.clickContactUsLink();
 
 		// Act
-		contactUsPage.contactUs(
+		pages
+		.getContactUsPage()
+		.contactUs(
 				user.getName(),
 				user.getEmail(), 
 				ConfigReader.getProperty("subject"), 
 				ConfigReader.getProperty("message"));
 
 		// Assert
-		Assert.assertTrue(contactUsPage.validateContactUsSuccessMessage(
-				ConfigReader.getProperty("contactUsSuccessMessage")),
+		Assert.assertTrue(pages
+				.getContactUsPage()
+				.validateContactUsSuccessMessage(
+						ConfigReader.getProperty("contactUsSuccessMessage")),
 				"Failed to validate contact us success message");
 
 		FrameworkLogger.testEnd("verifyContactUsSuccessMessage");
 	}
-	
+
 	@Test(priority = 3, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Contact form validation")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that email text field is validated when left blanck")
 	public void verifyEmailTextFieldValidationText() {
-		
+
 		FrameworkLogger.testStart("verifyEmailTextFieldValidationText");
-		
+
 		// Arrange
-		homePage.clickContactUsLink();
-		
+		pages
+		.getHomePage()
+		.clickContactUsLink();
+
 		// Act
-		contactUsPage.clickSubmitButton();
+		pages
+		.getContactUsPage()
+		.clickSubmitButton();
 		// Assert
-		Assert.assertEquals(contactUsPage.getEmailValidationMessage(), 
+		Assert.assertEquals(pages
+				.getContactUsPage()
+				.getEmailValidationMessage(), 
 				ConfigReader.getProperty("emailValidationText"),
 				"Failed to verify email text field.");
-		
+
 		FrameworkLogger.testEnd("verifyEmailTextFieldValidationText");
 	}
-	
-	
+
+
 }

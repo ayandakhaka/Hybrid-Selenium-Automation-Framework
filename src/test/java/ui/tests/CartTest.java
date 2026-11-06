@@ -17,86 +17,111 @@ import utility.ConfigReader;
 import utility.FrameworkLogger;
 
 public class CartTest extends BaseTest {
-	
+
 	private UserModel user;
-	
-	private HomePage homePage;
-	private LoginPage loginPage;
-	private DashboardPage dashboardPage;
-	private ProductsPage productsPage;
-	private ViewCartPage viewCartPage;
-	
-	
+
 	@BeforeMethod
 	public void setupLogin() {
-		
-		user = TestDataManager.getInstance().getUser();
-		
-		homePage = new HomePage(driver);
-		loginPage = new LoginPage(driver);
-		productsPage = new ProductsPage(driver);
-		dashboardPage = new DashboardPage(driver);
-		viewCartPage = new ViewCartPage(driver);
-	
 
-		homePage.clickSignLoginButton();
-		loginPage.loginToAutomationExercisePage(user.getEmail(), user.getPassword());
-		
-		dashboardPage.clickProductsLink();
+		user = TestDataManager.getInstance().getUser();
+
+		pages
+		.getHomePage()
+		.clickSignLoginButton();
+		pages
+		.getLoginPage()
+		.loginToAutomationExercisePage(
+				user.getEmail(),
+				user.getPassword());
+
+		pages
+		.getDashboardPage()
+		.clickProductsLink();
 	}
-	
+
 	@Test(priority = 1)
 	public void verifyAddSingleProductToCart() {
 
-	    FrameworkLogger.testStart("verifyFirstProductCanBeAddedToCart");
+		FrameworkLogger.testStart("verifyFirstProductCanBeAddedToCart");
 
-	    // Act
-	    productsPage.hoverOverFirstProduct();
-	    productsPage.clickAddToCartOnFirstProduct();
-	    
-	    // Assert
-	    Assert.assertTrue(
-	            productsPage.validateAddedToCartSuccessMessage(
-	                    ConfigReader.getProperty("addtoCartSuccessMessage")),
-	            "The success message was not displayed after adding the product to the cart.");
-	    FrameworkLogger.testEnd("verifyFirstProductCanBeAddedToCart");
-	    
+		// Act
+		pages
+		.getProductsPage()
+		.hoverOverFirstProduct();
+		pages
+		.getProductsPage()
+		.clickAddToCartOnFirstProduct();
+
+		// Assert
+		Assert.assertTrue(
+				pages
+				.getProductsPage()
+				.validateAddedToCartSuccessMessage(
+						ConfigReader.getProperty("addtoCartSuccessMessage")),
+				"The success message was not displayed after adding the product to the cart.");
+		FrameworkLogger.testEnd("verifyFirstProductCanBeAddedToCart");
+
 
 	}
-	
+
 	@Test(priority = 2)
 	public void verifyAddTwoProductsToCart() {
-		
+
 		FrameworkLogger.testStart("verifyAddTwoProductsToCart");
 		// Arrange
-		productsPage.hoverOverFirstProduct();
-	    productsPage.clickAddToCartOnFirstProduct();
-	    productsPage.clickContinueShopping();
-	   
-	    
-	    // Act 
-	    productsPage.hoverOverSecondProduct();
-	    productsPage.clickAddToCartOnSecondProduct();
-	    productsPage.clickViewCartLink();
-		
+		pages
+		.getProductsPage()
+		.hoverOverFirstProduct();
+		pages
+		.getProductsPage()
+		.clickAddToCartOnFirstProduct();
+		pages
+		.getProductsPage()
+		.clickContinueShopping();
+
+
+		// Act 
+		pages
+		.getProductsPage()
+		.hoverOverSecondProduct();
+		pages
+		.getProductsPage()
+		.clickAddToCartOnSecondProduct();
+		pages
+		.getProductsPage()
+		.clickViewCartLink();
+
 		// Assert
-	    
-	 // Blue Top: product ID 1
-	    Assert.assertEquals(
-	    	viewCartPage.getProductName(1),
-	        "Blue Top",
-	        "Product name mismatch"
-	    );
 
-	    Assert.assertEquals(
-	    	viewCartPage.getProductCategory(1),
-	        "Women > Tops",
-	        "Product category mismatch"
-	    );
+		// Blue Top: product ID 1
+		Assert.assertEquals(
+				pages
+				.getViewCartPage()
+				.getProductName(1),
+				"Blue Top",
+				"Product name mismatch"
+				);
 
-	    Assert.assertEquals(viewCartPage.getProductPrice(1), 500);
-	    Assert.assertEquals(viewCartPage.getProductQuantity(1), 2);
-	    Assert.assertEquals(viewCartPage.getProductTotal(1), 1000);
+		Assert.assertEquals(
+				pages
+				.getViewCartPage()
+				.getProductCategory(1),
+				"Women > Tops",
+				"Product category mismatch"
+				);
+
+		Assert.assertEquals(
+				pages
+				.getViewCartPage()
+				.getProductPrice(1), 500);
+		Assert.assertEquals(
+				pages
+				.getViewCartPage()
+				.getProductQuantity(1), 2);
+		Assert.assertEquals(
+				pages
+				.getViewCartPage()
+				.getProductTotal(1), 1000);
 
 	}
 }

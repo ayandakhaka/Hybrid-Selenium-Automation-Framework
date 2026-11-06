@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,7 +39,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Smoke_Test_Suite" class="navigator-link">
-              <span class="suite-name border-failed">Smoke Test Suite</span>
+              <span class="suite-name border-passed">Smoke Test Suite</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -92,26 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods, 2 failed,   3 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Smoke_Test_Suite" class="hide-methods failed suite-Smoke_Test_Suite"> (hide)</a> <!-- hide-methods failed suite-Smoke_Test_Suite -->
-                      <a href="#" panel-name="suite-Smoke_Test_Suite" class="show-methods failed suite-Smoke_Test_Suite"> (show)</a> <!-- show-methods failed suite-Smoke_Test_Suite -->
-                    </span>
-                    <div class="method-list-content failed suite-Smoke_Test_Suite">
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Smoke_Test_Suite" title="ui.tests.LoginTest" class="method navigator-link" hash-for-method="verifyLogout">verifyLogout</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Smoke_Test_Suite" title="ui.tests.LoginTest" class="method navigator-link" hash-for-method="verifyUserCanLoginSuccessfully">verifyUserCanLoginSuccessfully</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-Smoke_Test_Suite -->
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -127,12 +108,22 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test_Suite" title="ui.tests.LoginTest" class="method navigator-link" hash-for-method="verifyLogout">verifyLogout</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Smoke_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifyReturnedUserDetailsByEmail">verifyReturnedUserDetailsByEmail</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Smoke_Test_Suite" title="api.tests.AutomationExerciseAPITests" class="method navigator-link" hash-for-method="verifySearchProductItem">verifySearchProductItem</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Smoke_Test_Suite" title="ui.tests.LoginTest" class="method navigator-link" hash-for-method="verifyUserCanLoginSuccessfully">verifyUserCanLoginSuccessfully</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Smoke_Test_Suite -->
@@ -147,38 +138,6 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Smoke_Test_Suite" class="panel Smoke_Test_Suite">
-          <div class="suite-Smoke_Test_Suite-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">ui.tests.LoginTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyLogout">
-                  </a> <!-- verifyLogout -->
-                  <span class="method-name">verifyLogout</span>
-                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;pages.HomePage.clickSignLoginButton()&quot; because &quot;this.homePage&quot; is null
-	at ui.tests.LoginTest.verifyLogout(LoginTest.java:126)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyUserCanLoginSuccessfully">
-                  </a> <!-- verifyUserCanLoginSuccessfully -->
-                  <span class="method-name">verifyUserCanLoginSuccessfully</span>
-                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;pages.HomePage.clickSignLoginButton()&quot; because &quot;this.homePage&quot; is null
-	at ui.tests.LoginTest.verifyUserCanLoginSuccessfully(LoginTest.java:57)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-... Removed 29 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Smoke_Test_Suite-class-failed -->
           <div class="suite-Smoke_Test_Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -204,6 +163,28 @@
                   <a name="verifySearchProductItem">
                   </a> <!-- verifySearchProductItem -->
                   <span class="method-name">verifySearchProductItem</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_Test_Suite-class-passed -->
+          <div class="suite-Smoke_Test_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">ui.tests.LoginTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyLogout">
+                  </a> <!-- verifyLogout -->
+                  <span class="method-name">verifyLogout</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyUserCanLoginSuccessfully">
+                  </a> <!-- verifyUserCanLoginSuccessfully -->
+                  <span class="method-name">verifyUserCanLoginSuccessfully</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -324,30 +305,30 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(5);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyReturnedUserDetailsByEmail')
-data.setCell(0, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(0, 3, 9815);
+data.setCell(0, 1, 'verifyUserCanLoginSuccessfully')
+data.setCell(0, 2, 'ui.tests.LoginTest')
+data.setCell(0, 3, 34865);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'verifyLoginWithValidLoginDetails')
-data.setCell(1, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(1, 3, 4547);
+data.setCell(1, 1, 'verifyLogout')
+data.setCell(1, 2, 'ui.tests.LoginTest')
+data.setCell(1, 3, 27411);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'verifySearchProductItem')
+data.setCell(2, 1, 'verifyReturnedUserDetailsByEmail')
 data.setCell(2, 2, 'api.tests.AutomationExerciseAPITests')
-data.setCell(2, 3, 2429);
+data.setCell(2, 3, 7558);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'verifyUserCanLoginSuccessfully')
-data.setCell(3, 2, 'ui.tests.LoginTest')
-data.setCell(3, 3, 541);
+data.setCell(3, 1, 'verifyLoginWithValidLoginDetails')
+data.setCell(3, 2, 'api.tests.AutomationExerciseAPITests')
+data.setCell(3, 3, 3329);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'verifyLogout')
-data.setCell(4, 2, 'ui.tests.LoginTest')
-data.setCell(4, 3, 15);
+data.setCell(4, 1, 'verifySearchProductItem')
+data.setCell(4, 2, 'api.tests.AutomationExerciseAPITests')
+data.setCell(4, 3, 1192);
 window.suiteTableData['Smoke_Test_Suite']= { tableData: data, tableDiv: 'times-div-Smoke_Test_Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 17 seconds</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Smoke_Test_Suite">
               </div> <!-- times-div-Smoke_Test_Suite -->
             </div> <!-- times-div -->
@@ -366,30 +347,21 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="ignored-class-div">
-              <span class="ignored-class-name">ui.tests.CartTest</span>
+              <span class="ignored-class-name">ui.tests.RegisterTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyAddTwoProductsToCart</span>
+                <span class="ignored-method-name">verifyUserNavigateToSignupPage</span>
                 <br/>
-                <span class="ignored-method-name">initializeTestData</span>
+                <span class="ignored-method-name">verifyUserRgistersSuccessfully</span>
                 <br/>
                 <span class="ignored-method-name">cleanupTestData</span>
                 <br/>
-                <span class="ignored-method-name">verifyAddSingleProductToCart</span>
+                <span class="ignored-method-name">verifyAccountCreatedSuccessText</span>
                 <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">ui.tests.SearchProductTest</span>
-              <div class="ignored-methods-div">
                 <span class="ignored-method-name">initializeTestData</span>
                 <br/>
-                <span class="ignored-method-name">verifyAllItemsRelatedToSearchAreDisplayed</span>
+                <span class="ignored-method-name">verifyEmailAddressErrorMessage</span>
                 <br/>
-                <span class="ignored-method-name">verifyUserNavigatedToProductsPage</span>
-                <br/>
-                <span class="ignored-method-name">cleanupTestData</span>
-                <br/>
-                <span class="ignored-method-name">verifyUserSearchNonExistingItem</span>
+                <span class="ignored-method-name">verifyDeleteAccount</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -398,51 +370,47 @@ return data;
               <div class="ignored-methods-div">
                 <span class="ignored-method-name">verifyUpdateToAllBrandList</span>
                 <br/>
-                <span class="ignored-method-name">verifyLoginWithoutEmailParameter</span>
+                <span class="ignored-method-name">verifySearchProductItemWithoutProductItemParameter</span>
+                <br/>
+                <span class="ignored-method-name">verifyUserAccountUpdate</span>
                 <br/>
                 <span class="ignored-method-name">verifyPostToAllProductList</span>
                 <br/>
                 <span class="ignored-method-name">verifyDeleteLogin</span>
                 <br/>
-                <span class="ignored-method-name">verifySearchProductItemWithoutProductItemParameter</span>
+                <span class="ignored-method-name">verifyLoginWithoutEmailParameter</span>
+                <br/>
+                <span class="ignored-method-name">verifyDeleteUserAccount</span>
                 <br/>
                 <span class="ignored-method-name">verifyLoginWithInvalidDetails</span>
                 <br/>
-                <span class="ignored-method-name">verifyUserAccountUpdate</span>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">ui.tests.SearchProductTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">cleanupTestData</span>
                 <br/>
-                <span class="ignored-method-name">verifyDeleteUserAccount</span>
+                <span class="ignored-method-name">initializeTestData</span>
+                <br/>
+                <span class="ignored-method-name">verifyUserNavigatedToProductsPage</span>
+                <br/>
+                <span class="ignored-method-name">verifyUserSearchNonExistingItem</span>
+                <br/>
+                <span class="ignored-method-name">verifyAllItemsRelatedToSearchAreDisplayed</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
             <div class="ignored-class-div">
               <span class="ignored-class-name">ui.tests.ContactUsTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyContactUsSuccessMessage</span>
-                <br/>
                 <span class="ignored-method-name">verifyContactUsHeaderText</span>
-                <br/>
-                <span class="ignored-method-name">initializeTestData</span>
                 <br/>
                 <span class="ignored-method-name">cleanupTestData</span>
                 <br/>
                 <span class="ignored-method-name">verifyEmailTextFieldValidationText</span>
                 <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">ui.tests.RegisterTest</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">verifyUserRgistersSuccessfully</span>
-                <br/>
-                <span class="ignored-method-name">verifyAccountCreatedSuccessText</span>
-                <br/>
-                <span class="ignored-method-name">verifyUserNavigateToSignupPage</span>
-                <br/>
-                <span class="ignored-method-name">cleanupTestData</span>
-                <br/>
-                <span class="ignored-method-name">verifyDeleteAccount</span>
-                <br/>
-                <span class="ignored-method-name">verifyEmailAddressErrorMessage</span>
+                <span class="ignored-method-name">verifyContactUsSuccessMessage</span>
                 <br/>
                 <span class="ignored-method-name">initializeTestData</span>
                 <br/>
@@ -451,13 +419,26 @@ return data;
             <div class="ignored-class-div">
               <span class="ignored-class-name">ui.tests.LoginTest</span>
               <div class="ignored-methods-div">
-                <span class="ignored-method-name">initializeTestData</span>
-                <br/>
-                <span class="ignored-method-name">cleanupTestData</span>
-                <br/>
                 <span class="ignored-method-name">verifyLoginWithInvalidPassword</span>
                 <br/>
                 <span class="ignored-method-name">verifyLoginWithInvalidEmailFormat</span>
+                <br/>
+                <span class="ignored-method-name">cleanupTestData</span>
+                <br/>
+                <span class="ignored-method-name">initializeTestData</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">ui.tests.CartTest</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">verifyAddSingleProductToCart</span>
+                <br/>
+                <span class="ignored-method-name">initializeTestData</span>
+                <br/>
+                <span class="ignored-method-name">verifyAddTwoProductsToCart</span>
+                <br/>
+                <span class="ignored-method-name">cleanupTestData</span>
                 <br/>
               </div> <!-- ignored-methods-div -->
             </div> <!-- ignored-class-div -->
@@ -476,45 +457,49 @@ return data;
               </div> <!-- configuration-suite before -->
               <div class="test-method">
                 <span class="method-name">verifyLoginWithValidLoginDetails</span>
-                <span class="method-start">75614 ms</span>
+                <span class="method-start">48185 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">verifySearchProductItem</span>
-                <span class="method-start">81386 ms</span>
+                <span class="method-start">52246 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">verifyReturnedUserDetailsByEmail</span>
-                <span class="method-start">83878 ms</span>
+                <span class="method-start">53478 ms</span>
               </div> <!-- test-method -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">ui.tests.LoginTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">61094 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">verifyUserCanLoginSuccessfully</span>
-                <span class="method-start">93765 ms</span>
+                <span class="method-start">99930 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">tearDown([TestResult name=verifyUserCanLoginSuccessfully status=FAILURE method=LoginTest.verifyUserCanLoginSu...)</span>
-                <span class="method-start">94372 ms</span>
+                <span class="method-name">tearDown([TestResult name=verifyUserCanLoginSuccessfully status=SUCCESS method=LoginTest.verifyUserCanLoginSu...)</span>
+                <span class="method-start">134899 ms</span>
               </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">166220 ms</span>
+              </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">verifyLogout</span>
-                <span class="method-start">94573 ms</span>
+                <span class="method-start">185460 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">tearDown([TestResult name=verifyLogout status=FAILURE method=LoginTest.verifyLogout()[pri:4, instance:ui.test...)</span>
-                <span class="method-start">94621 ms</span>
+                <span class="method-name">tearDown([TestResult name=verifyLogout status=SUCCESS method=LoginTest.verifyLogout()[pri:4, instance:ui.test...)</span>
+                <span class="method-start">212929 ms</span>
               </div> <!-- configuration-method after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">api.tests.AutomationExerciseAPITests</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">cleanupTestData</span>
-                <span class="method-start">94938 ms</span>
+                <span class="method-start">255481 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

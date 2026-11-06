@@ -3,6 +3,7 @@ utility\BasePage.class
 pages\LoginPage.class
 utility\ConfigReader.class
 pages\DashboardPage.class
+utility\PageManager.class
 utility\ActionHelper.class
 utility\FrameworkLogger.class
 database\config\DatabaseConfig.class

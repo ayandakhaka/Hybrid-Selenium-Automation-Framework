@@ -21,88 +21,46 @@ public class BaseTest extends TestDataSetup {
 
 	protected WebDriver driver;
 	protected UserModel user;
-	protected ActionHelper action;
-	protected PopupHandler popupHandler;
 	
 //	protected HomePage homePage;
 //	protected LoginPage loginPage;
 //	protected LogoutPage logoutPage;
-
-
-	@BeforeMethod
+	protected PageManager pages;
+	
+	protected ActionHelper action;
+	protected PopupHandler popupHandler;
+	
+	@BeforeMethod(alwaysRun = true)
 	@Step("Create driver and launch the application")
 	public void setup() {
 
-		// Clear the logs
-		FrameworkLogger.clearTestLogs();
+	    FrameworkLogger.info("========== BASETEST SETUP STARTED ==========");
 
-		// Create thread-safe WebDriver
-		DriverFactory.createDriver();
+	    FrameworkLogger.clearTestLogs();
 
-		// Get driver for current thread
-		driver = DriverFactory.getDriver();
-		
-		if (driver == null) {
-		    throw new IllegalStateException(
-		        "WebDriver initialization failed."
-		    );
-		}
+	    user = TestDataManager.getInstance().getUser();
 
-		// Storing a shared user
-		user = TestDataManager.getInstance().getUser();
+	    FrameworkLogger.info("Shared user retrieved successfully.");
 
-		FrameworkLogger.info(
-				"Using shared test user: " + user.getEmail()
-				); 
+	    DriverFactory.createDriver();
 
-		popupHandler = new PopupHandler(driver);
+	    driver = DriverFactory.getDriver();
 
-		// Create ActionHelper using current thread driver
-		action = new ActionHelper(driver);
+	    FrameworkLogger.info("WebDriver initialized: " + (driver != null));
 
-		// Create Allure environment
-		AllureEnvironment.createEnvironmentFile(
-				driver
-				);
+	    // Initialize page objects
+	   pages = new PageManager(driver);
+	   
+	   FrameworkLogger.info(pages + " : initialized");
 
-		// Navigate to application
-		action.navigateTo(
-				ConfigReader.getProperty("url")
-				);
+	    popupHandler = new PopupHandler(driver);
+	    action = new ActionHelper(driver);
 
-		FrameworkLogger.info("Current URL before wait: " + driver.getCurrentUrl());
-		FrameworkLogger.info("Page title before wait: " + driver.getTitle());
-		// Wait for page load
-		action.waitForPageLoad();
+	    action.navigateTo(ConfigReader.getProperty("url"));
 
-		FrameworkLogger.info("Page loaded successfully.");
-		FrameworkLogger.info("Current URL after wait: " + driver.getCurrentUrl());
-		FrameworkLogger.info("Page title after wait: " + driver.getTitle());
-		
-		// Initialize Page Objects
-//		homePage = new HomePage(driver);
-//		loginPage = new LoginPage(driver);
-//		logoutPage = new LogoutPage(driver);
-//
-//		FrameworkLogger.info("HomePage initialized: " + (homePage != null));
-//		FrameworkLogger.info("LoginPage initialized: " + (loginPage != null));
-//		FrameworkLogger.info("LogoutPage initialized: " + (logoutPage != null));
+	    action.waitForPageLoad();
 
-		String currentTitle = driver.getTitle();
-		String currentUrl = driver.getCurrentUrl();
-
-		FrameworkLogger.info("Current URL: " + currentUrl);
-		FrameworkLogger.info("Page Title: " + currentTitle);
-
-		if (currentTitle.equalsIgnoreCase("One moment, please...")) {
-
-			throw new IllegalStateException(
-					"Application is blocked by a verification page. " +
-							"Expected the Automation Exercise homepage but received: "
-							+ currentTitle
-					);
-
-		}
+	    FrameworkLogger.info("========== BASETEST SETUP COMPLETED ==========");
 	}
 
 	// Returns the current driver

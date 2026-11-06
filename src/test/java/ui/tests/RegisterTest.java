@@ -1,7 +1,6 @@
 package ui.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import api.helpers.UserDataHelper;
@@ -13,12 +12,6 @@ import io.qameta.allure.Owner;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
-import pages.AccountCreatedPage;
-import pages.DashboardPage;
-import pages.DeleteAccountPage;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.SignupPage;
 import utility.BaseTest;
 import utility.ConfigReader;
 import utility.FrameworkLogger;
@@ -26,66 +19,63 @@ import utility.FrameworkLogger;
 @Epic("Automation exercise")
 @Feature("Registration Tests")
 public class RegisterTest extends BaseTest {
-		
-	private HomePage homePage;
-	private LoginPage loginPage;
-	private SignupPage signupPage;
-	private AccountCreatedPage accountCreatedPage;
-	private DashboardPage dashboardPage;
-	private DeleteAccountPage  deleteAccountPage;
-	
-	
-	@BeforeMethod
-	public void setupPages() {
-		
-		homePage = new HomePage(driver);
-		loginPage = new LoginPage(driver);
-		signupPage = new SignupPage(driver);
-		accountCreatedPage = new AccountCreatedPage(driver);
-		dashboardPage = new DashboardPage(driver);
-		deleteAccountPage = new DeleteAccountPage(driver);
-		
-	}
-	
+
 	@Test(priority = 1, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Register new user")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that user navigate to signup page")
 	public void verifyUserNavigateToSignupPage() {
-		
+
 		FrameworkLogger.testStart("verifyUserNavigateToSignupPage");
-		
+
 		// Arrange
 		UserModel user = UserDataHelper.generateUserData();
-		homePage.clickSignLoginButton();
+		pages
+		.getHomePage()
+		.clickSignLoginButton();
 		// Act
-		loginPage.enterNewSignupDetails(user.getName(), user.getEmail());
+		pages
+		.getLoginPage()
+		.enterNewSignupDetails(
+				user.getName(),
+				user.getEmail());
 		// Assert
-		Assert.assertTrue(signupPage.validateEnterAccountInformationText(
-				ConfigReader.getProperty("signupHeaderText")), 
+		Assert.assertTrue(
+				pages
+				.getSignupPage()
+				.validateEnterAccountInformationText(
+						ConfigReader.getProperty("signupHeaderText")), 
 				"Failed to validate enter account information text");
-		
+
 		FrameworkLogger.testEnd("verifyUserNavigateToSignupPage");
-		
+
 	}
-	
+
 	@Test(priority = 2, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Register new user")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that user is navigated account created page")
 	public void verifyAccountCreatedSuccessText() {
-		
+
 		FrameworkLogger.testStart("verifyAccountCreatedSuccessText");
-		
+
 		// Arrange
 		UserModel user = UserDataHelper.generateUserData();
-		homePage.clickSignLoginButton();
-		loginPage.enterNewSignupDetails(user.getName(), user.getEmail());
-		
+		pages
+		.getHomePage()
+		.clickSignLoginButton();
+		pages
+		.getLoginPage()
+		.enterNewSignupDetails(
+				user.getName(),
+				user.getEmail());
+
 		// Act
-		signupPage.registerUser(
+		pages
+		.getSignupPage()
+		.registerUser(
 				user.getTitle(), 
 				user.getPassword(), 
 				user.getBirth_date(), 
@@ -101,32 +91,42 @@ public class RegisterTest extends BaseTest {
 				user.getCity(), 
 				user.getZipcode(), 
 				user.getMobile_number());
-		
-		
+
+
 		// Assert
-		Assert.assertTrue(accountCreatedPage.validateAccountCreatedMessage(
-				ConfigReader.getProperty("accountCreatedSuccessMessage")), 
+		Assert.assertTrue(pages
+				.getAccountCreatedPage()
+				.validateAccountCreatedMessage(
+						ConfigReader.getProperty("accountCreatedSuccessMessage")), 
 				"Failed to verify account created message");
-		
+
 		FrameworkLogger.testEnd("verifyAccountCreatedSuccessText");
-		
+
 	}
-	
+
 	@Test(priority = 3, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Register new user")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that user is registered succesfully")
 	public void verifyUserRgistersSuccessfully() {
-		
+
 		FrameworkLogger.testStart("verifyUserRgistersSuccessfully");
-		
+
 		// Arrange
 		UserModel user = UserDataHelper.generateUserData();
-		homePage.clickSignLoginButton();
-		loginPage.enterNewSignupDetails(user.getName(), user.getEmail());
-		
-		signupPage.registerUser(
+		pages
+		.getHomePage()
+		.clickSignLoginButton();
+		pages
+		.getLoginPage()
+		.enterNewSignupDetails(
+				user.getName(), 
+				user.getEmail());
+
+		pages
+		.getSignupPage()
+		.registerUser(
 				user.getTitle(), 
 				user.getPassword(), 
 				user.getBirth_date(), 
@@ -142,34 +142,47 @@ public class RegisterTest extends BaseTest {
 				user.getCity(), 
 				user.getZipcode(), 
 				user.getMobile_number());
-		
-		
+
+
 		// Act
-		accountCreatedPage.clickContinueButton();
-		
+		pages
+		.getAccountCreatedPage()
+		.clickContinueButton();
+
 		// Assert
-		Assert.assertTrue(dashboardPage.verifySuccessRegistration(
-				user.getName()), 
+		Assert.assertTrue(
+				pages
+				.getDashboardPage()
+				.verifySuccessRegistration(
+						user.getName()), 
 				"Failed to validate user registration");
-		
+
 		FrameworkLogger.testEnd("verifyUserRgistersSuccessfully");
 	}
-	
+
 	@Test(priority = 4, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Register new user")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that account is deleted successfully")
 	public void verifyDeleteAccount() {
-		
+
 		FrameworkLogger.testStart("verifyDeleteAccount");
-		
+
 		// Arrange
 		UserModel user = UserDataHelper.generateUserData();
-		homePage.clickSignLoginButton();
-		loginPage.enterNewSignupDetails(user.getName(), user.getEmail());
-		
-		signupPage.registerUser(
+		pages
+		.getHomePage()
+		.clickSignLoginButton();
+		pages
+		.getLoginPage()
+		.enterNewSignupDetails(
+				user.getName(),
+				user.getEmail());
+
+		pages
+		.getSignupPage()
+		.registerUser(
 				user.getTitle(), 
 				user.getPassword(), 
 				user.getBirth_date(), 
@@ -185,40 +198,55 @@ public class RegisterTest extends BaseTest {
 				user.getCity(), 
 				user.getZipcode(), 
 				user.getMobile_number());
-		
-		accountCreatedPage.clickContinueButton();
+
+		pages
+		.getAccountCreatedPage()
+		.clickContinueButton();
 		// Act
-		dashboardPage.clickDeleteAccount();
-		
+		pages
+		.getDashboardPage()
+		.clickDeleteAccount();
+
 		// Assert
 		Assert.assertTrue(
-				deleteAccountPage.validateDeleteAccountHeaderText(
+				pages
+				.getDeleteAccountPage()
+				.validateDeleteAccountHeaderText(
 						ConfigReader.getProperty("accountDeleted")),
 				"Failed to verify delete account header text");
-		
+
 		FrameworkLogger.testEnd("verifyDeleteAccount");
 	}
-	
+
 	@Test(priority = 5, groups = "regression")
 	@Owner("Ayanda Khaka")
 	@Story("Register new user")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Verify that email error message is displayed")
 	public void verifyEmailAddressErrorMessage() {
-		
+
 		FrameworkLogger.testStart("verifyEmailAddressErrorMessage");
-		
+
 		// Arrange
-		homePage.clickSignLoginButton();
-		
+		pages
+		.getHomePage()
+		.clickSignLoginButton();
+
 		// Act
-		loginPage.enterNewSignupDetails(user.getName(), user.getEmail());
-		
+		pages
+		.getLoginPage()
+		.enterNewSignupDetails(
+				user.getName(),
+				user.getEmail());
+
 		// Assert
-		Assert.assertTrue(signupPage.validateEmailErrorMessage(
-				ConfigReader.getProperty("emailError")), 
+		Assert.assertTrue(
+				pages
+				.getSignupPage()
+				.validateEmailErrorMessage(
+						ConfigReader.getProperty("emailError")), 
 				"Failed to verify email address error message");
-		
+
 		FrameworkLogger.testEnd("verifyEmailAddressErrorMessage");
 	}
 }
