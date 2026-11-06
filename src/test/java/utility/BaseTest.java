@@ -10,6 +10,9 @@ import api.model.UserModel;
 import api.setup.TestDataSetup;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
+import pages.HomePage;
+import pages.LoginPage;
+import pages.LogoutPage;
 import api.testdata.TestDataManager;
 
 import java.io.ByteArrayInputStream;
@@ -20,28 +23,38 @@ public class BaseTest extends TestDataSetup {
 	protected UserModel user;
 	protected ActionHelper action;
 	protected PopupHandler popupHandler;
+	
+//	protected HomePage homePage;
+//	protected LoginPage loginPage;
+//	protected LogoutPage logoutPage;
 
 
 	@BeforeMethod
 	@Step("Create driver and launch the application")
 	public void setup() {
-		
+
 		// Clear the logs
 		FrameworkLogger.clearTestLogs();
-		
-		// Storing a shared user
-		user = TestDataManager.getInstance().getUser();
 
-		FrameworkLogger.info(
-			    "Using shared test user: " + user.getEmail()
-			); 
-		
 		// Create thread-safe WebDriver
 		DriverFactory.createDriver();
 
 		// Get driver for current thread
 		driver = DriverFactory.getDriver();
 		
+		if (driver == null) {
+		    throw new IllegalStateException(
+		        "WebDriver initialization failed."
+		    );
+		}
+
+		// Storing a shared user
+		user = TestDataManager.getInstance().getUser();
+
+		FrameworkLogger.info(
+				"Using shared test user: " + user.getEmail()
+				); 
+
 		popupHandler = new PopupHandler(driver);
 
 		// Create ActionHelper using current thread driver
@@ -61,10 +74,19 @@ public class BaseTest extends TestDataSetup {
 		FrameworkLogger.info("Page title before wait: " + driver.getTitle());
 		// Wait for page load
 		action.waitForPageLoad();
-		
+
 		FrameworkLogger.info("Page loaded successfully.");
 		FrameworkLogger.info("Current URL after wait: " + driver.getCurrentUrl());
 		FrameworkLogger.info("Page title after wait: " + driver.getTitle());
+		
+		// Initialize Page Objects
+//		homePage = new HomePage(driver);
+//		loginPage = new LoginPage(driver);
+//		logoutPage = new LogoutPage(driver);
+//
+//		FrameworkLogger.info("HomePage initialized: " + (homePage != null));
+//		FrameworkLogger.info("LoginPage initialized: " + (loginPage != null));
+//		FrameworkLogger.info("LogoutPage initialized: " + (logoutPage != null));
 
 		String currentTitle = driver.getTitle();
 		String currentUrl = driver.getCurrentUrl();

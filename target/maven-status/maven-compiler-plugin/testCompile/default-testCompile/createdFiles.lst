@@ -1,8 +1,10 @@
 ui\tests\LoginTest.class
 utility\BaseTest.class
-ui\tests\SearchProductTest.class
 ui\tests\CartTest.class
 api\setup\ApiTestSetup.class
 api\tests\AutomationExerciseAPITests.class
+ui\tests\RegisterTest.class
 api\setup\TestDataSetup.class
+ui\tests\SearchProductTest.class
+ui\tests\ContactUsTest.class
 database\DatabaseConnectionTest.class

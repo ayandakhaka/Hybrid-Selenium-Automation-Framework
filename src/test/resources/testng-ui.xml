@@ -5,16 +5,8 @@
 <suite name="UI Test Suite">
 
     <test name="UI Tests">
-
-       <!-- <packages>
+       <packages>
             <package name="ui.tests"/>
-        </packages>-->
-        
-        <classes>
-        	<class name="ui.tests.LoginTest"/>
-            <class name="ui.tests.SearchProductTest"/>
-        </classes>
-
+        </packages>
     </test>
-
 </suite>

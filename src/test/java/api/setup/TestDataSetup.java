@@ -10,7 +10,7 @@ import utility.FrameworkLogger;
 
 public class TestDataSetup {
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public void initializeTestData() {
 
         System.setProperty(

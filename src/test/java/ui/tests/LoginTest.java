@@ -26,12 +26,22 @@ public class LoginTest extends BaseTest {
 	private LoginPage loginPage;
 	private LogoutPage logoutPage;
 
-	@BeforeMethod
+	@BeforeMethod(dependsOnMethods = "setup")
 	public void setUpPages() {
+		
+		FrameworkLogger.info("Initializing page objects...");
+
+	    if (driver == null) {
+	        throw new IllegalStateException(
+	            "WebDriver has not been initialized in BaseTest."
+	        );
+	    }
 
 		homePage = new HomePage(driver);
 		loginPage = new LoginPage(driver);
 		logoutPage = new LogoutPage(driver);
+		
+		FrameworkLogger.info("Page objects initialized successfully.");
 	}
 
 	@Test(priority = 1, groups = {"smoke", "regression"})

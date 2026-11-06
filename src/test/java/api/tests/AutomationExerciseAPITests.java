@@ -1,6 +1,8 @@
 package api.tests;
 
 import org.testng.annotations.Test;
+
+import api.helpers.UserDataHelper;
 import api.model.UserModel;
 import api.services.UserApiService;
 import api.setup.ApiTestSetup;
@@ -351,25 +353,39 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 
 		FrameworkLogger.testStart("verifyDeleteUserAccount");
 
-		// Arrange
-		user = getUser();
+		// Arrange: Generate a separate user
+	    UserModel deleteUser = UserDataHelper.generateUserData();
 
-		// Act
-		response = UserApiService.deleteUser(user);
-		// Verify status code
-		Assert.assertEquals(response.getStatusCode(),
-				Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
-				"Failed to verify " + 
-						response.getStatusCode());
-		// Verify response status code
-		Assert.assertEquals(response.jsonPath().getInt("responseCode"),
-				Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
-				"Failed to verify " + response.jsonPath().getInt("responseCode"));
-		// Verify success delete message
-		Assert.assertEquals(response.jsonPath().getString("message"),
-				ConfigReader.getProperty("userDeletedMessage"),
-				"Failed to verify " +
-						response.jsonPath().getString("message"));
+	    // Register the temporary user
+	    Response createResponse = UserApiService.createUser(deleteUser);
+
+	    Assert.assertEquals(
+	        createResponse.jsonPath().getInt("responseCode"),
+	        Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+	        "Failed to create temporary user."
+	    );
+
+	    // Act: Delete the temporary user
+	    response = UserApiService.deleteUser(deleteUser);
+
+	    // Assert
+	    Assert.assertEquals(
+	        response.getStatusCode(),
+	        Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+	        "Failed to verify HTTP status code."
+	    );
+
+	    Assert.assertEquals(
+	        response.jsonPath().getInt("responseCode"),
+	        Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+	        "Failed to verify response code."
+	    );
+
+	    Assert.assertEquals(
+	        response.jsonPath().getString("message"),
+	        ConfigReader.getProperty("userDeletedMessage"),
+	        "Failed to verify delete success message."
+	    );
 
 		FrameworkLogger.testEnd("verifyDeleteUserAccount");
 	}
