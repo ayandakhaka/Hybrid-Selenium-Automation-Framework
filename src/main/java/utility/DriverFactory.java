@@ -20,7 +20,7 @@ public class DriverFactory {
 				ConfigReader.getProperty("browser"));
 
 		Boolean headless = Boolean.parseBoolean(System.getProperty("headless", 
-				ConfigReader.getProperty("headless")));
+				ConfigReader.getProperty("browser.headless")));
 
 		WebDriver webDriver;
 

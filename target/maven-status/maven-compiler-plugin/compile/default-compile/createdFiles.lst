@@ -5,6 +5,7 @@ utility\ConfigReader.class
 pages\DashboardPage.class
 utility\PageManager.class
 utility\ActionHelper.class
+config\EnvironmentManager.class
 utility\FrameworkLogger.class
 database\config\DatabaseConfig.class
 pages\LogoutPage.class
@@ -23,7 +24,9 @@ pages\ContactUsPage.class
 pages\SignupPage.class
 api\model\UserModel.class
 pages\DeleteAccountPage.class
-utility\AllureEnvironment.class
 utility\AllureAttachment.class
+api\config\ApiRequestConfig.class
+config\AllureEnvironment.class
+config\EnvironmentConfig.class
 api\helpers\UserDataHelper.class
 pages\ViewCartPage.class

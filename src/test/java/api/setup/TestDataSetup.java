@@ -4,7 +4,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
 import api.testdata.TestDataManager;
-import utility.AllureEnvironment;
+import config.AllureEnvironment;
 import utility.ConfigReader;
 import utility.FrameworkLogger;
 

@@ -11,12 +11,12 @@ public final class ConfigReader {
             new Properties();
 
     private static final String CONFIG_FILE =
-            "environmentvariables/config.properties";
+            "environments/config.properties";
 
     private static final String ENV_CONFIG_PATH =
-            "environmentvariables/";
+            "environments/";
 
-    private static final String ENV_PROPERTY = "env";
+    private static final String ENV_PROPERTY = "environment";
 
     static {
         loadConfiguration();

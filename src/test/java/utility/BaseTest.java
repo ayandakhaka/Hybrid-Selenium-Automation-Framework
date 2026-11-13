@@ -22,9 +22,6 @@ public class BaseTest extends TestDataSetup {
 	protected WebDriver driver;
 	protected UserModel user;
 	
-//	protected HomePage homePage;
-//	protected LoginPage loginPage;
-//	protected LogoutPage logoutPage;
 	protected PageManager pages;
 	
 	protected ActionHelper action;
@@ -56,7 +53,7 @@ public class BaseTest extends TestDataSetup {
 	    popupHandler = new PopupHandler(driver);
 	    action = new ActionHelper(driver);
 
-	    action.navigateTo(ConfigReader.getProperty("url"));
+	    action.navigateTo(ConfigReader.getProperty("ui.base.url"));
 
 	    action.waitForPageLoad();
 

@@ -1,10 +1,15 @@
 ui\tests\LoginTest.class
 utility\BaseTest.class
+utility\retry\RetryConfig.class
+utility\retry\RetrySafe.class
 ui\tests\CartTest.class
 api\setup\ApiTestSetup.class
 api\tests\AutomationExerciseAPITests.class
 ui\tests\RegisterTest.class
 api\setup\TestDataSetup.class
+utility\retry\RetryExceptionClassifier.class
+utility\retry\RetryTransformer.class
 ui\tests\SearchProductTest.class
 ui\tests\ContactUsTest.class
 database\DatabaseConnectionTest.class
+utility\retry\RetryAnalyzer.class

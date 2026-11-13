@@ -4,6 +4,10 @@
 
 <suite name="API Test Suite">
 
+	<listeners>
+        <listener class-name="utility.retry.RetryTransformer"/>
+    </listeners>
+
     <test name="API Tests">
 
         <packages>

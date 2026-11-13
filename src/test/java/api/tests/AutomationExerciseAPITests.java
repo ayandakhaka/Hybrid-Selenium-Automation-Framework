@@ -18,6 +18,7 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 import utility.ConfigReader;
 import utility.FrameworkLogger;
+import utility.retry.RetrySafe;
 
 @Epic("Automation exercise")
 @Feature("API Automation")
@@ -31,6 +32,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Login with valid credentials")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate login with valid login credentials")
+	@RetrySafe
 	public void verifyLoginWithValidLoginDetails() {
 
 		FrameworkLogger.testStart("verifyLoginWithValidLoginDetails");
@@ -60,6 +62,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Login without email parameter")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate login without email parameter")
+	@RetrySafe
 	public void verifyLoginWithoutEmailParameter() {
 
 		FrameworkLogger.testStart("verifyLoginWithoutEmailParameter");
@@ -88,6 +91,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Search product item")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate searched product item")
+	@RetrySafe
 	public void verifySearchProductItem() {
 
 		FrameworkLogger.testStart("verifySearchProductItem");
@@ -117,6 +121,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Search product item without product parameter")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate searched product item without providing product parameter")
+	@RetrySafe
 	public void verifySearchProductItemWithoutProductItemParameter() {
 
 		FrameworkLogger.testStart("verifySearchProductItemWithoutProductItemParameter");
@@ -146,6 +151,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Update to all brand list")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate update to all brand list")
+	@RetrySafe
 	public void verifyUpdateToAllBrandList() {
 
 		FrameworkLogger.testStart("verifyUpdateToAllBrandList");
@@ -209,6 +215,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Return user details by email")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate return user details by email")
+	@RetrySafe
 	public void verifyReturnedUserDetailsByEmail() {
 
 		FrameworkLogger.testStart("verifyReturnUserDetailsByEmail");
@@ -395,6 +402,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 	@Story("Invalid login")
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Validate login with invalid login credentials")
+	@RetrySafe
 	public void verifyLoginWithInvalidDetails() {
 
 		FrameworkLogger.testStart("verifyLoginWithInvalidDetails");

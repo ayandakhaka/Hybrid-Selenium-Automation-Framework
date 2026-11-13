@@ -1,9 +1,13 @@
+C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\api\config\ApiRequestConfig.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\api\helpers\UserDataHelper.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\api\model\UserModel.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\api\payload\UserPayload.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\api\services\UserApiService.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\api\setup\TestDataSetup.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\api\testdata\TestDataManager.java
+C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\config\AllureEnvironment.java
+C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\config\EnvironmentConfig.java
+C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\config\EnvironmentManager.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\database\config\DatabaseConfig.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\database\validation\DatabaseValidator.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\pages\AccountCreatedPage.java
@@ -20,7 +24,6 @@ C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\utility\AllureApiAttachment.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\utility\AllureApiHelper.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\utility\AllureAttachment.java
-C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\utility\AllureEnvironment.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\utility\BasePage.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\utility\ConfigReader.java
 C:\Users\USER\eclipse-workspace\Hybrid-UI-API-Test-Automation-Framework\src\main\java\utility\DriverFactory.java
