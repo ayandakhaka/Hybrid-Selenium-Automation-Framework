@@ -244,170 +244,138 @@ The goal is to provide historical visibility into the health, stability, and ove
 
 ---
 
-# 🔄 CI/CD Integration
 
-The next phase of the project is integrating the automation framework with **GitHub Actions** to enable automated test execution as part of the software development workflow.
-
-### Planned CI/CD Workflow
-
-```text
-Developer Push
-       │
-       ▼
-GitHub Repository
-       │
-       ▼
-GitHub Actions
-       │
-       ▼
-Build with Maven
-       │
-       ▼
-Run UI & API Tests
-       │
-       ▼
-Generate Allure Results
-       │
-       ▼
-Generate Allure Report
-       │
-       ▼
-Publish Test Results
 ```
-### CI/CD Pipeline Capabilities
+📈 Allure Reports
 
-| Capability | Status |
-|---|:---:|
-| Automated Execution on Push | 🔄 In Progress |
-| Pull Request Validation | ⏳ Planned |
-| Maven Test Execution | 🔄 In Progress |
-| UI Test Execution | 🔄 In Progress |
-| API Test Execution | 🔄 In Progress |
-| Allure Result Generation | 🔄 In Progress |
-| Test Result Artifacts | ⏳ Planned |
-| Allure History & Trends | ⏳ Planned |
+After executing tests, generate the report using:
 
-**Current Status:** 🔄 In Progress
 
+bash
+allure serve target/allure-results
+Alternatively:
+
+
+bash
+allure generate target/allure-results --clean
+The generated report can be opened from:
+
+
+text
+allure-report/index.html
+The report provides visibility into:
+
+Passed tests.
+Failed tests.
+Broken tests.
+Skipped tests.
+Execution duration.
+Test steps.
+Screenshots.
+Logs.
+API request and response evidence.
+Failure categories.
 ---
-# 🎯 Project Goals
+# 🔄 CI/CD Integration
+The repository contains a GitHub Actions workflow directory.
 
-The goal of this project is to build a modern, scalable, and maintainable **UI & API Test Automation Framework** that demonstrates industry best practices in software quality engineering.
-
-The framework is designed to showcase:
-
-- ✅ UI Test Automation using Selenium WebDriver
-- ✅ API Test Automation using REST Assured
-- ✅ Page Object Model (POM)
-- ✅ TestNG Test Execution
-- ✅ Comprehensive Allure Reporting
-- ✅ Failure Classification & Analysis
-- 🔄 CI/CD Pipeline with GitHub Actions
-- ⏳ Cloud-Based Test Execution using AWS
+The intended CI/CD execution flow is:
 
 ### End-to-End Automation Journey
 
 ```text
-                 QA Automation Framework
+Developer Push
+      |
+      v
+GitHub Repository
+      |
+      v
+GitHub Actions
+      |
+      v
+Maven Build
+      |
+      v
+TestNG Execution
+      |
+      v
+UI and API Automation
+      |
+      v
+Allure Results
+      |
+      v
+Test Execution Artifacts
 
-       ┌─────────────────────────────────┐
-       │       UI Automation             │
-       │     Selenium WebDriver          │
-       └───────────────┬─────────────────┘
-                       │
-                       ▼
-       ┌─────────────────────────────────┐
-       │       API Automation            │
-       │        REST Assured             │
-       └───────────────┬─────────────────┘
-                       │
-                       ▼
-       ┌─────────────────────────────────┐
-       │      Test Execution             │
-       │           TestNG                │
-       └───────────────┬─────────────────┘
-                       │
-                       ▼
-       ┌─────────────────────────────────┐
-       │      Allure Reporting           │
-       │  Steps • Logs • Screenshots     │
-       │  API Attachments • Categories   │
-       └───────────────┬─────────────────┘
-                       │
-                       ▼
-       ┌─────────────────────────────────┐
-       │     Failure Analysis            │
-       │ Categories • Trends • History   │
-       └───────────────┬─────────────────┘
-                       │
-                       ▼
-       ┌─────────────────────────────────┐
-       │      GitHub Actions CI/CD       │
-       │ Automated Build & Test          │
-       └───────────────┬─────────────────┘
-                       │
-                       ▼
-       ┌─────────────────────────────────┐
-       │      AWS Cloud Execution        │
-       │  Scalable Test Execution        │
-       └─────────────────────────────────┘
 ```
 
 This project is continuously evolving as new automation capabilities, reporting features, CI/CD integrations, and cloud execution support are implemented.
 
 ---
 
-# 📚 Skills & Technologies Demonstrated
+🗺️ Project Roadmap
 
-This project showcases practical experience with the following technologies and testing concepts.
-
-| Category | Technologies |
-|----------|--------------|
-| 💻 Programming Language | Java |
-| 🖥️ UI Automation | Selenium WebDriver |
-| 🔌 API Automation | REST Assured |
-| 🧪 Test Framework | TestNG |
-| 📦 Build Tool | Maven |
-| 🎨 Design Pattern | Page Object Model (POM) |
-| 📊 Test Reporting | Allure Report |
-| 📎 Attachments | Screenshots, Logs, API Requests & Responses |
-| 🚨 Failure Analysis | Allure Categories & Trends |
-| 📝 Logging | SLF4J / Log4j |
-| 🔄 CI/CD | GitHub Actions |
-| ☁️ Cloud | AWS *(Planned)* |
-| 🐳 Containerization | Docker *(Planned)* |
-| 🏗️ Architecture | Microservices Testing |
-| 🔐 Security | API Security Testing |
-| 🚀 Quality Engineering | Continuous Testing |
+|Feature       |	Status|
+|--------------|-----------------------------------|
+|Selenium | UI automation	Implemented|
+|REST Assured | API automation	Implemented|
+|Page Object Model |	Implemented|
+|Centralized PageManager |	Implemented in current development|
+|Reusable utilities |	Implemented|
+|TestNG execution |	Implemented|
+|Maven integration |	Implemented|
+|Allure reporting |	Implemented|
+|Failure classification |	Implemented|
+|Parallel test configuration |	Configured|
+|Historical reporting trends |	Further development|
+|GitHub Actions automation |	Verify workflow|
+|Cross-browser execution |	Further development|
+|Docker integration |	Planned|
+|Cloud-based execution |	Planned|
+|Expanded negative testing |	Planned|
 
 ---
 
-# 🚀 Project Roadmap
+🧠 Skills Demonstrated
+This project demonstrates practical knowledge of:
 
-| Phase | Status |
-|-------|:------:|
-| Selenium UI Automation | ✅ Completed |
-| REST Assured API Automation | ✅ Completed |
-| Allure Reporting | ✅ Completed |
-| Failure Categories | ✅ Completed |
-| Allure Trends & History | 🔄 In Progress |
-| GitHub Actions CI/CD | 🔄 In Progress |
-| Automated Allure Reports | 🔄 In Progress |
-| AWS Cloud Execution | ⏳ Planned |
-| Docker Integration | ⏳ Planned |
-| Cross-Browser Execution | ⏳ Planned |
-| Parallel Test Execution | ⏳ Planned |
-| Microservices Testing | ⏳ Planned |
+
+|Area          |           Skills|
+|--------------|-----------------------------------|
+|Programming	| Java, OOP|
+|UI automation	| Selenium WebDriver|
+|Design patterns | Page Object Model, PageManager|
+API automation	 | REST Assured|
+Test execution	 | TestNG|
+Build management | Maven|
+Browser management | WebDriver, WebDriverManager|
+Test data | JSON, Jackson, Java Faker, Apache POI|
+Reporting | Allure|
+Logging	| Log4j2, SLF4J|
+Version control | Git, GitHub|
+CI/CD | GitHub Actions|
+Framework design | Modular architecture, reusable components|
+Test engineering | Failure analysis, parallel execution|
+
 
 ---
 
-# 👨‍💻 Author
+👨‍💻 Author
+Ayanda Khaka
+QA Automation Engineer | SDET | Test Automation Engineer
 
-## Ayanda Khaka
+This project represents my practical journey in designing and developing a hybrid automation framework using Java, Selenium WebDriver and REST Assured.
 
-**QA Automation Engineer | SDET | Test Automation Engineer**
+My focus is on building maintainable, reusable and scalable automation solutions that combine UI testing, API testing, framework architecture, reporting and continuous testing practices.
 
-This repository represents my ongoing journey in building enterprise-level automation solutions using modern testing tools and best practices. My focus is on developing scalable automation frameworks that combine **UI automation, API testing, reporting, CI/CD, and cloud technologies** to support high-quality software delivery.
+GitHub: ayandakhaka
+
+Project: Hybrid Selenium Automation Framework
+
+---
+⭐ If you find this project useful, feel free to explore the repository and follow its development.
+
+
 
 If you found this project interesting, feel free to ⭐ the repository, explore the code, or connect with me on LinkedIn to follow my QA automation journey.
 
