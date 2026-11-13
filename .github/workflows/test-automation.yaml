@@ -143,18 +143,15 @@ jobs:
           case "$EXECUTION_TYPE" in
 
             full)
-              API_SUITE="src/test/resources/testng-api.xml"
-              UI_SUITE="src/test/resources/testng-ui.xml"
+              UI_SUITE="src/test/resources/testng-regression.xml"
               ;;
 
             smoke)
-              API_SUITE="src/test/resources/testng-api-smoke.xml"
-              UI_SUITE="src/test/resources/testng-ui-smoke.xml"
+              UI_SUITE="src/test/resources/testng-smoke.xml"
               ;;
 
             sanity)
-              API_SUITE="src/test/resources/testng-api-sanity.xml"
-              UI_SUITE="src/test/resources/testng-ui-sanity.xml"
+              UI_SUITE="src/test/resources/testng-sanity.xml"
               ;;
 
             *)
