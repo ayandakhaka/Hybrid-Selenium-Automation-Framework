@@ -464,18 +464,18 @@ jobs:
         if: always()
         shell: bash
         env:
-          API_STATUS: ${{ steps.run-tests.outputs.api_status }}
-          UI_STATUS: ${{ steps.run-tests.outputs.ui_status }}
+          TEST_STATUS: ${{ steps.run-tests.outputs.test_status }}
         run: |
-          echo "API test exit code: ${API_STATUS:-unknown}"
-          echo "UI test exit code: ${UI_STATUS:-unknown}"
 
-          if [[ "$API_STATUS" != "0" || "$UI_STATUS" != "0" ]]; then
-            echo "One or more test suites failed."
+          echo "Combined API and UI test exit code: ${TEST_STATUS:-unknown}"
+
+          if [[ "$TEST_STATUS" != "0" ]]; then
+            echo "API and/or UI tests failed."
             exit 1
           fi
 
-          echo "Both UI and API test suites passed."
+          echo "Both API and UI test suites passed."
+
 
   # ==========================================================
   # DEPLOY ALLURE REPORT TO GITHUB PAGES
