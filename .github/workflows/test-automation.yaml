@@ -316,6 +316,7 @@ jobs:
           fi
 
       
+      
       # ========================================================
       # Verify Allure trend history
       # ========================================================
@@ -333,7 +334,7 @@ jobs:
 
             if [ -f "$TREND_FILE" ]; then
 
-              python3 -c '
+              python3 <<'PYTHON'
           import json
           from pathlib import Path
 
@@ -346,18 +347,23 @@ jobs:
           print("=" * 50)
 
           for i, item in enumerate(data, start=1):
-
               stats = item.get("data", {})
+
+              total = stats.get("total", 0)
+              passed = stats.get("passed", 0)
+              failed = stats.get("failed", 0)
+              broken = stats.get("broken", 0)
+              skipped = stats.get("skipped", 0)
 
               print(
                   f"Execution {i}: "
-                  f"total={stats.get(\"total\", 0)}, "
-                  f"passed={stats.get(\"passed\", 0)}, "
-                  f"failed={stats.get(\"failed\", 0)}, "
-                  f"broken={stats.get(\"broken\", 0)}, "
-                  f"skipped={stats.get(\"skipped\", 0)}"
+                  f"total={total}, "
+                  f"passed={passed}, "
+                  f"failed={failed}, "
+                  f"broken={broken}, "
+                  f"skipped={skipped}"
               )
-          '
+          PYTHON
 
             else
               echo "No history-trend.json found."
@@ -366,6 +372,7 @@ jobs:
           else
             echo "No generated history directory found."
           fi
+
 
 
       # ========================================================
