@@ -5,8 +5,19 @@
 <suite name="UI Test Suite">
 
     <test name="UI Tests">
-       <packages>
+
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="sanity"/>
+                <include name="regression"/>
+            </run>
+        </groups>
+
+        <packages>
             <package name="ui.tests"/>
         </packages>
+
     </test>
+
 </suite>

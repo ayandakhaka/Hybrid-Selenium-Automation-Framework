@@ -10,6 +10,7 @@
     
     <properties>
     	<allure.version>2.35.1</allure.version>
+    	<groups></groups>
 	</properties>
 
     <dependencies>
@@ -140,12 +141,13 @@
 		            </allure.results.directory>
 		        </systemPropertyVariables>
 		
-		        <!-- Configurable TestNG suite -->
-		        <suiteXmlFiles>
-		            <suiteXmlFile>
-		                ${suiteXmlFile}
-		            </suiteXmlFile>
-		        </suiteXmlFiles>
+		  		<!-- Configurable TestNG suite -->
+				<suiteXmlFiles>
+				    <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+				</suiteXmlFiles>
+
+				<!-- Dynamic TestNG group selection -->
+				<groups>${groups}</groups>
 		
 		    </configuration>
 		</plugin>

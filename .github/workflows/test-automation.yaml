@@ -7,6 +7,16 @@ on:
       timezone: 'Africa/Johannesburg'
 
   workflow_dispatch:
+    inputs:
+      execution_type:
+        description: 'Select automation execution type'
+        required: true
+        type: choice
+        default: full
+        options:
+          - full
+          - smoke
+          - sanity
 
   push:
     branches:
@@ -37,11 +47,40 @@ jobs:
       # ========================================================
       - name: Checkout Code
         uses: actions/checkout@v4
+        
+      - name: Determine Execution Type
+        id: execution
+        shell: bash
+        run: |
+          case "${{ github.event_name }}" in
+            schedule)
+              TYPE="full"
+              ;;
+            workflow_dispatch)
+              TYPE="${{ inputs.execution_type }}"
+              ;;
+            push)
+              TYPE="smoke"
+              ;;
+            pull_request)
+              TYPE="smoke"
+              ;;
+            *)
+              TYPE="full"
+              ;;
+          esac
+
+          echo "type=$TYPE" >> "$GITHUB_OUTPUT"
+
+          echo "========================================"
+          echo "Selected Execution Type: $TYPE"
+          echo "========================================"
 
       # ========================================================
       # Setup GitHub Pages
       # ========================================================
       - name: Setup GitHub Pages
+        if: github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
 
       # ========================================================
@@ -90,40 +129,64 @@ jobs:
       # Run clean only before the first suite.
       # The second Maven command must preserve API Allure results.
       # ========================================================
+      
       - name: Run UI and API Tests
         id: run-tests
         shell: bash
+        env:
+          EXECUTION_TYPE: ${{ steps.execution.outputs.type }}
         run: |
-          echo "========================================"
-          echo "Running API TestNG Suite"
-          echo "========================================"
 
-          if mvn clean test \
-            -DsuiteXmlFile=src/test/resources/testng-api.xml; then
+          API_STATUS=0
+          UI_STATUS=0
+
+          case "$EXECUTION_TYPE" in
+
+            full)
+              API_SUITE="src/test/resources/testng-api.xml"
+              UI_SUITE="src/test/resources/testng-ui.xml"
+              ;;
+
+            smoke)
+              API_SUITE="src/test/resources/testng-api-smoke.xml"
+              UI_SUITE="src/test/resources/testng-ui-smoke.xml"
+              ;;
+
+            sanity)
+              API_SUITE="src/test/resources/testng-api-sanity.xml"
+              UI_SUITE="src/test/resources/testng-ui-sanity.xml"
+              ;;
+
+            *)
+              echo "Invalid execution type: $EXECUTION_TYPE"
+              exit 1
+              ;;
+          esac
+
+          echo "Execution Type: $EXECUTION_TYPE"
+
+          echo "Running API Suite: $API_SUITE"
+
+          if mvn clean test -DsuiteXmlFile="$API_SUITE"; then
             API_STATUS=0
           else
             API_STATUS=$?
           fi
 
-          echo "========================================"
-          echo "Running UI TestNG Suite"
-          echo "========================================"
+          echo "Running UI Suite: $UI_SUITE"
 
-          if mvn test \
-            -DsuiteXmlFile=src/test/resources/testng-ui.xml; then
+          if mvn test -DsuiteXmlFile="$UI_SUITE"; then
             UI_STATUS=0
           else
             UI_STATUS=$?
           fi
 
-          echo "========================================"
-          echo "Test Execution Summary"
-          echo "========================================"
-          echo "API exit code: $API_STATUS"
-          echo "UI exit code: $UI_STATUS"
-
           echo "api_status=$API_STATUS" >> "$GITHUB_OUTPUT"
           echo "ui_status=$UI_STATUS" >> "$GITHUB_OUTPUT"
+
+          echo "API Status: $API_STATUS"
+          echo "UI Status: $UI_STATUS"
+
 
           # Test failures are evaluated after report generation
           # and artifact uploads.
@@ -326,7 +389,7 @@ jobs:
       # Upload GitHub Pages artifact
       # ========================================================
       - name: Upload GitHub Pages Artifact
-        if: always()
+        if: always() && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: target/site/allure-maven-plugin/
