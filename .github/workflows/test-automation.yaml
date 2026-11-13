@@ -315,46 +315,58 @@ jobs:
             exit 1
           fi
 
+      
       # ========================================================
       # Verify Allure trend history
       # ========================================================
       - name: Verify Allure History
         if: always()
+        shell: bash
         run: |
           HISTORY_DIR="target/site/allure-maven-plugin/history"
           TREND_FILE="$HISTORY_DIR/history-trend.json"
 
           if [ -d "$HISTORY_DIR" ]; then
+
             echo "Allure history files:"
             find "$HISTORY_DIR" -maxdepth 2 -type f
 
             if [ -f "$TREND_FILE" ]; then
+
               python3 -c '
           import json
           from pathlib import Path
 
           path = Path("target/site/allure-maven-plugin/history/history-trend.json")
+
           data = json.loads(path.read_text(encoding="utf-8"))
 
+          print("=" * 50)
           print(f"Recorded trend executions: {len(data)}")
+          print("=" * 50)
 
           for i, item in enumerate(data, start=1):
+
               stats = item.get("data", {})
+
               print(
                   f"Execution {i}: "
-                  f"total={stats.get('total', 0)}, "
-                  f"passed={stats.get('passed', 0)}, "
-                  f"failed={stats.get('failed', 0)}, "
-                  f"broken={stats.get('broken', 0)}, "
-                  f"skipped={stats.get('skipped', 0)}"
+                  f"total={stats.get(\"total\", 0)}, "
+                  f"passed={stats.get(\"passed\", 0)}, "
+                  f"failed={stats.get(\"failed\", 0)}, "
+                  f"broken={stats.get(\"broken\", 0)}, "
+                  f"skipped={stats.get(\"skipped\", 0)}"
               )
           '
+
             else
               echo "No history-trend.json found."
             fi
+
           else
             echo "No generated history directory found."
           fi
+
 
       # ========================================================
       # Prepare updated Allure history
