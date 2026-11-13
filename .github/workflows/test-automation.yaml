@@ -140,7 +140,6 @@ jobs:
       # Run clean only before the first suite.
       # The second Maven command must preserve API Allure results.
       # ========================================================
-      
       - name: Run UI and API Tests
         id: run-tests
         shell: bash
@@ -148,21 +147,20 @@ jobs:
           EXECUTION_TYPE: ${{ steps.execution.outputs.type }}
         run: |
 
-          API_STATUS=0
-          UI_STATUS=0
+          TEST_STATUS=0
 
           case "$EXECUTION_TYPE" in
 
             full)
-              UI_SUITE="src/test/resources/testng-regression.xml"
+              SUITE="src/test/resources/testng.xml"
               ;;
 
             smoke)
-              UI_SUITE="src/test/resources/testng-smoke.xml"
+              SUITE="src/test/resources/testng-smoke.xml"
               ;;
 
             sanity)
-              UI_SUITE="src/test/resources/testng-sanity.xml"
+              SUITE="src/test/resources/testng-sanity.xml"
               ;;
 
             *)
@@ -171,29 +169,30 @@ jobs:
               ;;
           esac
 
+          echo "=================================="
           echo "Execution Type: $EXECUTION_TYPE"
+          echo "TestNG Suite: $SUITE"
+          echo "=================================="
 
-          echo "Running API Suite: $API_SUITE"
-
-          if mvn clean test -DsuiteXmlFile="$API_SUITE"; then
-            API_STATUS=0
-          else
-            API_STATUS=$?
+          # Validate suite file
+          if [[ ! -f "$SUITE" ]]; then
+            echo "ERROR: TestNG suite not found: $SUITE"
+            exit 1
           fi
 
-          echo "Running UI Suite: $UI_SUITE"
-
-          if mvn test -DsuiteXmlFile="$UI_SUITE"; then
-            UI_STATUS=0
+          # Execute combined API and UI tests
+          if mvn clean test -DsuiteXmlFile="$SUITE"; then
+            TEST_STATUS=0
           else
-            UI_STATUS=$?
+            TEST_STATUS=$?
           fi
 
-          echo "api_status=$API_STATUS" >> "$GITHUB_OUTPUT"
-          echo "ui_status=$UI_STATUS" >> "$GITHUB_OUTPUT"
+          echo "test_status=$TEST_STATUS" >> "$GITHUB_OUTPUT"
 
-          echo "API Status: $API_STATUS"
-          echo "UI Status: $UI_STATUS"
+          echo "=================================="
+          echo "Combined API and UI Test Status: $TEST_STATUS"
+          echo "=================================="
+
 
 
           # Test failures are evaluated after report generation
