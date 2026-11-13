@@ -55,16 +55,26 @@ public class DriverFactory {
 
 		case "edge":
 
-			EdgeOptions edgeOptions = new EdgeOptions();
-			edgeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
+		    EdgeOptions edgeOptions = new EdgeOptions();
 
-			if (headless) {
-				edgeOptions.addArguments("--headless=new");
-				edgeOptions.addArguments("--window-size=1920,1080");
-			}
+		    edgeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
 
-			webDriver = new EdgeDriver(edgeOptions);
-			break;
+		    if (headless) {
+
+		        edgeOptions.addArguments("--headless=new");
+		        edgeOptions.addArguments("--window-size=1920,1080");
+
+		        // CI environment configuration
+		        edgeOptions.addArguments("--disable-dev-shm-usage");
+		        edgeOptions.addArguments("--disable-gpu");
+
+		        // Use only on isolated CI runners
+		        edgeOptions.addArguments("--no-sandbox");
+		    }
+
+		    webDriver = new EdgeDriver(edgeOptions);
+
+		    break;
 
 		default:
 			throw new IllegalArgumentException(
