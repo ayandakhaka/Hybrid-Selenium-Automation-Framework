@@ -10,9 +10,6 @@ import api.model.UserModel;
 import api.setup.TestDataSetup;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.LogoutPage;
 import api.testdata.TestDataManager;
 
 import java.io.ByteArrayInputStream;
