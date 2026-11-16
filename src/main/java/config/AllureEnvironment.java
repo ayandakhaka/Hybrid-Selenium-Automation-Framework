@@ -168,7 +168,7 @@ public class AllureEnvironment {
 
 		// Test environment
 		properties.setProperty(
-				"Test Environment",
+				"Environment",
 				EnvironmentManager.getEnvironment()
 				);
 
