@@ -4,11 +4,19 @@
 
 <suite name="API Test Suite">
 
-	<listeners>
+    <listeners>
         <listener class-name="utility.retry.RetryTransformer"/>
     </listeners>
 
     <test name="API Tests">
+
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="sanity"/>
+                <include name="regression"/>
+            </run>
+        </groups>
 
         <packages>
             <package name="api.tests"/>

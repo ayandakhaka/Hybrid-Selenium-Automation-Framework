@@ -152,7 +152,7 @@ jobs:
           case "$EXECUTION_TYPE" in
 
             full)
-              SUITE="src/test/resources/testng.xml"
+              SUITE="src/test/resources/testng-regression.xml"
               ;;
 
             smoke)
