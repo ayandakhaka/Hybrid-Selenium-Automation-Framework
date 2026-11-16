@@ -225,8 +225,11 @@ jobs:
             echo "No previous history available."
           fi
 
+      
+      
+      
       # ========================================================
-      # Add Allure environment metadata
+      # Add Allure Environment metadata
       # ========================================================
       - name: Add Allure Environment
         if: always()
@@ -236,8 +239,7 @@ jobs:
           EXECUTION_DATE=$(date '+%d %B %Y')
           EXECUTION_TIME=$(date '+%H:%M:%S %Z')
 
-          cat > target/allure-results/environment.properties <<EOF
-          Environment=QA
+          cat >> target/allure-results/environment.properties <<EOF
           Project=Hybrid UI & API Test Automation
           Test Suite=UI and API Automation
           Execution Mode=CI/CD
@@ -259,6 +261,7 @@ jobs:
           EOF
 
           cat target/allure-results/environment.properties
+
 
       # ========================================================
       # Generate Allure report
