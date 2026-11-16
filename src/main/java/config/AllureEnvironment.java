@@ -25,9 +25,9 @@ public class AllureEnvironment {
 
 		// Test environment
 		properties.setProperty(
-				"Test Environment",
-				EnvironmentManager.getEnvironment()
-				);
+			    "Environment",
+			    EnvironmentManager.getEnvironment()
+			);
 
 		// Browser information
 		properties.setProperty(
@@ -48,9 +48,14 @@ public class AllureEnvironment {
 			    ));
 
 		properties.setProperty(
-				"Build Number",
-				System.getProperty("build.number", "Local")
-				);
+			    "Build Number",
+			    System.getProperty(
+			        "build.number",
+			        System.getenv("GITHUB_RUN_NUMBER") != null
+			            ? System.getenv("GITHUB_RUN_NUMBER")
+			            : "Local"
+			    )
+			);
 
 		properties.setProperty(
 				"Browser Version",
