@@ -1,8 +1,6 @@
 
 package config;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -11,84 +9,128 @@ import utility.FrameworkLogger;
 
 public class EnvironmentManager {
 
-	private static final String ENVIRONMENT = System.getProperty("environment", "QA").trim().toUpperCase(Locale.ROOT);
+    // Single source of truth for selected environment
+    private static final String ENVIRONMENT = resolveEnvironment();
 
-	private static final Properties PROPERTIES = loadProperties();
+    private static final Properties PROPERTIES = loadProperties();
 
-	private static final EnvironmentConfig CONFIG = buildConfiguration();
+    private static final EnvironmentConfig CONFIG = buildConfiguration();
 
-	private EnvironmentManager() {
-		// Prevent object creation
-	}
+    private EnvironmentManager() {
+        // Prevent object creation
+    }
 
-	// Step 1: Load the selected environment properties file
-	private static Properties loadProperties() {
+    // Step 1: Resolve environment
+    private static String resolveEnvironment() {
 
-		Properties properties = new Properties();
+        String environment = System.getProperty("environment");
 
-		properties.setProperty("environment", ConfigReader.getProperty("environment"));
+        // Fall back to configuration if no system property exists
+        if (environment == null || environment.trim().isEmpty()) {
+            environment = ConfigReader.getProperty("environment");
+        }
 
-		properties.setProperty("ui.base.url", ConfigReader.getProperty("ui.base.url"));
+        // Default environment
+        if (environment == null || environment.trim().isEmpty()) {
+            environment = "QA";
+        }
 
-		properties.setProperty("api.base.url", ConfigReader.getProperty("api.base.url"));
+        return environment.trim().toUpperCase(Locale.ROOT);
+    }
 
-		properties.setProperty("browser", ConfigReader.getProperty("browser"));
+    // Step 2: Load configuration
+    private static Properties loadProperties() {
 
-		properties.setProperty("browser.headless", ConfigReader.getProperty("browser.headless"));
+        Properties properties = new Properties();
 
-		FrameworkLogger.info("Environment configuration loaded: " + properties.getProperty("environment"));
+        properties.setProperty("environment", ENVIRONMENT);
 
-		return properties;
-	}
+        properties.setProperty(
+            "ui.base.url",
+            ConfigReader.getProperty("ui.base.url")
+        );
 
-	// Step 2: Build the EnvironmentConfig object
-	private static EnvironmentConfig buildConfiguration() {
+        properties.setProperty(
+            "api.base.url",
+            ConfigReader.getProperty("api.base.url")
+        );
 
-		String environment = PROPERTIES.getProperty("environment");
+        properties.setProperty(
+            "browser",
+            ConfigReader.getProperty("browser")
+        );
 
-		String uiBaseUrl = PROPERTIES.getProperty("ui.base.url");
+        properties.setProperty(
+            "browser.headless",
+            ConfigReader.getProperty("browser.headless")
+        );
 
-		String apiBaseUrl = PROPERTIES.getProperty("api.base.url");
+        FrameworkLogger.info(
+            "Environment configuration loaded: " + ENVIRONMENT
+        );
 
-		String browser = PROPERTIES.getProperty("browser", "chrome");
+        return properties;
+    }
 
-		boolean headless = Boolean.parseBoolean(PROPERTIES.getProperty("browser.headless", "false"));
+    // Step 3: Build EnvironmentConfig
+    private static EnvironmentConfig buildConfiguration() {
 
-		// Validate mandatory configuration
-		if (uiBaseUrl == null || uiBaseUrl.trim().isEmpty()) {
-			throw new IllegalStateException("UI Base URL is missing from configuration.");
-		}
+        String environment = PROPERTIES.getProperty("environment");
 
-		if (apiBaseUrl == null || apiBaseUrl.trim().isEmpty()) {
-			throw new IllegalStateException("API Base URL is missing from configuration.");
-		}
+        String uiBaseUrl = PROPERTIES.getProperty("ui.base.url");
 
-		return new EnvironmentConfig(environment, uiBaseUrl, apiBaseUrl, browser, headless);
-	}
+        String apiBaseUrl = PROPERTIES.getProperty("api.base.url");
 
-	// Step 3: Expose configuration values to other classes
+        String browser = PROPERTIES.getProperty("browser", "chrome");
 
-	public static EnvironmentConfig getConfig() {
-		return CONFIG;
-	}
+        boolean headless = Boolean.parseBoolean(
+            PROPERTIES.getProperty("browser.headless", "false")
+        );
 
-	public static String getEnvironment() {
-		return CONFIG.getEnvironment();
-	}
+        if (uiBaseUrl == null || uiBaseUrl.trim().isEmpty()) {
+            throw new IllegalStateException(
+                "UI Base URL is missing from configuration."
+            );
+        }
 
-	public static String getUiBaseUrl() {
-		return CONFIG.getUiBaseUrl();
-	}
+        if (apiBaseUrl == null || apiBaseUrl.trim().isEmpty()) {
+            throw new IllegalStateException(
+                "API Base URL is missing from configuration."
+            );
+        }
 
-	public static String getApiBaseUrl() {
-		return CONFIG.getApiBaseUrl();
-	}
+        return new EnvironmentConfig(
+            environment,
+            uiBaseUrl,
+            apiBaseUrl,
+            browser,
+            headless
+        );
+    }
 
-	public static String getBrowser() {
-		return CONFIG.getBrowser();
-	}
+    // Step 4: Expose configuration
 
-	public static boolean isHeadless() {
-		return CONFIG.isHeadless();
-	}
+    public static EnvironmentConfig getConfig() {
+        return CONFIG;
+    }
+
+    public static String getEnvironment() {
+        return CONFIG.getEnvironment();
+    }
+
+    public static String getUiBaseUrl() {
+        return CONFIG.getUiBaseUrl();
+    }
+
+    public static String getApiBaseUrl() {
+        return CONFIG.getApiBaseUrl();
+    }
+
+    public static String getBrowser() {
+        return CONFIG.getBrowser();
+    }
+
+    public static boolean isHeadless() {
+        return CONFIG.isHeadless();
+    }
 }

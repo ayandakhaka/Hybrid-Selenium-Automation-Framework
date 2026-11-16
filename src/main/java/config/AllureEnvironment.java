@@ -39,15 +39,17 @@ public class AllureEnvironment {
 				"Configured Browser",
 				EnvironmentManager.getBrowser()
 				);
+		
+		properties.setProperty(
+			    "Execution Mode",
+			    System.getProperty(
+			        "execution",
+			        System.getenv("CI") != null ? "CI/CD" : "Local"
+			    ));
 
 		properties.setProperty(
 				"Build Number",
 				System.getProperty("build.number", "Local")
-				);
-
-		properties.setProperty(
-				"Headless Mode",
-				String.valueOf(EnvironmentManager.isHeadless())
 				);
 
 		properties.setProperty(
