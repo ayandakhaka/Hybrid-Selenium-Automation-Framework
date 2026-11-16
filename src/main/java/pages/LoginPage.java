@@ -35,7 +35,7 @@ public class LoginPage extends BasePage {
 	// Login validation method
 	@Step("Verify user is logged in.")
 	public boolean verifySuccessLoginUser(String username) {
-		return actions.validateText(loggedInUser, " Logged in as "+ username , "Logged In user");
+		return actions.validateText(loggedInUser, " Logged in as a "+ username , "Logged In user");
 	}
 	
 	// Get email validation message
