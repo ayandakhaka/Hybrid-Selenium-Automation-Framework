@@ -18,15 +18,15 @@ on:
           - smoke
           - sanity
           
-  environment:
-    description: 'Select test environment'
-    required: true
-    type: choice
-    default: DEV
-    options:
-      - DEV
-      - QA
-      - UAT
+      environment:
+        description: 'Select test environment'
+        required: true
+        type: choice
+        default: DEV
+        options:
+          - DEV
+          - QA
+          - UAT
 
   push:
     branches:
@@ -50,8 +50,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     
-  env:
-    TEST_ENVIRONMENT: ${{ inputs.environment || 'DEV' }}
+    env:
+      TEST_ENVIRONMENT: ${{ inputs.environment || 'DEV' }}
 
     steps:
 
