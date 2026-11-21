@@ -368,7 +368,7 @@ public class AutomationExerciseAPITests extends ApiTestSetup {
 
 	    Assert.assertEquals(
 	        createResponse.jsonPath().getInt("responseCode"),
-	        Integer.parseInt(ConfigReader.getProperty("successStatusCode")),
+	        Integer.parseInt(ConfigReader.getProperty("deletesuccessStatusCode")),
 	        "Failed to create temporary user."
 	    );
 
